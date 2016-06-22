@@ -29,6 +29,7 @@ class CreateStoreTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('store');
     }
 }

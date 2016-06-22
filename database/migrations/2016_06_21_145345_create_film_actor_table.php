@@ -29,6 +29,7 @@ class CreateFilmActorTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('film_actor');
     }
 }

@@ -33,6 +33,7 @@ class CreatePaymentTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('payment');
     }
 }

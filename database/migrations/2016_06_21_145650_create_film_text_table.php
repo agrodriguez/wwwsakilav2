@@ -13,9 +13,9 @@ class CreateFilmTextTable extends Migration
     public function up()
     {
         Schema::create('film_text', function (Blueprint $table) {
-            $table->smallInteger('film_id', false, true);
+            $table->smallInteger('film_id', false, true)->primary();
             $table->string('title', 255);
-            $table->text('description')->index('idx_title_description');
+            $table->text('description');
         });
         DB::statement('ALTER TABLE film_text ADD FULLTEXT idx_title_description(title, description)');
     }
@@ -27,6 +27,7 @@ class CreateFilmTextTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('film_text');
     }
 }

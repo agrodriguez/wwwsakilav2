@@ -17,7 +17,7 @@ class CreateRentalTable extends Migration
             $table->timestamp('rental_date');
             $table->mediumInteger('inventory_id', false, true)->index('idx_fk_inventory_id');
             $table->smallInteger('customer_id', false, true)->index('idx_fk_customer_id');
-            $table->timestamp('return_date');
+            $table->timestamp('return_date')->nullable()->default(null);
             $table->tinyInteger('staff_id', false, true)->index('idx_fk_staff_id');
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->unique(['rental_date', 'inventory_id', 'customer_id']);
@@ -34,6 +34,7 @@ class CreateRentalTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('rental');
     }
 }
