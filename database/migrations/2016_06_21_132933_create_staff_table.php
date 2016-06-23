@@ -22,7 +22,7 @@ class CreateStaffTable extends Migration
             $table->tinyInteger('store_id', false, true)->index('idx_fk_store_id');
             $table->boolean('active')->default(true);
             $table->string('username', 16);
-            $table->string('password', 255)->nullable()->default(null);
+            $table->string('password', 255)->nullable()->default(null);// password VARCHAR(40) BINARY DEFAULT NULL,
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->foreign('address_id', 'fk_staff_address')->references('address_id')->on('address')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('store_id', 'fk_staff_store')->references('store_id')->on('store')->onDelete('restrict')->onUpdate('cascade');
