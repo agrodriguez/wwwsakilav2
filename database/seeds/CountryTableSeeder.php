@@ -28,442 +28,115 @@ class CountryTableSeeder extends Seeder
          *
          **/
 
-        App\Country::create([
-            'country_id' => '1',
-            'country' => 'Afghanistan'
-        ]);
-        App\Country::create([
-            'country_id' => '2',
-            'country' => 'Algeria'
-        ]);
-        App\Country::create([
-            'country_id' => '3',
-            'country' => 'American Samoa'
-        ]);
-        App\Country::create([
-            'country_id' => '4',
-            'country' => 'Angola'
-        ]);
-        App\Country::create([
-            'country_id' => '5',
-            'country' => 'Anguilla'
-        ]);
-        App\Country::create([
-            'country_id' => '6',
-            'country' => 'Argentina'
-        ]);
-        App\Country::create([
-            'country_id' => '7',
-            'country' => 'Armenia'
-        ]);
-        App\Country::create([
-            'country_id' => '8',
-            'country' => 'Australia'
-        ]);
-        App\Country::create([
-            'country_id' => '9',
-            'country' => 'Austria'
-        ]);
-        App\Country::create([
-            'country_id' => '10',
-            'country' => 'Azerbaijan'
-        ]);
-        App\Country::create([
-            'country_id' => '11',
-            'country' => 'Bahrain'
-        ]);
-        App\Country::create([
-            'country_id' => '12',
-            'country' => 'Bangladesh'
-        ]);
-        App\Country::create([
-            'country_id' => '13',
-            'country' => 'Belarus'
-        ]);
-        App\Country::create([
-            'country_id' => '14',
-            'country' => 'Bolivia'
-        ]);
-        App\Country::create([
-            'country_id' => '15',
-            'country' => 'Brazil'
-        ]);
-        App\Country::create([
-            'country_id' => '16',
-            'country' => 'Brunei'
-        ]);
-        App\Country::create([
-            'country_id' => '17',
-            'country' => 'Bulgaria'
-        ]);
-        App\Country::create([
-            'country_id' => '18',
-            'country' => 'Cambodia'
-        ]);
-        App\Country::create([
-            'country_id' => '19',
-            'country' => 'Cameroon'
-        ]);
-        App\Country::create([
-            'country_id' => '20',
-            'country' => 'Canada'
-        ]);
-        App\Country::create([
-            'country_id' => '21',
-            'country' => 'Chad'
-        ]);
-        App\Country::create([
-            'country_id' => '22',
-            'country' => 'Chile'
-        ]);
-        App\Country::create([
-            'country_id' => '23',
-            'country' => 'China'
-        ]);
-        App\Country::create([
-            'country_id' => '24',
-            'country' => 'Colombia'
-        ]);
-        App\Country::create([
-            'country_id' => '25',
-            'country' => 'Congo, The Democratic Republic of the'
-        ]);
-        App\Country::create([
-            'country_id' => '26',
-            'country' => 'Czech Republic'
-        ]);
-        App\Country::create([
-            'country_id' => '27',
-            'country' => 'Dominican Republic'
-        ]);
-        App\Country::create([
-            'country_id' => '28',
-            'country' => 'Ecuador'
-        ]);
-        App\Country::create([
-            'country_id' => '29',
-            'country' => 'Egypt'
-        ]);
-        App\Country::create([
-            'country_id' => '30',
-            'country' => 'Estonia'
-        ]);
-        App\Country::create([
-            'country_id' => '31',
-            'country' => 'Ethiopia'
-        ]);
-        App\Country::create([
-            'country_id' => '32',
-            'country' => 'Faroe Islands'
-        ]);
-        App\Country::create([
-            'country_id' => '33',
-            'country' => 'Finland'
-        ]);
-        App\Country::create([
-            'country_id' => '34',
-            'country' => 'France'
-        ]);
-        App\Country::create([
-            'country_id' => '35',
-            'country' => 'French Guiana'
-        ]);
-        App\Country::create([
-            'country_id' => '36',
-            'country' => 'French Polynesia'
-        ]);
-        App\Country::create([
-            'country_id' => '37',
-            'country' => 'Gambia'
-        ]);
-        App\Country::create([
-            'country_id' => '38',
-            'country' => 'Germany'
-        ]);
-        App\Country::create([
-            'country_id' => '39',
-            'country' => 'Greece'
-        ]);
-        App\Country::create([
-            'country_id' => '40',
-            'country' => 'Greenland'
-        ]);
-        App\Country::create([
-            'country_id' => '41',
-            'country' => 'Holy See (Vatican City State)'
-        ]);
-        App\Country::create([
-            'country_id' => '42',
-            'country' => 'Hong Kong'
-        ]);
-        App\Country::create([
-            'country_id' => '43',
-            'country' => 'Hungary'
-        ]);
-        App\Country::create([
-            'country_id' => '44',
-            'country' => 'India'
-        ]);
-        App\Country::create([
-            'country_id' => '45',
-            'country' => 'Indonesia'
-        ]);
-        App\Country::create([
-            'country_id' => '46',
-            'country' => 'Iran'
-        ]);
-        App\Country::create([
-            'country_id' => '47',
-            'country' => 'Iraq'
-        ]);
-        App\Country::create([
-            'country_id' => '48',
-            'country' => 'Israel'
-        ]);
-        App\Country::create([
-            'country_id' => '49',
-            'country' => 'Italy'
-        ]);
-        App\Country::create([
-            'country_id' => '50',
-            'country' => 'Japan'
-        ]);
-        App\Country::create([
-            'country_id' => '51',
-            'country' => 'Kazakstan'
-        ]);
-        App\Country::create([
-            'country_id' => '52',
-            'country' => 'Kenya'
-        ]);
-        App\Country::create([
-            'country_id' => '53',
-            'country' => 'Kuwait'
-        ]);
-        App\Country::create([
-            'country_id' => '54',
-            'country' => 'Latvia'
-        ]);
-        App\Country::create([
-            'country_id' => '55',
-            'country' => 'Liechtenstein'
-        ]);
-        App\Country::create([
-            'country_id' => '56',
-            'country' => 'Lithuania'
-        ]);
-        App\Country::create([
-            'country_id' => '57',
-            'country' => 'Madagascar'
-        ]);
-        App\Country::create([
-            'country_id' => '58',
-            'country' => 'Malawi'
-        ]);
-        App\Country::create([
-            'country_id' => '59',
-            'country' => 'Malaysia'
-        ]);
-        App\Country::create([
-            'country_id' => '60',
-            'country' => 'Mexico'
-        ]);
-        App\Country::create([
-            'country_id' => '61',
-            'country' => 'Moldova'
-        ]);
-        App\Country::create([
-            'country_id' => '62',
-            'country' => 'Morocco'
-        ]);
-        App\Country::create([
-            'country_id' => '63',
-            'country' => 'Mozambique'
-        ]);
-        App\Country::create([
-            'country_id' => '64',
-            'country' => 'Myanmar'
-        ]);
-        App\Country::create([
-            'country_id' => '65',
-            'country' => 'Nauru'
-        ]);
-        App\Country::create([
-            'country_id' => '66',
-            'country' => 'Nepal'
-        ]);
-        App\Country::create([
-            'country_id' => '67',
-            'country' => 'Netherlands'
-        ]);
-        App\Country::create([
-            'country_id' => '68',
-            'country' => 'New Zealand'
-        ]);
-        App\Country::create([
-            'country_id' => '69',
-            'country' => 'Nigeria'
-        ]);
-        App\Country::create([
-            'country_id' => '70',
-            'country' => 'North Korea'
-        ]);
-        App\Country::create([
-            'country_id' => '71',
-            'country' => 'Oman'
-        ]);
-        App\Country::create([
-            'country_id' => '72',
-            'country' => 'Pakistan'
-        ]);
-        App\Country::create([
-            'country_id' => '73',
-            'country' => 'Paraguay'
-        ]);
-        App\Country::create([
-            'country_id' => '74',
-            'country' => 'Peru'
-        ]);
-        App\Country::create([
-            'country_id' => '75',
-            'country' => 'Philippines'
-        ]);
-        App\Country::create([
-            'country_id' => '76',
-            'country' => 'Poland'
-        ]);
-        App\Country::create([
-            'country_id' => '77',
-            'country' => 'Puerto Rico'
-        ]);
-        App\Country::create([
-            'country_id' => '78',
-            'country' => 'Romania'
-        ]);
-        App\Country::create([
-            'country_id' => '79',
-            'country' => 'Runion'
-        ]);
-        App\Country::create([
-            'country_id' => '80',
-            'country' => 'Russian Federation'
-        ]);
-        App\Country::create([
-            'country_id' => '81',
-            'country' => 'Saint Vincent and the Grenadines'
-        ]);
-        App\Country::create([
-            'country_id' => '82',
-            'country' => 'Saudi Arabia'
-        ]);
-        App\Country::create([
-            'country_id' => '83',
-            'country' => 'Senegal'
-        ]);
-        App\Country::create([
-            'country_id' => '84',
-            'country' => 'Slovakia'
-        ]);
-        App\Country::create([
-            'country_id' => '85',
-            'country' => 'South Africa'
-        ]);
-        App\Country::create([
-            'country_id' => '86',
-            'country' => 'South Korea'
-        ]);
-        App\Country::create([
-            'country_id' => '87',
-            'country' => 'Spain'
-        ]);
-        App\Country::create([
-            'country_id' => '88',
-            'country' => 'Sri Lanka'
-        ]);
-        App\Country::create([
-            'country_id' => '89',
-            'country' => 'Sudan'
-        ]);
-        App\Country::create([
-            'country_id' => '90',
-            'country' => 'Sweden'
-        ]);
-        App\Country::create([
-            'country_id' => '91',
-            'country' => 'Switzerland'
-        ]);
-        App\Country::create([
-            'country_id' => '92',
-            'country' => 'Taiwan'
-        ]);
-        App\Country::create([
-            'country_id' => '93',
-            'country' => 'Tanzania'
-        ]);
-        App\Country::create([
-            'country_id' => '94',
-            'country' => 'Thailand'
-        ]);
-        App\Country::create([
-            'country_id' => '95',
-            'country' => 'Tonga'
-        ]);
-        App\Country::create([
-            'country_id' => '96',
-            'country' => 'Tunisia'
-        ]);
-        App\Country::create([
-            'country_id' => '97',
-            'country' => 'Turkey'
-        ]);
-        App\Country::create([
-            'country_id' => '98',
-            'country' => 'Turkmenistan'
-        ]);
-        App\Country::create([
-            'country_id' => '99',
-            'country' => 'Tuvalu'
-        ]);
-        App\Country::create([
-            'country_id' => '100',
-            'country' => 'Ukraine'
-        ]);
-        App\Country::create([
-            'country_id' => '101',
-            'country' => 'United Arab Emirates'
-        ]);
-        App\Country::create([
-            'country_id' => '102',
-            'country' => 'United Kingdom'
-        ]);
-        App\Country::create([
-            'country_id' => '103',
-            'country' => 'United States'
-        ]);
-        App\Country::create([
-            'country_id' => '104',
-            'country' => 'Venezuela'
-        ]);
-        App\Country::create([
-            'country_id' => '105',
-            'country' => 'Vietnam'
-        ]);
-        App\Country::create([
-            'country_id' => '106',
-            'country' => 'Virgin Islands, U.S.'
-        ]);
-        App\Country::create([
-            'country_id' => '107',
-           'country' => 'Yemen'
-        ]);
-        App\Country::create([
-            'country_id' => '108',
-           'country' => 'Yugoslavia'
-        ]);
-        App\Country::create([
-            'country_id' => '109',
-           'country' => 'Zambia'
-        ]);
+        App\Country::create(['country_id' => '1', 'country' => 'Afghanistan']);
+        App\Country::create(['country_id' => '2', 'country' => 'Algeria']);
+        App\Country::create(['country_id' => '3', 'country' => 'American Samoa']);
+        App\Country::create(['country_id' => '4', 'country' => 'Angola']);
+        App\Country::create(['country_id' => '5', 'country' => 'Anguilla']);
+        App\Country::create(['country_id' => '6', 'country' => 'Argentina']);
+        App\Country::create(['country_id' => '7', 'country' => 'Armenia']);
+        App\Country::create(['country_id' => '8', 'country' => 'Australia']);
+        App\Country::create(['country_id' => '9', 'country' => 'Austria']);
+        App\Country::create(['country_id' => '10', 'country' => 'Azerbaijan']);
+        App\Country::create(['country_id' => '11', 'country' => 'Bahrain']);
+        App\Country::create(['country_id' => '12', 'country' => 'Bangladesh']);
+        App\Country::create(['country_id' => '13', 'country' => 'Belarus']);
+        App\Country::create(['country_id' => '14', 'country' => 'Bolivia']);
+        App\Country::create(['country_id' => '15', 'country' => 'Brazil']);
+        App\Country::create(['country_id' => '16', 'country' => 'Brunei']);
+        App\Country::create(['country_id' => '17', 'country' => 'Bulgaria']);
+        App\Country::create(['country_id' => '18', 'country' => 'Cambodia']);
+        App\Country::create(['country_id' => '19', 'country' => 'Cameroon']);
+        App\Country::create(['country_id' => '20', 'country' => 'Canada']);
+        App\Country::create(['country_id' => '21', 'country' => 'Chad']);
+        App\Country::create(['country_id' => '22', 'country' => 'Chile']);
+        App\Country::create(['country_id' => '23', 'country' => 'China']);
+        App\Country::create(['country_id' => '24', 'country' => 'Colombia']);
+        App\Country::create(['country_id' => '25', 'country' => 'Congo, The Democratic Republic of the']);
+        App\Country::create(['country_id' => '26', 'country' => 'Czech Republic']);
+        App\Country::create(['country_id' => '27', 'country' => 'Dominican Republic']);
+        App\Country::create(['country_id' => '28', 'country' => 'Ecuador']);
+        App\Country::create(['country_id' => '29', 'country' => 'Egypt']);
+        App\Country::create(['country_id' => '30', 'country' => 'Estonia']);
+        App\Country::create(['country_id' => '31', 'country' => 'Ethiopia']);
+        App\Country::create(['country_id' => '32', 'country' => 'Faroe Islands']);
+        App\Country::create(['country_id' => '33', 'country' => 'Finland']);
+        App\Country::create(['country_id' => '34', 'country' => 'France']);
+        App\Country::create(['country_id' => '35', 'country' => 'French Guiana']);
+        App\Country::create(['country_id' => '36', 'country' => 'French Polynesia']);
+        App\Country::create(['country_id' => '37', 'country' => 'Gambia']);
+        App\Country::create(['country_id' => '38', 'country' => 'Germany']);
+        App\Country::create(['country_id' => '39', 'country' => 'Greece']);
+        App\Country::create(['country_id' => '40', 'country' => 'Greenland']);
+        App\Country::create(['country_id' => '41', 'country' => 'Holy See (Vatican City State)']);
+        App\Country::create(['country_id' => '42', 'country' => 'Hong Kong']);
+        App\Country::create(['country_id' => '43', 'country' => 'Hungary']);
+        App\Country::create(['country_id' => '44', 'country' => 'India']);
+        App\Country::create(['country_id' => '45', 'country' => 'Indonesia']);
+        App\Country::create(['country_id' => '46', 'country' => 'Iran']);
+        App\Country::create(['country_id' => '47', 'country' => 'Iraq']);
+        App\Country::create(['country_id' => '48', 'country' => 'Israel']);
+        App\Country::create(['country_id' => '49', 'country' => 'Italy']);
+        App\Country::create(['country_id' => '50', 'country' => 'Japan']);
+        App\Country::create(['country_id' => '51', 'country' => 'Kazakstan']);
+        App\Country::create(['country_id' => '52', 'country' => 'Kenya']);
+        App\Country::create(['country_id' => '53', 'country' => 'Kuwait']);
+        App\Country::create(['country_id' => '54', 'country' => 'Latvia']);
+        App\Country::create(['country_id' => '55', 'country' => 'Liechtenstein']);
+        App\Country::create(['country_id' => '56', 'country' => 'Lithuania']);
+        App\Country::create(['country_id' => '57', 'country' => 'Madagascar']);
+        App\Country::create(['country_id' => '58', 'country' => 'Malawi']);
+        App\Country::create(['country_id' => '59', 'country' => 'Malaysia']);
+        App\Country::create(['country_id' => '60', 'country' => 'Mexico']);
+        App\Country::create(['country_id' => '61', 'country' => 'Moldova']);
+        App\Country::create(['country_id' => '62', 'country' => 'Morocco']);
+        App\Country::create(['country_id' => '63', 'country' => 'Mozambique']);
+        App\Country::create(['country_id' => '64', 'country' => 'Myanmar']);
+        App\Country::create(['country_id' => '65', 'country' => 'Nauru']);
+        App\Country::create(['country_id' => '66', 'country' => 'Nepal']);
+        App\Country::create(['country_id' => '67', 'country' => 'Netherlands']);
+        App\Country::create(['country_id' => '68', 'country' => 'New Zealand']);
+        App\Country::create(['country_id' => '69', 'country' => 'Nigeria']);
+        App\Country::create(['country_id' => '70', 'country' => 'North Korea']);
+        App\Country::create(['country_id' => '71', 'country' => 'Oman']);
+        App\Country::create(['country_id' => '72', 'country' => 'Pakistan']);
+        App\Country::create(['country_id' => '73', 'country' => 'Paraguay']);
+        App\Country::create(['country_id' => '74', 'country' => 'Peru']);
+        App\Country::create(['country_id' => '75', 'country' => 'Philippines']);
+        App\Country::create(['country_id' => '76', 'country' => 'Poland']);
+        App\Country::create(['country_id' => '77', 'country' => 'Puerto Rico']);
+        App\Country::create(['country_id' => '78', 'country' => 'Romania']);
+        App\Country::create(['country_id' => '79', 'country' => 'Runion']);
+        App\Country::create(['country_id' => '80', 'country' => 'Russian Federation']);
+        App\Country::create(['country_id' => '81', 'country' => 'Saint Vincent and the Grenadines']);
+        App\Country::create(['country_id' => '82', 'country' => 'Saudi Arabia']);
+        App\Country::create(['country_id' => '83', 'country' => 'Senegal']);
+        App\Country::create(['country_id' => '84', 'country' => 'Slovakia']);
+        App\Country::create(['country_id' => '85', 'country' => 'South Africa']);
+        App\Country::create(['country_id' => '86', 'country' => 'South Korea']);
+        App\Country::create(['country_id' => '87', 'country' => 'Spain']);
+        App\Country::create(['country_id' => '88', 'country' => 'Sri Lanka']);
+        App\Country::create(['country_id' => '89', 'country' => 'Sudan']);
+        App\Country::create(['country_id' => '90', 'country' => 'Sweden']);
+        App\Country::create(['country_id' => '91', 'country' => 'Switzerland']);
+        App\Country::create(['country_id' => '92', 'country' => 'Taiwan']);
+        App\Country::create(['country_id' => '93', 'country' => 'Tanzania']);
+        App\Country::create(['country_id' => '94', 'country' => 'Thailand']);
+        App\Country::create(['country_id' => '95', 'country' => 'Tonga']);
+        App\Country::create(['country_id' => '96', 'country' => 'Tunisia']);
+        App\Country::create(['country_id' => '97', 'country' => 'Turkey']);
+        App\Country::create(['country_id' => '98', 'country' => 'Turkmenistan']);
+        App\Country::create(['country_id' => '99', 'country' => 'Tuvalu']);
+        App\Country::create(['country_id' => '100', 'country' => 'Ukraine']);
+        App\Country::create(['country_id' => '101', 'country' => 'United Arab Emirates']);
+        App\Country::create(['country_id' => '102', 'country' => 'United Kingdom']);
+        App\Country::create(['country_id' => '103', 'country' => 'United States']);
+        App\Country::create(['country_id' => '104', 'country' => 'Venezuela']);
+        App\Country::create(['country_id' => '105', 'country' => 'Vietnam']);
+        App\Country::create(['country_id' => '106', 'country' => 'Virgin Islands, U.S.']);
+        App\Country::create(['country_id' => '107', 'country' => 'Yemen']);
+        App\Country::create(['country_id' => '108', 'country' => 'Yugoslavia']);
+        App\Country::create(['country_id' => '109', 'country' => 'Zambia']);
 
         /*
         (1,'Afghanistan','2006-02-15 04:44:00'),

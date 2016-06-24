@@ -20,9 +20,18 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
         }
 
+        $this->call(ActorTableSeeder::class);
+        $this->call(AddressTableSeeder::class);
+        $this->call(CustomerTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
+        $this->call(FilmTableSeeder::class);
+        $this->call(InventoryTableSeeder::class);
         $this->call(CountryTableSeeder::class);
         $this->call(CityTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
+        $this->call(RentalTableSeeder::class);
+        $this->call(StaffTableSeeder::class);
+        $this->call(StoreTableSeeder::class);
 
         //enable again the foreign key restrictions to enforce them
         Schema::enableForeignKeyConstraints();

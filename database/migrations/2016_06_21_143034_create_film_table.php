@@ -24,11 +24,12 @@ class CreateFilmTable extends Migration
             $table->smallInteger('length', false, true)->nullable()->default(null);
             $table->decimal('replacement_cost', 5, 2)->default(19.99);
             $table->enum('rating', ['G', 'PG', 'PG-13', 'R', 'NC-17'])->default('G');
-            $table->text('special_features')->nullable()->default(null);
+            //$table->text('special_features')->nullable()->default(null);
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->foreign('language_id', 'fk_film_language')->references('language_id')->on('language')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('original_language_id', 'fk_film_language_original')->references('language_id')->on('language')->onDelete('restrict')->onUpdate('cascade');
         });
+        DB::statement('ALTER TABLE film ADD special_features SET(\'Trailers\', \'Commentaries\', \'Deleted Scenes\', \'Behind the Scenes\') NULL DEFAULT NULL AFTER rating');
     }
 
     /**

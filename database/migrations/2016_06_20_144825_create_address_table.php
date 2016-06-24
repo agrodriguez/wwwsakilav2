@@ -23,7 +23,7 @@ class CreateAddressTable extends Migration
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->foreign('city_id', 'fk_address_city')->references('city_id')->on('city')->onDelete('restrict')->onUpdate('cascade');
         });
-        DB::statement('ALTER TABLE address ADD location POINT NOT NULL');
+        DB::statement('ALTER TABLE address ADD location POINT NOT NULL AFTER phone');
         DB::statement('ALTER TABLE address ADD SPATIAL INDEX `idx_location` (`location` ASC);');
     }
 

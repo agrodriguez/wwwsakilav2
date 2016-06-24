@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Rental extends Model
 {
+    protected $table = 'rental';
     
     /**
      * change default primary key

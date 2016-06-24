@@ -11,6 +11,6 @@ class PaymentTableSeeder extends Seeder
      **/
     public function run()
     {
-        factory('App\Payment', 16050)->create();
+        //factory('App\Payment', 16050)->create();
     }
 }

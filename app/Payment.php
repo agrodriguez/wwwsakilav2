@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Payment extends Model
 {
     protected $table = 'payment';
@@ -29,7 +31,7 @@ class Payment extends Model
         'customer_id',
         'staff_id',
         'rental_id',
-        'ammount'
+        'amount'
     ];
 
     /**
