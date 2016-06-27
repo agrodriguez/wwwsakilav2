@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('countries', 'CountriesController', ['parameters'=>['countries'=>'country']]);
+Route::resource('cities', 'CitiesController', ['parameters'=>['cities'=>'city']]);
+Route::resource('actors', 'ActorsController', ['parameters'=>['actors'=>'actor']]);
+Route::resource('films', 'FilmsController', ['parameters'=>['films'=>'film']]);

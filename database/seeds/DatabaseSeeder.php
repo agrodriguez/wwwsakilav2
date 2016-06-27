@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $truncate = ['Actor', 'Address', 'Category', 'City', 'Country', 'Customer', 'Film', 'Inventory', 'Language', 'Payment', 'Rental', 'Staff', 'Store'];
+    protected $truncate = ['Actor', 'Address', 'Category', 'City', 'Country', 'Customer', 'Film_text', 'Film_actor', 'Film_category', 'Film', 'Inventory', 'Language', 'Payment', 'Rental', 'Staff', 'Store'];
     /**
      * Run the database seeds.
      *
@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RentalTableSeeder::class);
         $this->call(StaffTableSeeder::class);
         $this->call(StoreTableSeeder::class);
-
         //enable again the foreign key restrictions to enforce them
         Schema::enableForeignKeyConstraints();
 

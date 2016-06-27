@@ -16,7 +16,7 @@ class CreateFilmTable extends Migration
             $table->smallIncrements('film_id');
             $table->string('title', 255)->index('idx_title');
             $table->text('description')->nullable()->default(null);
-            $table->smallInteger('release_year', false, true)->nullable()->default(null);
+            //$table->smallInteger('release_year', false, true)->nullable()->default(null);
             $table->tinyInteger('language_id', false, true)->index('idx_fk_language_id');
             $table->tinyInteger('original_language_id', false, true)->nullable()->default(null)->index('idx_fk_original_language_id');
             $table->tinyInteger('rental_duration', false, true)->default(3);
@@ -29,7 +29,9 @@ class CreateFilmTable extends Migration
             $table->foreign('language_id', 'fk_film_language')->references('language_id')->on('language')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('original_language_id', 'fk_film_language_original')->references('language_id')->on('language')->onDelete('restrict')->onUpdate('cascade');
         });
+        DB::statement('ALTER TABLE film ADD release_year YEAR DEFAULT NULL AFTER description');
         DB::statement('ALTER TABLE film ADD special_features SET(\'Trailers\', \'Commentaries\', \'Deleted Scenes\', \'Behind the Scenes\') NULL DEFAULT NULL AFTER rating');
+
     }
 
     /**

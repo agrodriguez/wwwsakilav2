@@ -48,6 +48,24 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
+                    <li><a href="/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
+                    <li><a href="/rentals">     <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Rentals</a></li>
+                    <li><a href="/films">       <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Films</a></li>
+                    <li><a href="/customers">   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Customers</a></li>
+                    <li><a href="/staffs">      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Staff</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Database<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/actors">Actors</a></li>
+                            <li><a href="/cities">Cities</a></li>
+                            <li><a href="/countries">Countries</a></li>
+                            <li><a href="/stores">Store</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -59,7 +77,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -75,7 +93,7 @@
     @yield('content')
 
     <!-- JavaScripts -->
-     <link href="{{ elixir('js/all.js') }}" rel="stylesheet">
+     <script src="{{ elixir('js/all.js') }}" rel="stylesheet"></script>
      @yield('footer')
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
