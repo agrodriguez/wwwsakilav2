@@ -57,4 +57,14 @@ class Actor extends Model
     {
         return $this->belongsToMany('App\Film', 'film_actor', 'actor_id', 'film_id');
     }
+
+    /**
+     * get the full name of the customer
+     *
+     * @return string
+     **/
+    public function getFullName()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
 }

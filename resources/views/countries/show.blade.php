@@ -8,20 +8,20 @@
 	            <div class="panel panel-default">
 
 	                <table class="table table-hover table-bordered">
-	                    <caption>Cities</caption>
+	                    <caption>{{ trans('city.cities') }}</caption>
 	                    <thead>
 	                        <tr>
 	                            
-	                            <th class="text-center">City</th>
+	                            <th class="text-center">{{ trans('city.city') }}</th>
 	                            
 	                        </tr>
 	                    </thead>
-	                    <tfoot><tr><td colspan="3"></td></tr></tfoot>
+	                    <tfoot><tr><td>{!! $cities->links() !!}</td></tr></tfoot>
 	                    <tbody> 
-	                        @foreach ($country->cities as $city)
+	                        @foreach ($cities as $city)
 	                            <tr>                                    
 	                                <td><a href="{{ action('CitiesController@show', $city->city_id) }}" title="" alt="">{{ $city->city }}</a></td>
-	                            
+                           
 	                            </tr>   
 	                        @endforeach 
 	                    </tbody>

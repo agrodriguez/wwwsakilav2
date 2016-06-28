@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
 
+use App\Film;
+
 class FilmsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,8 @@ class FilmsController extends Controller
      */
     public function index()
     {
-        //
+        $films = Film::paginate(10);
+        return view('films.index', compact('films'));
     }
 
     /**
@@ -45,9 +58,11 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Film $film)
     {
-        //
+        $actors = $film->actors()->paginate(8);
+        $categories = $film->categories()->paginate(8);
+        return view('films.show', compact('film', 'actors', 'categories'));
     }
 
     /**

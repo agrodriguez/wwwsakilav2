@@ -3,9 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            
-            <h3>{{ $actor->first_name }}, {{ $actor->last_name }}</h3>
+            <h3>{{ $actor->getFullName() }}</h3>
             <div class="panel panel-default">
+            
                 <table class="table table-hover table-bordered">
                     <caption>{{ trans('film.films')}}</caption>
                     <thead>
@@ -14,14 +14,16 @@
                             <th class="text-center">{{ trans('film.description') }}</th>
                         </tr>
                     </thead>
-                    <tfoot><tr><td colspan="3"></td></tr></tfoot>
-                    <tbody> 
-                        @foreach ($actor->films as $film)
+                    <tfoot><tr><td colspan="2">{!! $films->links() !!}</td></tr></tfoot>
+                    <tbody>                         
+
+                        @foreach ($films as $film)
                             <tr>                                    
                                 <td><a href="{{ action('FilmsController@show', $film->film_id) }}" title="" alt="">{{ $film->title }}</a></td>
-                                <td><a href="{{ action('FilmsController@show', $film->film_id) }}" title="" alt="">{{ $film->description }}</a></td>
+                                <td>{{ $film->description }}</td>
                             </tr>   
                         @endforeach 
+                        
                     </tbody>
                 </table>                
             </div>

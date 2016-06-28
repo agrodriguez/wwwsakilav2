@@ -42,6 +42,7 @@ class CountriesController extends Controller
     {
         //eager load address city and country
         //$country->load('address.city.country', 'store.address.city.country')->get();
-        return view('countries.show', compact('country'));
+        $cities = $country->cities()->paginate(6);
+        return view('countries.show', compact('country', 'cities'));
     }
 }

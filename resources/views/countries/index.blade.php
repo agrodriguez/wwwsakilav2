@@ -2,16 +2,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <table class="table table-hover table-bordered">
-                    <caption>Countries</caption>
+                    <caption>{{ trans('country.countries') }}</caption>
                     <thead>
                         <tr>
-                            <th class="text-center">Country</th>
+                            <th class="text-center">{{ trans('country.country') }}</th>
                         </tr>
                     </thead>
-                    <tfoot><tr><td colspan="3">{!! $countries->links() !!}</td></tr></tfoot>
+                    <tfoot><tr><td>{!! $countries->links() !!}</td></tr></tfoot>
                     <tbody> 
                         @foreach ($countries as $country)
                             <tr>                                    

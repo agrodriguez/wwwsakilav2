@@ -27,7 +27,7 @@ class ActorsController extends Controller
      */
     public function index()
     {
-        $actors = Actor::paginate(10);
+        $actors = Actor::orderBy('first_name')->paginate(10);
         return view('actors.index', compact('actors'));
     }
 
@@ -60,7 +60,8 @@ class ActorsController extends Controller
      */
     public function show(Actor $actor)
     {
-        return view('actors.show', compact('actor'));
+        $films = $actor->films()->paginate(6);
+        return view('actors.show', compact('actor', 'films'));
     }
 
     /**

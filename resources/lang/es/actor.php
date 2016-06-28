@@ -12,8 +12,9 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
-    'f_name' => 'Nombre',
-    'l_name' => 'Apellido',
+    'actor' => 'Actor',
+    'actors' => 'Actores',
+    'first_name' => 'Nombre',
+    'last_name' => 'Apellido',
 
 ];

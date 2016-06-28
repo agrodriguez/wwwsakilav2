@@ -16,6 +16,15 @@ return [
     'film' => 'Pelicula',
     'films' => 'Peliculas',
     'title' => 'Titulo',
-    'description' => 'Descripcion',
+    'description' => 'Descripcion',    
+    'release_year' => 'Año de lanzamiento',
+    'language' => 'Idioma',
+    'original_language' => 'Idioma original',
+    'rental_duration' => 'Duracion de renta',
+    'rental_rate' => 'Precio de renta',
+    'length' => 'Duración',
+    'replacement_cost' => 'Costo de remplazo',
+    'rating' => 'Clasificación',
+    'special_features' => 'Caracteristicas especiales',
 
 ];
