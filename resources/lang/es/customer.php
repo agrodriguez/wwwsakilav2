@@ -20,5 +20,10 @@ return [
     'email' => 'Correo Electronico',
     'active' => 'Activo',
     'create_date' => 'Fecha de Creacion',
+    'create' => 'Crear Cliente',
+    'add' => 'Agregar Cliente',
+    'edit' => 'Editar Cliente',
+    'update' => 'Actualizar Cliente',
+    'delete' => 'Eliminar Cliente',
 
 ];

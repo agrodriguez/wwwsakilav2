@@ -61,7 +61,7 @@ class StaffsController extends Controller
      */
     public function show(Staff $staff)
     {
-        return view('staffs.index', compact('staff'));
+        return view('staffs.show', compact('staff'));
     }
 
     /**

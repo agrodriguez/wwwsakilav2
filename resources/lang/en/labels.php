@@ -12,18 +12,7 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-   
-    'customer' => 'Customer',
-    'customers' => 'Customers',
-    'first_name' => 'First naem',
-    'last_name' => 'Last name',
-    'email' => 'Email',
-    'active' => 'Active',
-    'create_date' => 'Create date',
-    'create' => 'Create Customer',
-    'add' => 'Add Customer',
-    'edit' => 'Edit Customer',
-    'update' => 'Update Customer',
-    'delete' => 'Delete Customer',
-
+    'mins' => 'mins',
+    'days' => 'days',
+    
 ];

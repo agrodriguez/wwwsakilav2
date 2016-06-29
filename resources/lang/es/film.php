@@ -16,7 +16,7 @@ return [
     'film' => 'Pelicula',
     'films' => 'Peliculas',
     'title' => 'Titulo',
-    'description' => 'Descripcion',    
+    'description' => 'Descripcion',
     'release_year' => 'Año de lanzamiento',
     'language' => 'Idioma',
     'original_language' => 'Idioma original',
@@ -26,5 +26,10 @@ return [
     'replacement_cost' => 'Costo de remplazo',
     'rating' => 'Clasificación',
     'special_features' => 'Caracteristicas especiales',
+    'create' => 'Crear Pelicula',
+    'add' => 'Agregar Pelicula',
+    'edit' => 'Editar Pelicula',
+    'update' => 'Actualizar Pelicula',
+    'delete' => 'Eliminar Pelicula',
 
 ];

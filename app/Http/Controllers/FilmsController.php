@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Film;
 
+use App\Http\Requests\FilmRequest;
+
 class FilmsController extends Controller
 {
     /**
@@ -38,7 +40,7 @@ class FilmsController extends Controller
      */
     public function create()
     {
-        //
+         return view('films.create');
     }
 
     /**
@@ -47,9 +49,11 @@ class FilmsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FilmRequest $request)
     {
-        //
+        $film = Film::create($request->all());
+        $this->syncFields($film, $request);
+        return redirect('films');
     }
 
     /**
@@ -71,9 +75,9 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Film $film)
     {
-        //
+        return view('films.edit', compact('film'));
     }
 
     /**
@@ -83,9 +87,11 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FilmRequest $request, Film $film)
     {
-        //
+        $film->update($request->all());
+        $this->syncFields($film, $request);
+        return redirect('films');
     }
 
     /**
@@ -97,5 +103,28 @@ class FilmsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * update the edited film
+     *
+     * @param Film $film
+     * @param $actors
+     * @param $categories
+     * @return void
+     */
+    private function syncFields(Film $film, FilmRequest $request)
+    {
+
+        if (!$request->has('actor_list')) {
+            array_add($request, 'actor_list', []);
+        }
+
+        if (!$request->has('category_list')) {
+            array_add($request, 'category_list', []);
+        }
+
+        $film->categories()->sync($request->input('category_list'));
+        $film->actors()->sync($request->input('actor_list'));
     }
 }

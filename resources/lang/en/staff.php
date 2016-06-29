@@ -20,5 +20,10 @@ return [
     'active' => 'Active',
     'username' => 'Username',
     'password' => 'Password',
+    'create' => 'Create Staff',
+    'add' => 'Add Staff',
+    'edit' => 'Edit Staff',
+    'update' => 'Update Staff',
+    'delete' => 'Delete Staff',
 
 ];

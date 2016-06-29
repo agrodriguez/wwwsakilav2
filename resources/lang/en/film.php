@@ -26,5 +26,10 @@ return [
     'replacement_cost' => 'Replacement cost',
     'rating' => 'Rating',
     'special_features' => 'Special features',
-
+    'create' => 'Create Film',
+    'add' => 'Add Film',
+    'edit' => 'Edit Film',
+    'update' => 'Update Film',
+    'delete' => 'Delete Film',
+    
 ];

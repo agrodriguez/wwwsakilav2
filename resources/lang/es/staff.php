@@ -20,5 +20,10 @@ return [
     'active' => 'Activo',
     'username' => 'Nombre de usuario',
     'password' => 'Password',
+    'create' => 'Crear Empleado',
+    'add' => 'Agregar Empleado',
+    'edit' => 'Editar Empleado',
+    'update' => 'Actualizar Empleado',
+    'delete' => 'Eliminar Empleado',
 
 ];
