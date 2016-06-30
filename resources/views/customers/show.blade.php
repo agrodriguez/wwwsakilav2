@@ -22,14 +22,14 @@
                             <input type="text" class="form-control" id="email" placeholder="{{ trans('customer.email') }}" value="{{ $customer->email }}" readonly="readonly">    
                         </div>
                     
-                        <div class="col-sm-2">
+                        <div class="col-sm-1">
                             <label class="control-label" for="active">{{ trans('customer.active') }}</label>
-                            <p>
-                            <span class="glyphicon glyphicon-{{ $customer->active? 'ok': 'remove' }}" aria-hidden="true"></span>
-                            </p>
+                            <div class="col-sm-2">
+                                <span class="glyphicon glyphicon-{{ $customer->active? 'ok': 'remove' }}" aria-hidden="true"></span>
+                            </div>
 
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <label class="control-label" for="create_date">{{ trans('customer.create_date') }}</label>
                             <input type="text" class="form-control" id="create_date" placeholder="{{ trans('address.address') }}" value="{{ $customer->create_date->format('d/m/Y') }}" readonly="readonly">    
                         </div>

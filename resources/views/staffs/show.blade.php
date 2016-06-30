@@ -8,34 +8,36 @@
                 </p></h2>
                 <form class="form-horizontal col-sm-offset-0">
                     <div class="form-group">
-                        <div class="col-sm-4">
-                            <img src="data:image/png;base64,{!! base64_encode($staff->picture) !!}" alt="Picture" />
+                        <div class="col-sm-4">                            
+                            <label class="control-label" for="picture">{{ trans('staff.picture') }}</label>
+                            <div>
+                                <img src="data:image/png;base64,{!! base64_encode($staff->picture) !!}" alt="Picture" />
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label class="control-label" for="first_name">{{ trans('staff.first_name') }}</label>
                             <input type="text" class="form-control" id="first_name" placeholder="{{ trans('staff.first_name') }}" value="{{ $staff->first_name }}" readonly="readonlly">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label class="control-label" for="last_name">{{ trans('staff.last_name') }}</label>
                             <input type="text" class="form-control" id="last_name" placeholder="{{ trans('staff.last_name') }}" value="{{ $staff->last_name }}" readonly="readonly">    
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <label class="control-label" for="email">{{ trans('staff.email') }}</label>
                             <input type="text" class="form-control" id="email" placeholder="{{ trans('staff.email') }}" value="{{ $staff->email }}" readonly="readonly">    
+                        </div>
+                        <div class="col-sm-1">
+                            <label class="control-label" for="active">{{ trans('staff.active') }}</label>
+                            <div class="col-sm-2">
+                                <span class="glyphicon glyphicon-{{ $staff->active? 'ok': 'remove' }}" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <div class="col-sm-2">
-                            <label class="control-label" for="active">{{ trans('staff.active') }}</label>
-                            <p>
-                            <span class="glyphicon glyphicon-{{ $staff->active? 'ok': 'remove' }}" aria-hidden="true"></span>
-                            </p>
-
-                        </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="username">{{ trans('staff.username') }}</label>
                             <input type="text" class="form-control" id="username" placeholder="{{ trans('staff.username') }}" value="{{ $staff->username }}" readonly="readonly">    

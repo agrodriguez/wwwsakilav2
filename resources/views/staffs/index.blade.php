@@ -5,7 +5,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
             	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('staff.staffs') }}</caption>
+                    <caption>{{ trans('staff.staffs') }} <a href="{{ action('StaffsController@create') }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></caption>
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('staff.staff') }}</th>

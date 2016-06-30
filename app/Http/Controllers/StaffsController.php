@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Staff;
 
+use App\Http\Requests\StaffRequest;
+
 class StaffsController extends Controller
 {
     
@@ -39,7 +41,8 @@ class StaffsController extends Controller
      */
     public function create()
     {
-        //
+        $city=[];
+        return view('staffs.create', compact('city'));
     }
 
     /**
@@ -48,9 +51,10 @@ class StaffsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StaffRequest $request)
     {
-        //
+        $this->storeStaff($request);
+        return redirect('staffs');
     }
 
     /**
@@ -70,9 +74,10 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Staff $staff)
     {
-        //
+        $city=[$staff->address->city_id=>$staff->address->city->city];
+        return view('staffs.edit', compact('staff', 'city'));
     }
 
     /**
@@ -82,9 +87,10 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StaffRequest $request, Staff $staff)
     {
-        //
+        $this->updateStaff($staff, $request);
+        return redirect('staffs');
     }
 
     /**
@@ -96,5 +102,60 @@ class StaffsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * store the staff address image and info
+     *
+     * @param  StaffRequest $request
+     * @return void
+     **/
+    private function storeStaff(StaffRequest $request)
+    {
+        /** set the address values and create */
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $address = Address::create($address_array);
+        
+        /** set the customer values */
+        $staff_array = array_add(array_add($request->except('address', 'city_id', 'country_id', 'location'), 'address_id', $address->address_id), 'active', $request->has('active'));
+        $staff_array['password'] = bcrypt($request['password']);
+        $staff =Staff::create($staff_array);
+
+        $tmpName='images/uploads/upload'.time().'.png';
+
+        if (!is_null($request->file('picture'))) {
+             $img = Image::make($request->file('picture'))->fit(121, 117)->save($tmpName);
+             $staff->picture = $img->encode('png');
+        }
+        $staff->save();
+        //$staff = Staff::create($request->all());
+    }
+
+    /**
+     * update the staff address image and password
+     *
+     * @param  Staff $staff
+     * @param  StaffRequest $request
+     * @return void
+     **/
+    private function updateStaff(Staff $staff, StaffRequest $request)
+    {
+        $tmpName='images/uploads/upload'.time().'.png';
+
+        if (!is_null($request->file('picture'))) {
+             $img = Image::make($request->file('picture'))->fit(121, 117)->save($tmpName);
+             $staff->picture = $img->encode('png');
+        }
+
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $staff->address->update($address_array);
+
+        $staff->active = $request->has('active');
+        if ($request->has('password')) {
+            $request['password'] = bcrypt($request['password']);
+            $staff->update($request->except('address', 'city_id', 'country_id', 'location', 'picture'));
+        } else {
+            $staff->update($request->except('address', 'city_id', 'country_id', 'location', 'picture', 'password'));
+        }
     }
 }

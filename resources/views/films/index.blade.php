@@ -5,7 +5,7 @@
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
             	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('film.films') }}</caption>
+                    <caption>{{ trans('film.films') }} <a href="{{ action('FilmsController@create') }}" title="{{ trans('film.create') }}" alt="{{ trans('film.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></caption>
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('film.title') }}</th>

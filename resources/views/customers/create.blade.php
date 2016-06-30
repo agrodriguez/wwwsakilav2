@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('content')
-	<h1>MODEL</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+                <h2>{{ trans('customer.customer') }} <p class="lead"> {{ trans('customer.create') }} </p></h2>
 
-	<hr/>
-
-	{!! Form::open(['url'=>'<model>','class'=>'form-horizontal']) !!}
+				{!! Form::open(['url'=>'customers','class'=>'form-horizontal']) !!}
 		
-		@include('<model>._form',['submitButtonText' => 'Add <model>'])
+					@include('customers._form',['submitButtonText' => trans('customer.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0'])
 
-	{!! Form::close() !!}
-
-	@include('errors.list')	
+				{!! Form::close() !!}
+		</div>	
+	</div>
+	@include('errors.list')
+</div>
 @stop

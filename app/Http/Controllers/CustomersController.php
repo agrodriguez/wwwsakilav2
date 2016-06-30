@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Customer;
 
+use App\Http\Requests\CustomerRequest;
+
 class CustomersController extends Controller
 {
     /**
@@ -38,7 +40,8 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        //
+        $city=[];
+        return view('customers.create', compact('city'));
     }
 
     /**
@@ -47,9 +50,10 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        //
+        $this->storeCustomer($request);
+        return redirect('customers');
     }
 
     /**
@@ -69,9 +73,10 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        //
+        $city=[$customer->address->city_id=>$customer->address->city->city];
+        return view('customers.edit', compact('customer', 'city'));
     }
 
     /**
@@ -81,9 +86,10 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomerRequest $request, Customer $customer)
     {
-        //
+        $this->updateCustomer($customer, $request);
+        return redirect('customers');
     }
 
     /**
@@ -95,5 +101,38 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * save the address and the customer to each model
+     *
+     * @param  App\CustomerRequest $request
+     * @return void
+     */
+    private function storeCustomer(CustomerRequest $request)
+    {
+        // set the address values and create
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $address = Address::create($address_array);
+
+        // set the customer values
+        $customer_array = array_add(array_add($request->except('address', 'city_id', 'country_id', 'location'), 'address_id', $address->address_id), 'active', $request->has('active'));
+        $customer =Customer::create($customer_array);
+    }
+
+    /**
+     * update the address and customer model
+     *
+     * @param  Customer $customer
+     * @param  CustomerRequest $request
+     * @return void
+     */
+    private function updateCustomer(Customer $customer, CustomerRequest $request)
+    {
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $customer->address->update($address_array);
+
+        $customer->active = $request->has('active');
+        $customer->update($request->except('address', 'city_id', 'country_id', 'location'));
     }
 }

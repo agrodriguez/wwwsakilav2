@@ -1,14 +1,18 @@
 @extends('layouts.app')
 @section('content')
-	<h1>Model</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+                <h2>{{ trans('customer.customer') }} <p class="lead"> {{ trans('customer.edit') }} </p></h2>
+				
+				{!! Form::model($customer,['action'=>['CustomersController@update',$customer->customer_id],'method'=>'PATCH','class'=>'form-horizontal']) !!}
 
-	<hr/>
-	{!! Form::model($<model>,['action'=>['<model>sController@update',$<model>-><model>_id],'method'=>'PATCH','class'=>'form-horizontal']) !!}
-		
-		@include('<model>._form',['submitButtonText' => 'Update <model>'])
+					@include('customers._form',['submitButtonText' => trans('customer.update'), 'cid'=>$customer->address->city->country_id, 'ccid'=>$customer->address->city_id,'loc'=>$customer->address->location])
 
-	{!! Form::close() !!}
-
+				{!! Form::close() !!}
+		</div>	
+	</div>
 	@include('errors.list')
+</div>
 
 @stop

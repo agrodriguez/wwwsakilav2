@@ -8,6 +8,8 @@ use App\Category;
 
 use App\Language;
 
+use App\Country;
+
 use DB;
 
 class ViewControllerServiceProvider extends ServiceProvider
@@ -45,6 +47,22 @@ class ViewControllerServiceProvider extends ServiceProvider
             ];
 
             $view->with(['categories'=>$categories,'ratings'=>$ratings,'specialFeatures'=>$specialFeatures,'actors'=>$actors,'languages'=>$languages]);
+        });
+
+        /**
+         * compose view for staffs and customers form passing lists
+         */
+        view()->composer(['staffs._form', 'customers._form'], function ($view) {
+            
+            $countries=Country::lists('country', 'country_id')->all();
+            //$stores=Store::with('address.city.country')->get();
+            $stores= DB::table('store')->join('address', 'store.address_id', '=', 'address.address_id')
+            ->join('city', 'address.city_id', '=', 'city.city_id')
+            ->join('country', 'city.country_id', '=', 'country.country_id')
+            ->select(DB::raw('store.store_id, concat(city.city,", ", country.country) as address'))
+            ->lists('address', 'store_id');
+
+            $view->with(['countries'=>$countries,'stores'=>$stores]);
         });
     }
 
