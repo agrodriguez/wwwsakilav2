@@ -25,7 +25,6 @@ class StaffRequest extends Request
     {
         /** this method of validating is deprecated for versio laravel 5.2 */
         /** check the method to update the validation rule accordingly */
-        /** 'photo' => 'mimes:jpeg,bmp,png' */
         
         if ($this->method()=='PATCH') {
             $staff_id=$this->route()->parameters()['staff']['attributes']['staff_id'];

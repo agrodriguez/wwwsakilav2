@@ -18,5 +18,5 @@ return [
     'district' => 'Estado',
     'postal_code' => 'Codigo postal',
     'phone' => 'Telefono',
-    'location' => 'Ubicación',
+    
 ];

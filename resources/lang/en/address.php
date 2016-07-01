@@ -18,5 +18,5 @@ return [
     'district' => 'District',
     'postal_code' => 'Postal code',
     'phone' => 'Phone',
-    'location' => 'Location',
+    
 ];
