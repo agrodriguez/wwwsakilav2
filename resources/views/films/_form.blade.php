@@ -33,12 +33,12 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 {!! Form::label('language',trans('film.language'),['class'=>'control-label']) !!}
                 {!! Form::select('language_id',$languages,null, ['class'=>'form-control']) !!}
 				<small class="text-danger">{{ $errors->first('language_id') }}</small>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 {!! Form::label('original_language',trans('film.original_language'),['class'=>'control-label']) !!}
                 {!! Form::select('original_language_id',$languages,null, ['class'=>'form-control']) !!}
 				<small class="text-danger">{{ $errors->first('original_language_id') }}</small>

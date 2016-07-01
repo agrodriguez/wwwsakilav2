@@ -47,15 +47,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
-                    <li><a href="/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
+                    <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
+                    <li><a href="/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ trans('menu.contact') }}</a></li>
+                    <li><a href="/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ trans('menu.about') }}</a></li>
                     <li><a href="/rentals">     <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('rental.rentals') }}</a></li>
                     <li><a href="/films">       <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('film.films') }}</a></li>
                     <li><a href="/customers">   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('customer.customers') }}</a></li>
                     <li><a href="/staffs">      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('staff.staffs') }}</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Database<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.database') }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/actors">{{ trans('actor.actors') }}</a></li>
                             <li><a href="/cities">{{ trans('city.cities') }}</a></li>

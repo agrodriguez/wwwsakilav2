@@ -14,5 +14,5 @@ return [
     */
     'inventory' => 'Inventory',
     'inventories' => 'Inventories',
-    
+    'create' => 'Add Inventory',
 ];

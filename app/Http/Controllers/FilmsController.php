@@ -10,6 +10,8 @@ use App\Film;
 
 use App\Http\Requests\FilmRequest;
 
+use Auth;
+
 class FilmsController extends Controller
 {
     /**
@@ -66,7 +68,8 @@ class FilmsController extends Controller
     {
         $actors = $film->actors()->paginate(8);
         $categories = $film->categories()->paginate(8);
-        return view('films.show', compact('film', 'actors', 'categories'));
+        $inventories = $film->inventories()->where('store_id', Auth::user()->store_id)->paginate(8);
+        return view('films.show', compact('film', 'actors', 'categories', 'inventories'));
     }
 
     /**
@@ -91,7 +94,7 @@ class FilmsController extends Controller
     {
         $film->update($request->all());
         $this->syncFields($film, $request);
-        return redirect('films');
+        return redirect('films/'.$film->film_id);
     }
 
     /**
