@@ -89,7 +89,7 @@ class CustomersController extends Controller
     public function update(CustomerRequest $request, Customer $customer)
     {
         $this->updateCustomer($customer, $request);
-        return redirect('customers');
+        return redirect('customers/'.$customer->customer_id);
     }
 
     /**

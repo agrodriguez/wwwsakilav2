@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'PagesController@index');
+Route::get('/home', 'PagesController@index');
+Route::get('about', 'PagesController@about');
+Route::get('contact', 'PagesController@contact');
 
 Route::resource('actors', 'ActorsController', ['parameters'=>['actors'=>'actor']]);
 Route::resource('categories', 'CategoriesController', ['parameters'=>['categories'=>'category']]);
@@ -29,3 +32,9 @@ Route::resource('languages', 'LanguagesController', ['parameters'=>['languages'=
 Route::resource('rentals', 'RentalsController', ['parameters'=>['rentals'=>'rental']]);
 Route::resource('staffs', 'StaffsController', ['parameters'=>['staffs'=>'staff']]);
 Route::resource('stores', 'StoresController', ['parameters'=>['stores'=>'store']]);
+
+Route::group(['prefix' => 'api'], function () {
+    Route::get('cities', 'Api\ApiController@cities');
+    Route::get('inventories', 'Api\ApiController@inventories');
+    Route::post('inventories', 'Api\ApiController@storeInventory');
+});

@@ -90,7 +90,7 @@ class StaffsController extends Controller
     public function update(StaffRequest $request, Staff $staff)
     {
         $this->updateStaff($staff, $request);
-        return redirect('staffs');
+        return redirect('staffs/'.$staff->staff_id);
     }
 
     /**

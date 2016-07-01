@@ -32,14 +32,15 @@ class CustomerRequest extends Request
         }
         return [
             'store_id'=>'required',
-            'first_name'=>'required|min:3',
-            'last_name'=>'required|min:3',
+            'first_name'=>'required|min:3|max:45',
+            'last_name'=>'required|min:3|max:45',
             'email'=>$email_rule,
-            'address.address'=>'required|min:3',
-            'address.district'=>'required',
+            'address.address'=>'required|min:3|max:50',
+            'address.address2'=>'max:50',
+            'address.district'=>'required|max:20',
             'city_id'=>'required',
-            'address.postal_code'=>'required|alpha_num|min:5|max:8',
-            'address.phone'=>'required|alpha_num|min:10|max:12',
+            'address.postal_code'=>'required|alpha_dash|min:5|max:10',
+            'address.phone'=>'required|min:10|max:20',
         ];
     }
 }

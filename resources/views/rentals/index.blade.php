@@ -5,17 +5,17 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
             	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('') }}</caption>
+                    <caption>{{ trans('rental.rentals') }}</caption>
                     <thead>
                         <tr>
-                            <th class="text-center">{{ trans('') }}</th>
+                            <th class="text-center">{{ trans('rental.rental') }}</th>
                         </tr>
                     </thead>
-                    <tfoot><tr><td colspan="">{!! $->links() !!}</td></tr></tfoot>
+                    <tfoot><tr><td colspan="">{!! $rentals->links() !!}</td></tr></tfoot>
                     <tbody> 
-                        @foreach ($ as $)
+                        @foreach ($rentals as $rental)
                             <tr>
-                                <td><a href="{{ action('Controller@show', $->_id) }}" title="" alt="">{{ $->}}</a></td>
+                                <td><a href="{{ action('RentalsController@show', $rental->rental_id) }}" title="" alt="">{{ $rental->rental_id}}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>

@@ -88,6 +88,10 @@
                     </div>
                     
                     <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label" for="map">{{ trans('address.location') }}</label>
+                            <div class="" id="map_div" style=" height: 240px; border: 1px solid #d4d065;"></div>
+                        </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="store">{{ trans('store.store') }}</label>
                             <input type="text" class="form-control" id="store" placeholder="store" value="{{ $staff->store->getStoreName() }}" readonly="readonly">    
@@ -109,4 +113,31 @@
         </div>
     </div>
 </div>
+@section('footer')
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw&callback=initMap">
+    </script>
+    <script type="text/javascript">
+
+        var map;
+        function initMap() {
+
+            var latlng = new google.maps.LatLng({{ $staff->address->location }});
+
+
+            map = new google.maps.Map(document.getElementById('map_div'), {
+                center: latlng,
+                zoom: 5
+            });
+
+            var marker = new google.maps.Marker({
+                map: map,
+                position: latlng,
+                draggable: false,
+            });
+
+        }
+
+        </script>
+@endsection
 @stop
