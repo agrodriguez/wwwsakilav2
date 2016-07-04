@@ -99,6 +99,9 @@
 
 		@section('footer')
 			<script type="text/javascript">
+              $(document).ready(function(){
+                    $('div#flash_message').delay(2000).slideUp(300);
+              });
 			  $('#category_list,#actor_list,#special_features').select2();
 			</script>
 		@endsection

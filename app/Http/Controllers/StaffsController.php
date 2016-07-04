@@ -140,11 +140,30 @@ class StaffsController extends Controller
      **/
     private function updateStaff(Staff $staff, StaffRequest $request)
     {
-        $tmpName='images/uploads/upload'.time().'.png';
+        //dd($request->file('picture'));
+        //dd($request->file('picture')->getClientOriginalExtension());
+        //$file = $request->file('picture');
+        ////if ($request->hasFile('picture')) { }
+        ////if ($request->file('picture')->isValid()) { }
+        //$request->file('picture')->move($destinationPath);
+        //$request->file('picture')->move($destinationPath, $fileName);
+        //$path = $request->file('picture')->getRealPath();
+        //$name = $request->file('picture')->getClientOriginalName();
+        //$extension = $request->file('picture')->getClientOriginalExtension();
+        //$size = $request->file('picture')->getSize();
+        //$mime = $request->file('picture')->getMimeType();
+
+        $tmpName='upload_'.uniqid('', true).'.png';
 
         if (!is_null($request->file('picture'))) {
-             $img = Image::make($request->file('picture'))->fit(121, 117)->save($tmpName);
-             $staff->picture = $img->encode('png');
+            $request->file('picture')->move('images/uploads', $tmpName);
+            //$img = Image::make($request->file('picture'))->fit(121, 117)->save($tmpName);
+            //$staff->picture = $img->encode('png');
+            //$staff->picture = base64_encode(hex2bin($request->file('picture')));
+            $img = file_get_contents('images/uploads/'.$tmpName);
+            $staff->picture = $img;
+            //\Storage::disk('local')->delete('images/uploads/'.$tmpName);
+            \File::delete('images/uploads/'.$tmpName);
         }
 
         $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);

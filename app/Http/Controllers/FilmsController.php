@@ -53,6 +53,7 @@ class FilmsController extends Controller
      */
     public function store(FilmRequest $request)
     {
+        flash('Film Added', 'success');
         $film = Film::create($request->all());
         $this->syncFields($film, $request);
         return redirect('films');
@@ -92,6 +93,7 @@ class FilmsController extends Controller
      */
     public function update(FilmRequest $request, Film $film)
     {
+        flash('Film Updated', 'success');
         $film->update($request->all());
         $this->syncFields($film, $request);
         return redirect('films/'.$film->film_id);
