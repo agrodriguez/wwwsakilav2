@@ -57,14 +57,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.database') }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/actors">{{ trans('actor.actors') }}</a></li>
-                            <li><a href="/cities">{{ trans('city.cities') }}</a></li>
-                            <li><a href="/countries">{{ trans('country.countries') }}</a></li>
-                            <li><a href="/stores">{{ trans('store.stores') }}</a></li>
+                            <li class="dropdown-header">Sakila V2</li>
                             <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="/countries">{{ trans('country.countries') }}</a></li>
+                            <li><a href="/cities">{{ trans('city.cities') }}</a></li>
                             <li><a href="/categories">{{ trans('category.categories') }}</a></li>
                             <li><a href="/languages">{{ trans('language.languages') }}</a></li>
+                            <li><a href="/actors">{{ trans('actor.actors') }}</a></li>
+                            <li><a href="/stores">{{ trans('store.stores') }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -90,7 +90,23 @@
             </div>
         </div>
     </nav>
+<ul class="breadcrumb">
+<li> 
+  <a href="/">Home</a>  
+</li>
+{{--*/ $segment = '' /*--}}
+@for($i = 1; $i <= count(Request::segments()); $i++)
+    {{--*/ $segment = $segment.Request::segment($i).'/' /*--}}
 
+  
+  @if($i < count(Request::segments()) & $i > 0)    
+    <li><a  href="/{{ $segment }}">{{Request::segment($i)}}</a></li>
+  @else
+    <li class="active" >{{Request::segment($i)}}</li>
+  @endif
+
+@endfor
+</ul>
     @yield('content')
 
     <!-- JavaScripts -->

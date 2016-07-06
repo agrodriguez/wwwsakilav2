@@ -5,7 +5,7 @@
         <div class="col-md-12 col-md-offset-0">            
             <h3>{{ $language->name }}</h3>
             <div class="panel panel-default">
-            
+            <div class="panel-body">
                 <table class="table table-hover table-bordered">
                     <caption>{{ trans('film.films') }} {{ $language->films->count() }}</caption>
                     <thead>
@@ -26,6 +26,7 @@
                         
                     </tbody>
                 </table>                
+            </div>
             </div>
         </div>
     </div>

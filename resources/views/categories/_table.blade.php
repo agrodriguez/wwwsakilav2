@@ -1,4 +1,5 @@
             <div class="panel panel-default">
+            <div class="panel-body">
                 <table class="table table-hover table-bordered">
                     <caption>{{ trans('category.categories') }}</caption>
                     <thead>
@@ -16,4 +17,4 @@
                     </tbody>
                 </table> 
             </div>
-        
+            </div>

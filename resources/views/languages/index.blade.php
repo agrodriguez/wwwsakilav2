@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
+            <div class="panel-body">
             	<table class="table table-hover table-bordered">
                     <caption>{{ trans('language.languages') }}</caption>
                     <thead>
@@ -22,6 +23,7 @@
                         @endforeach 
                     </tbody>
                 </table> 
+            </div>
             </div>
         </div>
     </div>

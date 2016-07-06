@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use Request;
 
 use App\Http\Requests;
 
 use App\Country;
+
+use App\Http\Requests\CountryRequest;
 
 class CountriesController extends Controller
 {
@@ -33,6 +34,28 @@ class CountriesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('countries.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CountryRequest $request)
+    {
+        $country = Country::create($request->all());
+        return redirect('countries');
+    }
+
+    /**
      * show customere detail
      *
      * @param  App\Customer $customer
@@ -44,5 +67,32 @@ class CountriesController extends Controller
         //$country->load('address.city.country', 'store.address.city.country')->get();
         $cities = $country->cities()->paginate(6);
         return view('countries.show', compact('country', 'cities'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Country $country)
+    {
+        return view('countries.edit', compact('country'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CountryRequest $request, Country $country)
+    {
+        flash('Country Updated', 'success');
+        $country->update($request->all());
+        //$this->syncFields($country, $request);
+        return redirect('countries/'.$country->country_id);
     }
 }

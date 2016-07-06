@@ -30,7 +30,7 @@ class RentalTableSeeder extends Seeder
             App\Rental::create([
                 'rental_id' => $i,
                 'rental_date' => $date->format('Y-m-d'),
-                'inventory_id' => $faker->numberBetween(1, 4600),
+                'inventory_id' => $faker->numberBetween(1, 2300),
                 'customer_id' => $customer_id,
                 'return_date' => date('Y-m-d', strtotime($date->format('Y-m-d'). ' +3days')),
                 'staff_id' => $staff_id,

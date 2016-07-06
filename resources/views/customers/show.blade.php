@@ -89,9 +89,38 @@
                 </form>
             
         </div>
-        <div class="col-md-7 col-md-offset-0">
-            
-            
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>{{ trans('rental.rentals') }}</b>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">{{ trans('film.film') }}</th>
+                                <th class="text-center">{{ trans('rental.rental_date') }}</th>
+                                <th class="text-center">{{ trans('rental.return_date') }}</th>
+                                <th class="text-center">&nbsp;</th>
+                            </tr>
+                        </thead>
+                @foreach( $customer->rentals as $rental)
+                        <tbody>
+                            <tr>
+                                <td>{{ $rental->inventory->film->title }}</td>
+                                <td>{{ $rental->rental_date }}</td>
+                                <td>{{ $rental->return_date }}</td>
+                                <td><a href="{{ url('rentals/'.$rental->rental_id) }}" title="New Film" alt="New Film" class="btn btn-primary btn-xs pull-right">Return Rental</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                @endforeach
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <hr>

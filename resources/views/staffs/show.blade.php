@@ -12,7 +12,7 @@
                         <div class="col-sm-4">                            
                             <label class="control-label" for="picture">{{ trans('staff.picture') }}</label>
                             <div>
-                                <img src="data:image/png;base64,{!! base64_encode($staff->picture) !!}" alt="Picture" />
+                                <img width="121" height="117" src="data:image/png;base64,{!! base64_encode($staff->picture) !!}" alt="Picture" />
                             </div>
                         </div>
                     </div>

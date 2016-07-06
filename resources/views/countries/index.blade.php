@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
+                <div class="panel-heading"><b>{{ trans('country.countries') }} <a href="{{ action('CountriesController@create') }}" title="{{ trans('country.create') }}" alt="{{ trans('country.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div class="panel-heading">            
                 <table class="table table-hover table-bordered">
-                    <caption>{{ trans('country.countries') }}</caption>
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('country.country') }}</th>

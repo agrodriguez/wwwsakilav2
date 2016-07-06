@@ -89,39 +89,41 @@
         </div>
         <div class="col-md-4 col-md-offset-0">
              <div class="panel panel-default">
-                <table class="table table-hover table-bordered">
-                    <caption>{{ trans('inventory.inventories') }}</caption>
-                    <thead>
-                        <tr>
-                            <th class="text-center">{{ trans('inventory.inventory') }}</th>
-                        </tr>
-                    </thead>
-                    <tfoot><tr><td>
-                        {!! $inventories->links() !!} 
-                        {!! Form::open(['url'=>'/api/inventories','class'=>'form-inline']) !!}
-                        {!! Form::hidden('film_id',$film->film_id) !!}
-                        {!! Form::hidden('store_id',Auth::user()->store_id) !!}                        
-                        {!! Form::submit(trans('inventory.create'),['class'=>'btn btn-primary btn-xs']) !!}           
-                    
-                        {!! Form::close() !!}
-                        </td></tr>
-                    </tfoot>
-                    <tbody> 
-                        @foreach ($inventories as $inventory)
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered">
+                        <caption>{{ trans('inventory.inventories') }}</caption>
+                        <thead>
                             <tr>
-                                <td>
-                                    <b>Inv. # :</b> {{ $inventory->inventory_id}}
-                                    @foreach ($inventory->rentals->where('return_date',null) as $rental)
-                                        <b>Rented :</b> {{ $rental->customer->getFullName() }}
-                                        <a href="{{ url('rentals/'.$rental->rental_id) }}" title="Return" alt="Return" class="btn btn-primary btn-xs pull-right">
-                                            Return
-                                        </a>
-                                    @endforeach
-                                </td>
-                            </tr>   
-                        @endforeach 
-                    </tbody>
-                </table> 
+                                <th class="text-center">{{ trans('inventory.inventory') }}</th>
+                            </tr>
+                        </thead>
+                        <tfoot><tr><td>
+                            {!! $inventories->links() !!} 
+                            {!! Form::open(['url'=>'/api/inventories','class'=>'form-inline']) !!}
+                            {!! Form::hidden('film_id',$film->film_id) !!}
+                            {!! Form::hidden('store_id',Auth::user()->store_id) !!}                        
+                            {!! Form::submit(trans('inventory.create'),['class'=>'btn btn-primary btn-xs']) !!}           
+                        
+                            {!! Form::close() !!}
+                            </td></tr>
+                        </tfoot>
+                        <tbody> 
+                            @foreach ($inventories as $inventory)
+                                <tr>
+                                    <td>
+                                        <b>Inv. # :</b> {{ $inventory->inventory_id}}
+                                        @foreach ($inventory->rentals->where('return_date',null) as $rental)
+                                            <b>Rented :</b> {{ $rental->customer->getFullName() }}
+                                            <a href="{{ url('rentals/'.$rental->rental_id) }}" title="Return" alt="Return" class="btn btn-primary btn-xs pull-right">
+                                                Return
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                </tr>   
+                            @endforeach 
+                        </tbody>
+                    </table> 
+                </div>              
             </div>
             
         </div>        

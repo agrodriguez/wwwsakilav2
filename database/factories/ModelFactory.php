@@ -119,6 +119,6 @@ $factory->define(App\Store::class, function (Faker\Generator $faker) {
 
     return [
         'manager_staff_id' => $faker->numberBetween(1, 2),
-        'address_id' => $faker->numberBetween(1, 2),
+        'address_id' => $faker->unique()->numberBetween(1, 2),
     ];
 });

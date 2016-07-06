@@ -1,4 +1,5 @@
             <div class="panel panel-default">
+            <div class="panel-body">
                 <table class="table table-hover table-bordered">
                     <caption>{{ trans('actor.actors') }}</caption>
                     <thead>
@@ -16,4 +17,5 @@
                     </tbody>
                 </table> 
             </div>            
+            </div>
         

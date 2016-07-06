@@ -4,7 +4,10 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-            	<table class="table table-hover table-bordered">
+            <div class="panel-heading"><b>{{ trans('film.films') }} <a href="{{ action('FilmsController@create') }}" title="{{ trans('film.create') }}" alt="{{ trans('film.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div>
+            <div class="panel-body">
+                {{ trans('film.films')}}
+                <table class="table table-hover table-bordered">
                     <caption>{{ trans('film.films') }} <a href="{{ action('FilmsController@create') }}" title="{{ trans('film.create') }}" alt="{{ trans('film.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></caption>
                     <thead>
                         <tr>
@@ -29,7 +32,8 @@
                             </tr>   
                         @endforeach 
                     </tbody>
-                </table> 
+                </table>             
+            </div>
             </div>
         </div>
     </div>

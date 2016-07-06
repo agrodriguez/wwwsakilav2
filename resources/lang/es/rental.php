@@ -14,6 +14,7 @@ return [
     */
     'rental' => 'Renta',
     'rentals' => 'Rentas',
+    'rental_date' => 'Fecha de renta',
     'return_date' => 'Fecha de entrega',
     
 ];

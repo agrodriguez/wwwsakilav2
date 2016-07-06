@@ -46,7 +46,7 @@ class StaffRequest extends Request
             'address.district'=>'required',
             'city_id'=>'required',
             'address.postal_code'=>'required|alpha_num|min:5|max:8',
-            'address.phone'=>'required|alpha_num|min:10|max:12',
+            'address.phone'=>'required|min:10|max:20',
             'username' => $username_rule,
             'password' => $password_rule,
         ];

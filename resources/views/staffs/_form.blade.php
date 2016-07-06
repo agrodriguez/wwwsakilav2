@@ -2,7 +2,7 @@
             <div class="col-sm-2">
                 {!! Form::label('picture',trans('staff.picture'),['class'=>'control-label']) !!}
                 <div>
-                    <img src="data:image/png;base64,{!! base64_encode($picture) !!}" alt="Picture" id="pic" name="pic" />
+                    <img width="121" height="117" src="data:image/png;base64,{!! base64_encode($picture) !!}" alt="Picture" id="pic" name="pic" />
                 </div>
             </div>
             <div class="col-sm-1">

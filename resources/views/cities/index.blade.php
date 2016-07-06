@@ -4,8 +4,9 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
+            
+                <div class="panel-heading"><b>{{ trans('city.cities') }} <a href="{{ action('CitiesController@create') }}" title="{{ trans('city.create') }}" alt="{{ trans('city.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div>
                 <table class="table table-hover table-bordered">
-                    <caption>{{ trans('city.cities') }}</caption>
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('country.country') }}</th>
@@ -22,6 +23,7 @@
                         @endforeach 
                     </tbody>
                 </table>                
+            
             </div>
         </div>
     </div>

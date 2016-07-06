@@ -5,7 +5,7 @@
         <div class="col-md-10 col-md-offset-1">
             <h3>{{ $actor->getFullName() }}</h3>
             <div class="panel panel-default">
-            
+            <div class="panel-body">
                 <table class="table table-hover table-bordered">
                     <caption>{{ trans('film.films')}}</caption>
                     <thead>
@@ -26,6 +26,7 @@
                         
                     </tbody>
                 </table>                
+            </div>
             </div>
         </div>
     </div>
