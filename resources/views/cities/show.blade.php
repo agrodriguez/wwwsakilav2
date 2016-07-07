@@ -22,7 +22,7 @@
 	                </div>
 	                 <div class="form-group">
 			            <div class="col-sm-12">
-			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', $city->city_id) }}" title="Edit city" alt="Edit city">{{ trans('city.edit') }}</a>
+			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', $city->city) }}" title="Edit city" alt="Edit city">{{ trans('city.edit') }}</a>
 			            </div>
 			        </div>
                 </form>

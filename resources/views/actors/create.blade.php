@@ -1,14 +1,23 @@
 @extends('layouts.app')
 @section('content')
-	<h1>MODEL</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-md-offset-0">
+			@include('errors.list')
+		</div>
+	</div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                <h2>{{ trans('actor.actor') }} <p class="lead"> {{ trans('actor.create') }} </p></h2>
 
-	<hr/>
-
-	{!! Form::open(['url'=>'<model>','class'=>'form-horizontal']) !!}
+				{!! Form::open(['url'=>'actors','class'=>'form-horizontal']) !!}
 		
-		@include('<model>._form',['submitButtonText' => 'Add <model>'])
+					@include('actors._form',['submitButtonText' => trans('actor.add')])
 
-	{!! Form::close() !!}
+				{!! Form::close() !!}
+		</div>	
+	</div>
+</div>
 
-	@include('errors.list')	
+
 @stop

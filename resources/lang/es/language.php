@@ -15,4 +15,9 @@ return [
     'language' => 'Idioma',
     'languages' => 'Idiomas',
     'name' => 'Nombre',
+    'create' => 'Crear Idioma',
+    'add' => 'Agregar Idioma',
+    'edit' => 'Editar Idioma',
+    'update' => 'Actualizar Idioma',
+    'delete' => 'Eliminar Idioma',
 ];

@@ -16,5 +16,10 @@ return [
     'actors' => 'Actors',
     'first_name' => 'First name',
     'last_name' => 'Last name',
+    'create' => 'Create Actor',
+    'add' => 'Add Actor',
+    'edit' => 'Edit Actor',
+    'update' => 'Update Actor',
+    'delete' => 'Delete Actor',
 
 ];

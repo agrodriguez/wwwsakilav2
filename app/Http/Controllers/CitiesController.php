@@ -90,6 +90,18 @@ class CitiesController extends Controller
         flash('City Updated', 'success');
         $city->update($request->all());
         //$this->syncFields($city, $request);
-        return redirect('cities/'.$city->city_id);
+        return redirect('cities/'.$city->city);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(City $city)
+    {
+        $city->delete();
+        return redirect('cities');
     }
 }

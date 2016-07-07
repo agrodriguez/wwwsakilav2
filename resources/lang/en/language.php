@@ -15,4 +15,9 @@ return [
     'language' => 'Language',
     'languages' => 'Languages',
     'name' => 'Name',
+    'create' => 'Create Language',
+    'add' => 'Add Language',
+    'edit' => 'Edit Language',
+    'update' => 'Update Language',
+    'delete' => 'Delete Language',
 ];

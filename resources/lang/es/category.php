@@ -15,5 +15,10 @@ return [
     'category' => 'Categoria',
     'categories' => 'Categorias',
     'name' => 'Nombre',
+    'create' => 'Crear Categoria',
+    'add' => 'Agregar Categoria',
+    'edit' => 'Editar Categoria',
+    'update' => 'Actualizar Categoria',
+    'delete' => 'Eliminar Categoria',
     
 ];

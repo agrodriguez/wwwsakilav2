@@ -1,34 +1,37 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">    
+<div class="container">   
+@include('flash') 
     <div class="row">
-        <div class="col-md-12 col-md-offset-0">            
-            <h3>{{ $language->name }}</h3>
-            <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table table-hover table-bordered">
-                    <caption>{{ trans('film.films') }} {{ $language->films->count() }}</caption>
-                    <thead>
-                        <tr>
-                            <th class="text-center">{{ trans('film.title') }}</th>
-                            <th class="text-center">{{ trans('film.description') }}</th>
-                        </tr>
-                    </thead>
-                    <tfoot><tr><td colspan="2">{!! $films->links() !!}</td></tr></tfoot>
-                    <tbody>                         
-
-                        @foreach ($films as $film)
-                            <tr>                                    
-                                <td><a href="{{ action('FilmsController@show', $film->film_id) }}" title="" alt="">{{ $film->title }}</a></td>
-                                <td>{{ $film->description }}</td>
-                            </tr>   
-                        @endforeach 
-                        
-                    </tbody>
-                </table>                
-            </div>
-            </div>
+        <div class="col-md-12 col-md-offset-0">                        
+            <h2>{{ trans('language.language') }} <p class="lead">
+                <a href="{{ action('CategoriesController@edit', $language->name) }}" title="Edit language" alt="Edit language">
+                {{ trans('language.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
+                </p></h2>
+            <form class="form-horizontal col-sm-offset-0">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label class="control-label" for="language">{{ trans('language.language') }}</label>
+                        <input type="text" class="form-control" id="language" placeholder="{{ trans('language.language') }}" value="{{ $language->name }}" readonly="readonly">
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->name) }}" title="Edit language" alt="Edit language">{{ trans('language.edit') }}</a>
+                    </div>
+                </div>
+            </form>
+            
+            @include('films._shortTable', ['count'=> $language->films->count() ])
+            
         </div>
     </div>
 </div>
+@section('footer')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('div#flash_message').delay(2000).slideUp(300);
+    });
+</script>
+@endsection
 @stop

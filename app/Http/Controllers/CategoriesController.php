@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Category;
 
+use App\Http\Requests\CategoryRequest;
+
 class CategoriesController extends Controller
 {
     /**
@@ -38,7 +40,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -47,9 +49,10 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = Category::create($request->all());
+        return redirect('categories');
     }
 
     /**
@@ -71,9 +74,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -83,9 +86,12 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        flash('Category Updated', 'success');
+        $category->update($request->all());
+        //$this->syncFields($category, $request);
+        return redirect('categories/'.$category->name);
     }
 
     /**
@@ -94,8 +100,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('categories');
     }
 }

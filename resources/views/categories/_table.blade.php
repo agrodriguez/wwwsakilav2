@@ -1,7 +1,6 @@
             <div class="panel panel-default">
-            <div class="panel-body">
+               <div class="panel-heading"><b>{{ trans('category.categories') }}  <a href="{{ action('CategoriesController@create') }}" title="{{ trans('category.create') }}" alt="{{ trans('category.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b> </div>
                 <table class="table table-hover table-bordered">
-                    <caption>{{ trans('category.categories') }}</caption>
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('category.name') }}</th>
@@ -11,10 +10,9 @@
                     <tbody> 
                         @foreach ($categories as $category)
                             <tr>
-                                <td><a href="{{ action('CategoriesController@show', $category->category_id) }}" title="" alt="">{{ $category->name}}</a></td>
+                                <td><a href="{{ action('CategoriesController@show', $category->name) }}" title="" alt="">{{ $category->name}}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>
-                </table> 
-            </div>
+                </table>             
             </div>

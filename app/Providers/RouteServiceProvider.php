@@ -27,6 +27,29 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot($router);
+
+        $router->bind('actor', function ($value) {
+            return \App\Actor::WhereSlug($value)->firstOrFail();
+        });
+
+        /** dynamic 'where' to your Eloquent queries */
+        
+        $router->bind('category', function ($value) {
+            return \App\Category::whereName($value)->firstOrFail();
+        });
+
+        $router->bind('city', function ($value) {
+            return \App\City::whereCity($value)->firstOrFail();
+        });
+
+        $router->bind('country', function ($value) {
+            return \App\Country::whereCountry($value)->firstOrFail();
+        });
+
+        $router->bind('language', function ($value) {
+            return \App\Language::whereName($value)->firstOrFail();
+        });
+        
     }
 
     /**

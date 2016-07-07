@@ -90,23 +90,7 @@
             </div>
         </div>
     </nav>
-<ul class="breadcrumb">
-<li> 
-  <a href="/">Home</a>  
-</li>
-{{--*/ $segment = '' /*--}}
-@for($i = 1; $i <= count(Request::segments()); $i++)
-    {{--*/ $segment = $segment.Request::segment($i).'/' /*--}}
-
-  
-  @if($i < count(Request::segments()) & $i > 0)    
-    <li><a  href="/{{ $segment }}">{{Request::segment($i)}}</a></li>
-  @else
-    <li class="active" >{{Request::segment($i)}}</li>
-  @endif
-
-@endfor
-</ul>
+    
     @yield('content')
 
     <!-- JavaScripts -->

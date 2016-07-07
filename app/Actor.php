@@ -67,4 +67,26 @@ class Actor extends Model
     {
         return $this->first_name.' '.$this->last_name;
     }
+
+    /**
+     * get the full name of the customer
+     *
+     * @return string
+     **/
+    public function getSlug()
+    {
+        return str_slug($this->first_name.' '.$this->last_name, '-');
+    }
+
+    /**
+     * [scopeWhereSlug description]
+     * @param  [type] $query [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function scopeWhereSlug($query, $value)
+    {
+        $names=explode('-', $value);
+        return $query->where('first_name', $names[0])->where('last_name', $names[1]);
+    }
 }

@@ -93,6 +93,29 @@ class CountriesController extends Controller
         flash('Country Updated', 'success');
         $country->update($request->all());
         //$this->syncFields($country, $request);
-        return redirect('countries/'.$country->country_id);
+        return redirect('countries/'.$country->country);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Country $country)
+    {
+        try {
+            $country->delete();
+            return redirect('countries');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
+        /**
+        * $country->delete();
+        * return redirect('countries');
+        */
     }
 }

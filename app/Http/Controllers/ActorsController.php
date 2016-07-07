@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Actor;
 
+use App\Http\Requests\ActorRequest;
+
 class ActorsController extends Controller
 {
     /**
@@ -38,7 +40,7 @@ class ActorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('actors.create');
     }
 
     /**
@@ -47,9 +49,10 @@ class ActorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ActorRequest $request)
     {
-        //
+        $actor = actor::create($request->all());
+        return redirect('actors');
     }
 
     /**
@@ -70,9 +73,9 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Actor $actor)
     {
-        //
+        return view('actors.edit', compact('actor'));
     }
 
     /**
@@ -82,9 +85,12 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActorRequest $request, Actor $actor)
     {
-        //
+        flash('actor Updated', 'success');
+        $actor->update($request->all());
+        //$this->syncFields($actor, $request);
+        return redirect('actors/'.$actor->getSlug());
     }
 
     /**
@@ -93,8 +99,9 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Actor $actor)
     {
-        //
+        $actor->delete();
+        return redirect('actors');
     }
 }

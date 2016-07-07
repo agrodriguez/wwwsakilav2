@@ -14,5 +14,10 @@ return [
     */
     'city' => 'Ciudad',
     'cities' => 'Ciudades',
+    'create' => 'Crear Ciudad',
+    'add' => 'Agregar Ciudad',
+    'edit' => 'Editar Ciudad',
+    'update' => 'Actualizar Ciudad',
+    'delete' => 'Eliminar Ciudad',
     
 ];

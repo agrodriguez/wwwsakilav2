@@ -16,5 +16,10 @@ return [
     'actors' => 'Actores',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
+    'create' => 'Crear Actor',
+    'add' => 'Agregar Actor',
+    'edit' => 'Editar Actor',
+    'update' => 'Actualizar Actor',
+    'delete' => 'Eliminar Actor',
 
 ];

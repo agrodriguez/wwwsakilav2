@@ -4,9 +4,8 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-            <div class="panel-body">
-            	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('language.languages') }}</caption>
+                <div class="panel-heading"><b>{{ trans('language.languages') }} <a href="{{ action('LanguagesController@create') }}" title="{{ trans('language.create') }}" alt="{{ trans('language.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div>
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('language.language') }}</th>
@@ -17,13 +16,12 @@
                     <tbody> 
                         @foreach ($languages as $language)
                             <tr>
-                                <td><a href="{{ action('LanguagesController@show', $language->language_id) }}" title="" alt="">{{ $language->name}}</a></td>
+                                <td><a href="{{ action('LanguagesController@show', $language->name) }}" title="" alt="">{{ $language->name}}</a></td>
                                 <td class="text-right">{{ $language->films->count() }}</td>
                             </tr>   
                         @endforeach 
                     </tbody>
-                </table> 
-            </div>
+                </table>             
             </div>
         </div>
     </div>

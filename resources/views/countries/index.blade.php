@@ -15,7 +15,7 @@
                     <tbody> 
                         @foreach ($countries as $country)
                             <tr>                                    
-                                <td><a href="{{ action('CountriesController@show', $country->country_id) }}" title="" alt="">{{ $country->country }}</a></td>                                
+                                <td><a href="{{ action('CountriesController@show', $country->country) }}" title="" alt="">{{ $country->country }}</a></td>                                
                             </tr>   
                         @endforeach 
                     </tbody>

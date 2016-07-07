@@ -1,34 +1,41 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+@include('flash')
+
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h3>{{ $actor->getFullName() }}</h3>
-            <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table table-hover table-bordered">
-                    <caption>{{ trans('film.films')}}</caption>
-                    <thead>
-                        <tr>
-                            <th class="text-center">{{ trans('film.title') }}</th>
-                            <th class="text-center">{{ trans('film.description') }}</th>
-                        </tr>
-                    </thead>
-                    <tfoot><tr><td colspan="2">{!! $films->links() !!}</td></tr></tfoot>
-                    <tbody>                         
-
-                        @foreach ($films as $film)
-                            <tr>                                    
-                                <td><a href="{{ action('FilmsController@show', $film->film_id) }}" title="" alt="">{{ $film->title }}</a></td>
-                                <td>{{ $film->description }}</td>
-                            </tr>   
-                        @endforeach 
-                        
-                    </tbody>
-                </table>                
-            </div>
-            </div>
+            <h2>{{ trans('actor.actor') }} <p class="lead">
+                <a href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="Edit actor" alt="Edit actor">
+                {{ trans('actor.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
+                </p></h2>
+            <form class="form-horizontal col-sm-offset-0">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="control-label" for="actor">{{ trans('actor.first_name') }}</label>
+                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.first_name') }}" value="{{ $actor->first_name }}" readonly="readonly">
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label" for="actor">{{ trans('actor.last_name') }}</label>
+                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.last_name') }}" value="{{ $actor->last_name }}" readonly="readonly">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="Edit actor" alt="Edit actor">{{ trans('actor.edit') }}</a>
+                    </div>
+                </div>
+            </form>
+            @include('films._shortTable', ['count'=> $actor->films->count() ])
+            
         </div>
     </div>
 </div>
+@section('footer')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('div#flash_message').delay(2000).slideUp(300);
+    });
+</script>
+@endsection
 @stop

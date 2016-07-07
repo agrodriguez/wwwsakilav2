@@ -17,7 +17,7 @@
 	                </div>
 	                 <div class="form-group">
 			            <div class="col-sm-12">
-			                <a class="btn btn-primary pull-left" href="{{ action('CountriesController@edit', $country->country_id) }}" title="Edit Country" alt="Edit Country">{{ trans('country.edit') }}</a>
+			                <a class="btn btn-primary pull-left" href="{{ action('CountriesController@edit', $country->country) }}" title="Edit Country" alt="Edit Country">{{ trans('country.edit') }}</a>
 			            </div>
 			        </div>
                 </form>
@@ -25,7 +25,7 @@
          </div>
         <hr>    
     	<div class="row">
-    		<div class="col-md-6 col-md-offset-3">
+    		<div class="col-md-6 col-md-offset-0">
 	            <div class="panel panel-default">
 	            	<div class="panel-heading">{{ trans('city.cities') }}</div>
 	                <table class="table table-hover table-bordered">	                    
@@ -38,7 +38,7 @@
 	                    <tbody> 
 	                        @foreach ($cities as $city)
 	                            <tr>                                    
-	                                <td><a href="{{ action('CitiesController@show', $city->city_id) }}" title="" alt="">{{ $city->city }}</a></td>
+	                                <td><a href="{{ action('CitiesController@show', $city->city) }}" title="" alt="">{{ $city->city }}</a></td>
 	                            </tr>   
 	                        @endforeach 
 	                    </tbody>

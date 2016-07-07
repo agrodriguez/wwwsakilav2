@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Language;
 
+use App\Http\Requests\LanguageRequest;
+
 class LanguagesController extends Controller
 {
     /**
@@ -38,7 +40,7 @@ class LanguagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('languages.create');
     }
 
     /**
@@ -47,9 +49,10 @@ class LanguagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LanguageRequest $request)
     {
-        //
+        $language = Language::create($request->all());
+        return redirect('languages');
     }
 
     /**
@@ -71,9 +74,9 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Language $language)
     {
-        //
+        return view('languages.edit', compact('language'));
     }
 
     /**
@@ -83,9 +86,12 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LanguageRequest $request, Language $language)
     {
-        //
+        flash('Language Updated', 'success');
+        $language->update($request->all());
+        //$this->syncFields($language, $request);
+        return redirect('languages/'.$language->name);
     }
 
     /**
@@ -94,8 +100,9 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Language $language)
     {
-        //
+        $language->delete();
+        return redirect('languages');
     }
 }
