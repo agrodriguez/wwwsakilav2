@@ -1,14 +1,26 @@
 @extends('layouts.app')
 @section('content')
-	<h1>Model</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+                <h2>{{ trans('store.store') }} <p class="lead"> {{ trans('store.edit') }} </p></h2>
 
-	<hr/>
-	{!! Form::model($<model>,['action'=>['<model>sController@update',$<model>-><model>_id],'method'=>'PATCH','class'=>'form-horizontal']) !!}
-		
-		@include('<model>._form',['submitButtonText' => 'Update <model>'])
+				{!! Form::model($store,['action'=>['StoresController@update',$store->store_id],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0','files'=>true]) !!}
+						
+						@include('stores._form',['submitButtonText' => trans('store.update'), 'year' => $store->release_year, 'cid'=>$store->address->city->country_id, 'ccid'=>$store->address->city_id, 'loc'=>$store->address->location, 'picture'=>$store->picture])
 
-	{!! Form::close() !!}
+				{!! Form::close() !!}
 
+				<h2><p class="lead"> {{ trans('store.delete') }} </p></h2>
+                {!! Form::model($store,['action'=>['StoresController@destroy',$store->store_id],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+                <div class="form-group">
+				<div class="col-sm-6">
+                        {!! Form::submit(trans('store.delete') ,['class'=>'btn btn-primary']) !!}           
+                </div>
+                </div>
+                {!! Form::close() !!}
+		</div>	
+	</div>
 	@include('errors.list')
-
+</div>
 @stop

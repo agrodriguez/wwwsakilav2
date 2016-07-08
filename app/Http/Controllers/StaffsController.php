@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Staff;
 
+use App\Address;
+
 use App\Http\Requests\StaffRequest;
 
 class StaffsController extends Controller

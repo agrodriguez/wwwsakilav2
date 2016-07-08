@@ -43,6 +43,7 @@ class StaffRequest extends Request
             'last_name'=>'required|min:3',
             'email'=>$email_rule,
             'address.address'=>'required|min:3',
+            'address.address2'=>'max:50',
             'address.district'=>'required',
             'city_id'=>'required',
             'address.postal_code'=>'required|alpha_num|min:5|max:8',

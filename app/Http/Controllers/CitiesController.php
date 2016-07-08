@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Request;
 
+use Illuminate\Http\Request as HttpRequest;
+
 use App\Http\Requests;
 
 use App\City;
@@ -38,9 +40,10 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(HttpRequest $request)
     {
-        return view('cities.create');
+        $cid=isset($request->cid)?$request->cid:null;
+        return view('cities.create', compact('cid'));
     }
 
     /**
@@ -51,6 +54,7 @@ class CitiesController extends Controller
      */
     public function store(CityRequest $request)
     {
+        flash('City Created', 'success');
         $city = city::create($request->all());
         return redirect('cities');
     }
@@ -101,7 +105,15 @@ class CitiesController extends Controller
      */
     public function destroy(City $city)
     {
-        $city->delete();
-        return redirect('cities');
+        try {
+            flash('City Deleted', 'success');
+            $city->delete();
+            return redirect('cities');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add error flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 }

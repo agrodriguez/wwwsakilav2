@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Customer;
 
+use App\Address;
+
 use App\Http\Requests\CustomerRequest;
 
 class CustomersController extends Controller

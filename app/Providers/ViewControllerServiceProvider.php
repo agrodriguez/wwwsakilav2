@@ -52,7 +52,7 @@ class ViewControllerServiceProvider extends ServiceProvider
         /**
          * compose view for staffs and customers form passing lists
          */
-        view()->composer(['staffs._form', 'customers._form', 'cities._form'], function ($view) {
+        view()->composer(['staffs._form', 'customers._form', 'cities._form', 'stores._form'], function ($view) {
             
             $countries=Country::lists('country', 'country_id')->all();
             //$stores=Store::with('address.city.country')->get();

@@ -15,11 +15,14 @@
 						@include('cities._form',['submitButtonText' => trans('city.update'), 'cid'=>$city->country_id])
 
 				{!! Form::close() !!}
-				<div class="col-sm-6">
-                {!! Form::model($city,['action'=>['CitiesController@destroy',$city->city],'method'=>'DELETE','class'=>'form-horizontal']) !!}
-                        {!! Form::submit(trans('city.delete') ,['class'=>'btn btn-primary pull-right']) !!}           
-                {!! Form::close() !!}
-                </div>
+				<h2><p class="lead"> {{ trans('city.delete') }} </p></h2>
+		        {!! Form::model($city,['action'=>['CitiesController@destroy',$city->city],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+				<div class="form-group">
+					<div class="col-sm-6">
+		                        {!! Form::submit(trans('city.delete') ,['class'=>'btn btn-primary']) !!}           
+		            </div>
+		        </div>
+				{!! Form::close() !!}
 		</div>	
 	</div>
 </div>

@@ -15,7 +15,7 @@
                 {!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-left']) !!}
             </div>
         </div>  
-     @section('footer')
+    @section('footer')
             <script type="text/javascript">
                 $('#country_id').select2();
             </script>

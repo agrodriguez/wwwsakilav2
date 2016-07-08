@@ -14,5 +14,10 @@ return [
     */
     'store' => 'Tienda',
     'stores' => 'Tiendas',
+    'create' => 'Crear Tienda',
+    'add' => 'Agregar Tienda',
+    'edit' => 'Editar Tienda',
+    'update' => 'Actualizar Tienda',
+    'delete' => 'Eliminar Tienda',
     
 ];

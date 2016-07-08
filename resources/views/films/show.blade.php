@@ -4,10 +4,11 @@
 @include('flash')
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
-            <h2>{{ trans('film.film') }} <p class="lead">
-            <a href="{{ action('FilmsController@edit', $film->film_id) }}" title="Edit Film" alt="Edit Film">
-            {{ trans('film.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
-            </p></h2>
+            <h2>{{ trans('film.film') }} 
+                <p class="lead">
+                    {{ trans('film.edit') }} 
+                </p>
+            </h2>
             <form class="form-horizontal col-sm-offset-0">
                 <div class="form-group">
                     <div class="col-sm-6">
@@ -76,6 +77,12 @@
                         <input type="text" class="form-control" id="special_features" placeholder="{{ trans('film.special_features') }}" value="@if(count($film->special_features)) {{ implode(', ', $film->special_features) }} @endif" readonly="readonly">    
                     </div>
                 </div> 
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary pull-left" href="{{ action('FilmsController@edit', $film->film_id) }}" title="{{ trans('film.edit') }}" alt="{{ trans('film.edit') }}">{{ trans('film.edit') }}</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

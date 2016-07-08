@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">                        
             <h2>{{ trans('language.language') }} <p class="lead">
-                <a href="{{ action('CategoriesController@edit', $language->name) }}" title="Edit language" alt="Edit language">
-                {{ trans('language.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
+               
+                {{ trans('language.edit') }} 
                 </p></h2>
             <form class="form-horizontal col-sm-offset-0">
                 <div class="form-group">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->name) }}" title="Edit language" alt="Edit language">{{ trans('language.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->name) }}" title="{{ trans('language.edit') }}" alt="{{ trans('language.edit') }}">{{ trans('language.edit') }}</a>
                     </div>
                 </div>
             </form>

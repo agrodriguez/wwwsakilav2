@@ -1,6 +1,11 @@
         <div class="panel panel-default">
             
-            <div class="panel-heading"><b>{{ trans('actor.actors') }}  <a href="{{ action('ActorsController@create') }}" title="{{ trans('actor.create') }}" alt="{{ trans('actor.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div>
+            <div class="panel-heading"><b>{{ trans('actor.actors') }}</b></div>
+            @if(isset($show))
+                <div class="panel-body">
+                   <a class="btn btn-primary pull-left" href="{{ action('ActorsController@create') }}" title="{{ trans('actor.create') }}" alt="{{ trans('actor.create') }}">{{ trans('actor.create') }}</a>
+               </div>
+            @endif
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>

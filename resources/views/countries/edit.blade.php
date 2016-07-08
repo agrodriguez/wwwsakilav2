@@ -15,9 +15,14 @@
 						@include('countries._form',['submitButtonText' => trans('country.update')])
 
 				{!! Form::close() !!}
-				<div class="col-sm-6">
+				<h2><p class="lead"> {{ trans('country.delete') }} </p></h2>
                 {!! Form::model($country,['action'=>['CountriesController@destroy',$country->country],'method'=>'DELETE','class'=>'form-horizontal']) !!}
-                        {!! Form::submit(trans('country.delete') ,['class'=>'btn btn-primary pull-right']) !!}           
+
+                <div class="form-group">
+            		<div class="col-sm-12">
+                        {!! Form::submit(trans('country.delete') ,['class'=>'btn btn-primary']) !!}           
+                     </div>
+                </div>
                 {!! Form::close() !!}
                 </div>
 		</div>	

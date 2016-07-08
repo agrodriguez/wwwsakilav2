@@ -51,6 +51,7 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        flash('Category Created', 'success');
         $category = Category::create($request->all());
         return redirect('categories');
     }
@@ -102,7 +103,16 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect('categories');
+        try {
+            flash('Category Deleted', 'success');
+            $category->delete();
+            return redirect('categories');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add error flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
+        
     }
 }

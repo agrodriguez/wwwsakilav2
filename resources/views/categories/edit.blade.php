@@ -15,12 +15,14 @@
 						@include('categories._form',['submitButtonText' => trans('category.update')])
 
 				{!! Form::close() !!}
-
-				<div class="col-sm-6">
+				<h2><p class="lead"> {{ trans('category.delete') }} </p></h2>
                 {!! Form::model($category,['action'=>['CategoriesController@destroy',$category->name],'method'=>'DELETE','class'=>'form-horizontal']) !!}
-                        {!! Form::submit(trans('category.delete') ,['class'=>'btn btn-primary pull-right']) !!}           
-                {!! Form::close() !!}
+				<div class="form-group">
+				<div class="col-sm-6">
+                        {!! Form::submit(trans('category.delete') ,['class'=>'btn btn-primary']) !!}           
                 </div>
+                </div>
+                {!! Form::close() !!}
 		</div>	
 	</div>
 </div>

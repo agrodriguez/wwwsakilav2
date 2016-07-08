@@ -20,7 +20,7 @@ class Store extends Model
      */
     public $timestamps = false;
 
-    protected $fillable = ['manager_staff_id'];
+    protected $fillable = ['manager_staff_id', 'address_id'];
 
     protected $dates = [
         'last_update'

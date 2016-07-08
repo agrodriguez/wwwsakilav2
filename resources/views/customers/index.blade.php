@@ -1,12 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+@include('flash')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-            <div class="panel-body">
-            	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('customer.customers') }} <a href="{{ action('CustomersController@create') }}" title="{{ trans('customer.create') }}" alt="{{ trans('customer.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></caption>
+                <div class="panel-heading"><b>{{ trans('customer.customers') }}</b></div class="panel-heading">
+                <div class="panel-body">
+                        <a class="btn btn-primary pull-left" href="{{ action('CustomersController@create') }}" title="{{ trans('customer.create') }}" alt="{{ trans('customer.create') }}">{{ trans('customer.create') }}</a>
+                </div>
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('customer.customer') }}</th>
@@ -31,8 +34,14 @@
                     </tbody>
                 </table> 
             </div>
-            </div>
         </div>
     </div>
 </div>
+@section('footer')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('div#flash_message').delay(2000).slideUp(300);
+    });
+</script>
+@endsection
 @stop

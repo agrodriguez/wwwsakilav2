@@ -51,6 +51,7 @@ class ActorsController extends Controller
      */
     public function store(ActorRequest $request)
     {
+        flash('Actor Created', 'success');
         $actor = actor::create($request->all());
         return redirect('actors');
     }
@@ -101,7 +102,15 @@ class ActorsController extends Controller
      */
     public function destroy(Actor $actor)
     {
-        $actor->delete();
-        return redirect('actors');
+        try {
+            flash('Actor Deleted', 'success');
+            $actor->delete();
+            return redirect('actors');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 }

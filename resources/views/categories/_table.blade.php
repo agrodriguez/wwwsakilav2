@@ -1,5 +1,10 @@
             <div class="panel panel-default">
-               <div class="panel-heading"><b>{{ trans('category.categories') }}  <a href="{{ action('CategoriesController@create') }}" title="{{ trans('category.create') }}" alt="{{ trans('category.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b> </div>
+               <div class="panel-heading"><b>{{ trans('category.categories') }}</b> </div>
+               @if(isset($show))
+               <div class="panel-body">
+                   <a class="btn btn-primary pull-left" href="{{ action('CategoriesController@create') }}" title="{{ trans('category.create') }}" alt="{{ trans('category.create') }}">{{ trans('category.create') }}</a>
+               </div>
+               @endif
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>

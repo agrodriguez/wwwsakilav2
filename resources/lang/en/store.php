@@ -14,5 +14,10 @@ return [
     */
     'store' => 'Store',
     'stores' => 'Stores',
+    'create' => 'Create Store',
+    'add' => 'Add Store',
+    'edit' => 'Edit Store',
+    'update' => 'Update Store',
+    'delete' => 'Delete Store',
     
 ];

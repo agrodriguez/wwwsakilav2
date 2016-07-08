@@ -12,7 +12,7 @@
 
 				{!! Form::open(['url'=>'cities','class'=>'form-horizontal']) !!}
 		
-					@include('cities._form',['submitButtonText' => trans('city.add'), 'cid'=>null])
+					@include('cities._form',['submitButtonText' => trans('city.add'), 'cid'=>$cid])
 
 				{!! Form::close() !!}
 		</div>	

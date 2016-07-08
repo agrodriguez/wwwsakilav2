@@ -3,9 +3,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
-                <h2>{{ trans('customer.customer') }} <p class="lead">
-                    <a href="{{ action('CustomersController@edit', $customer->customer_id) }}" title="Edit customer" alt="Edit customer">{{ trans('customer.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
-                </p></h2>
+                <h2>{{ trans('customer.customer') }}
+                    <p class="lead">
+                        {{ trans('customer.edit') }} 
+                    </p>
+                </h2>
                 <form class="form-horizontal col-sm-offset-0">
                    
                     <div class="form-group">

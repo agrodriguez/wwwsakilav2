@@ -1,5 +1,6 @@
             <div class="panel panel-default">
-                <div class="panel-heading"><b>{{ trans('film.films') }} <a href="{{ action('FilmsController@create') }}" title="{{ trans('film.create') }}" alt="{{ trans('film.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></b></div>                
+                <div class="panel-heading"><b>{{ trans('film.films') }} </b></div>
+                <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('FilmsController@create') }}" title="{{ trans('film.create') }}" alt="{{ trans('film.create') }}">{{ trans('film.create') }}</a></div>
                     <table class="table table-hover table-bordered">                        
                         <thead>
                             <tr>

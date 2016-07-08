@@ -93,7 +93,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-12">
-				{!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-right']) !!}
+				{!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-left']) !!}
 			</div>
 		</div>		
 

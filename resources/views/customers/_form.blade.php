@@ -131,6 +131,7 @@
                 function initMap() {
 
                     var latlng = new google.maps.LatLng({{ $loc }});
+                    document.getElementById("location").value="{{ $loc }}"
 
 
                     map = new google.maps.Map(document.getElementById('map_div'), {

@@ -29,7 +29,7 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        $countries = Country::paginate(10);
+        $countries = Country::orderBy('country')->paginate(10);
         return view('countries.index', compact('countries'));
     }
 
@@ -51,6 +51,7 @@ class CountriesController extends Controller
      */
     public function store(CountryRequest $request)
     {
+        flash('Country Created', 'success');
         $country = Country::create($request->all());
         return redirect('countries');
     }
@@ -105,6 +106,7 @@ class CountriesController extends Controller
     public function destroy(Country $country)
     {
         try {
+            flash('Country Deleted', 'success');
             $country->delete();
             return redirect('countries');
         } catch (\Illuminate\Database\QueryException $e) {

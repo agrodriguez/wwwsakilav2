@@ -16,11 +16,14 @@
 
 				{!! Form::close() !!}
 
-				<div class="col-sm-6">
+				<h2><p class="lead"> {{ trans('actor.delete') }} </p></h2>
                 {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->getSlug()],'method'=>'DELETE','class'=>'form-horizontal']) !!}
-                        {!! Form::submit(trans('actor.delete') ,['class'=>'btn btn-primary pull-right']) !!}           
-                {!! Form::close() !!}
+				<div class="form-group">
+				<div class="col-sm-6">
+                        {!! Form::submit(trans('actor.delete') ,['class'=>'btn btn-primary']) !!}           
                 </div>
+                </div>
+                {!! Form::close() !!}
 		</div>	
 	</div>
 </div>

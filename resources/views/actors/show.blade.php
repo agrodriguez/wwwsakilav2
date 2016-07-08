@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h2>{{ trans('actor.actor') }} <p class="lead">
-                <a href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="Edit actor" alt="Edit actor">
-                {{ trans('actor.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
+                
+                {{ trans('actor.edit') }} 
                 </p></h2>
             <form class="form-horizontal col-sm-offset-0">
                 <div class="form-group">
@@ -22,12 +22,11 @@
                 </div>
                  <div class="form-group">
                     <div class="col-sm-12">
-                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="Edit actor" alt="Edit actor">{{ trans('actor.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
                     </div>
                 </div>
             </form>
-            @include('films._shortTable', ['count'=> $actor->films->count() ])
-            
+            @include('films._shortTable', ['count'=> $actor->films->count() ])            
         </div>
     </div>
 </div>

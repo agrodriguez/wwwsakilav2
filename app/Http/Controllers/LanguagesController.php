@@ -51,6 +51,7 @@ class LanguagesController extends Controller
      */
     public function store(LanguageRequest $request)
     {
+        flash('Language Created', 'success');
         $language = Language::create($request->all());
         return redirect('languages');
     }
@@ -102,7 +103,16 @@ class LanguagesController extends Controller
      */
     public function destroy(Language $language)
     {
-        $language->delete();
-        return redirect('languages');
+        
+        try {
+            flash('Language Deleted', 'success');
+            $language->delete();
+            return redirect('languages');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 }

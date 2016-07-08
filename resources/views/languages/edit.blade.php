@@ -16,11 +16,14 @@
 
 				{!! Form::close() !!}
 
-				<div class="col-sm-6">
+				<h2><p class="lead"> {{ trans('language.delete') }} </p></h2>
                 {!! Form::model($language,['action'=>['LanguagesController@destroy',$language->name],'method'=>'DELETE','class'=>'form-horizontal']) !!}
-                        {!! Form::submit(trans('language.delete') ,['class'=>'btn btn-primary pull-right']) !!}           
-                {!! Form::close() !!}
+                <div class="form-group">
+				<div class="col-sm-6">
+                        {!! Form::submit(trans('language.delete') ,['class'=>'btn btn-primary']) !!}           
                 </div>
+                </div>
+                {!! Form::close() !!}
 		</div>	
 	</div>
 </div>

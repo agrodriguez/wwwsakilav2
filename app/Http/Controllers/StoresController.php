@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\Store;
 
+use App\Http\Requests\StoreRequest;
+
+use App\Address;
+
 class StoresController extends Controller
 {
     /**
@@ -38,7 +42,8 @@ class StoresController extends Controller
      */
     public function create()
     {
-        //
+        $city=[];
+        return view('stores.create', compact('city'));
     }
 
     /**
@@ -47,9 +52,11 @@ class StoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        flash('Store Created', 'success');
+        $this->storeStore($request);
+        return redirect('stores');
     }
 
     /**
@@ -60,7 +67,7 @@ class StoresController extends Controller
      */
     public function show(Store $store)
     {
-        return $store;
+        return view('stores.show', compact('store'));
     }
 
     /**
@@ -69,9 +76,10 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Store $store)
     {
-        //
+        $city=[$store->address->city_id=>$store->address->city->city];
+        return view('stores.edit', compact('store', 'city'));
     }
 
     /**
@@ -81,9 +89,11 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRequest $request, Store $store)
     {
-        //
+        flash('Store Updated', 'success');
+        $this->updateStore($store, $request);
+        return redirect('stores/'.$store->store_id);
     }
 
     /**
@@ -92,8 +102,49 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Store $store)
     {
-        //
+        try {
+            flash('Store Deleted', 'success');
+            $store->delete();
+            return redirect('stores');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //add flash
+            return redirect('errors.503');//dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
+    }
+
+    /**
+     * save the address and the store to each model
+     *
+     * @param  App\CustomerRequest $request
+     * @return void
+     */
+    private function storeStore(StoreRequest $request)
+    {
+        // set the address values and create
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $address = Address::create($address_array);
+
+        // set the store values
+        $store_array = array_add($request->except('address', 'city_id', 'country_id', 'location'), 'address_id', $address->address_id);
+        $store =Store::create($store_array);
+    }
+
+    /**
+     * update the address and store model
+     *
+     * @param  Store $Store
+     * @param  StoreRequest $request
+     * @return void
+     */
+    private function updateStore(Store $store, StoreRequest $request)
+    {
+        $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
+        $store->address->update($address_array);
+        
+        $store->update($request->except('address', 'city_id', 'country_id', 'location'));
     }
 }
