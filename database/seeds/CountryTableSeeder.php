@@ -11,6 +11,11 @@ class CountryTableSeeder extends Seeder
      **/
     public function run()
     {
+        // for individual use "php artisan db:seed --class=CountryTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('country')->truncate();
+
         /**
          * Could have used
          * factory('App\Country', 109)->create();
@@ -137,6 +142,8 @@ class CountryTableSeeder extends Seeder
         App\Country::create(['country_id' => '107', 'country' => 'Yemen']);
         App\Country::create(['country_id' => '108', 'country' => 'Yugoslavia']);
         App\Country::create(['country_id' => '109', 'country' => 'Zambia']);
+
+        Schema::enableForeignKeyConstraints();
 
         /*
         (1,'Afghanistan','2006-02-15 04:44:00'),

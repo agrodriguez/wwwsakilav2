@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('country.country'))
 @section('content')	
 	<div class="container">
 @include('flash')

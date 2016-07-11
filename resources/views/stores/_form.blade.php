@@ -1,4 +1,4 @@
-        {!! Form::hidden('manager_staff_id',Auth::user()->staff_id ,['id'=>'manager_staff_id']) !!}
+        
         <div class="form-group">
             <div class="col-sm-6">
                 {!! Form::label('address',trans('address.address'),['class'=>'control-label']) !!}
@@ -50,6 +50,11 @@
                 <div id="map_div" style=" height:240px; border: 1px solid #d4d065;"></div>
                 <small class="text-danger">{{ $errors->first('location') }}</small>                
             </div>
+            <div class="col-sm-2">
+                {!! Form::label('manager_staff_id',trans('store.manager_staff_id'),['class'=>'control-label']) !!}
+                {!! Form::select('manager_staff_id',$staffs,$manager, ['class'=>'form-control','id'=>'manager_staff_id']) !!}
+                <small class="text-danger">{{ $errors->first('manager_staff_id') }}</small>
+            </div>
         </div>
 
         <div class="form-group">
@@ -82,7 +87,7 @@
 
         </style>
             <script type="text/javascript">
-                $('#store_id,#country_id').select2();
+                $('#store_id,#country_id,#manager_staff_id').select2();
                 $(document).ready(function(){
                     
                     //$("#store_id,#country_id").select2();

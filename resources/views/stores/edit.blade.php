@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('store.edit'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,7 +8,7 @@
 
 				{!! Form::model($store,['action'=>['StoresController@update',$store->store_id],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0','files'=>true]) !!}
 						
-						@include('stores._form',['submitButtonText' => trans('store.update'), 'year' => $store->release_year, 'cid'=>$store->address->city->country_id, 'ccid'=>$store->address->city_id, 'loc'=>$store->address->location, 'picture'=>$store->picture])
+						@include('stores._form',['submitButtonText' => trans('store.update'), 'year' => $store->release_year, 'cid'=>$store->address->city->country_id, 'ccid'=>$store->address->city_id, 'loc'=>$store->address->location, 'manager'=>$store->manager_staff_id])
 
 				{!! Form::close() !!}
 

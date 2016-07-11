@@ -43,7 +43,8 @@ class StoresController extends Controller
     public function create()
     {
         $city=[];
-        return view('stores.create', compact('city'));
+        $staffs=[];
+        return view('stores.create', compact('city', 'staffs'));
     }
 
     /**
@@ -79,7 +80,8 @@ class StoresController extends Controller
     public function edit(Store $store)
     {
         $city=[$store->address->city_id=>$store->address->city->city];
-        return view('stores.edit', compact('store', 'city'));
+        $staffs= \DB::table('staff')->select(\DB::raw('staff_id, concat(first_name," ", last_name) as name'))->lists('name', 'staff_id');
+        return view('stores.edit', compact('store', 'city', 'staffs'));
     }
 
     /**
@@ -129,8 +131,11 @@ class StoresController extends Controller
         $address = Address::create($address_array);
 
         // set the store values
+        // allow create the store with null manager to be addes later
+        \Schema::disableForeignKeyConstraints();
         $store_array = array_add($request->except('address', 'city_id', 'country_id', 'location'), 'address_id', $address->address_id);
         $store =Store::create($store_array);
+        \Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -111,7 +111,7 @@ class CountriesController extends Controller
             return redirect('countries');
         } catch (\Illuminate\Database\QueryException $e) {
             //add flash
-            return redirect('errors.503');//dd($e);
+            return view('errors.503', ['myError'=>$e]);//dd($e);
         } catch (PDOException $e) {
             dd($e);
         }

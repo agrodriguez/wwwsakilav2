@@ -21,6 +21,13 @@ class RentalTableSeeder extends Seeder
          *
          **/
         //16050
+        
+        // for individual use "php artisan db:seed --class=RentalTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('payment')->truncate();
+        DB::table('rental')->truncate();
+
         $faker = Faker\Factory::create();
         for ($i=5; $i < 1650; $i++) {
             $customer_id = $faker->numberBetween(1, 600);
@@ -44,5 +51,7 @@ class RentalTableSeeder extends Seeder
                 'payment_date' => $date->format('Y-m-d'),
             ]);
         };
+
+        Schema::enableForeignKeyConstraints();
     }
 }

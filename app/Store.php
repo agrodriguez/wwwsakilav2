@@ -50,7 +50,7 @@ class Store extends Model
      */
     public function address()
     {
-        return $this->belongsTo('App\Address');
+        return $this->belongsTo(Address::class);
     }
 
     /**
@@ -61,7 +61,18 @@ class Store extends Model
      */
     public function manager()
     {
-        return $this->belongsTo('App\Staff', 'staff_id', 'manager_staff_id');
+        return $this->belongsTo('App\Staff', 'manager_staff_id', 'staff_id');
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function staff()
+    {
+        return $this->hasMany(Staff::class);
     }
 
     /**
@@ -71,7 +82,7 @@ class Store extends Model
      */
     public function inventories()
     {
-        return $this->hasMany('App\Inventory');
+        return $this->hasMany(Inventory::class);
     }
 
     /**
@@ -83,5 +94,24 @@ class Store extends Model
     public function getStoreName()
     {
         return $this->address->city->city.', '.$this->address->city->country->country;
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author     **/
+    public function getManagerName()
+    {
+        try {
+            if (!is_null($this->manager)) {
+                return $this->manager->first_name.' '.$this->manager->last_name;
+            } else {
+                return '';
+            }
+        } catch (Exeption $e) {
+            return $e;
+        }
+
     }
 }

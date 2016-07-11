@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('staff.staff'))
 @section('content')
 @include('errors.list')
 <div class="container">
@@ -6,7 +7,7 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
                 <h2>{{ trans('staff.staff') }} <p class="lead">
-                    <a href="{{ action('StaffsController@edit', $staff->staff_id) }}" title="Edit Staff" alt="Edit Staff">{{ trans('staff.edit') }} <span class="glyphicon glyphicon-pencil"></span></a>
+                    {{ trans('staff.edit') }} 
                 </p></h2>
                 <form class="form-horizontal col-sm-offset-0">
                     <div class="form-group">
@@ -97,6 +98,12 @@
                         <div class="col-sm-3">
                             <label class="control-label" for="store">{{ trans('store.store') }}</label>
                             <input type="text" class="form-control" id="store" placeholder="store" value="{{ $staff->store->getStoreName() }}" readonly="readonly">    
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <a class="btn btn-primary pull-left" href="{{ action('StaffsController@edit', $staff->staff_id) }}" title="{{ trans('staff.edit') }}" alt="{{ trans('staff.edit') }}">{{ trans('staff.edit') }}</a>
                         </div>
                     </div>
                     

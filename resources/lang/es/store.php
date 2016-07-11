@@ -14,6 +14,7 @@ return [
     */
     'store' => 'Tienda',
     'stores' => 'Tiendas',
+    'manager_staff_id' => 'Gerente',
     'create' => 'Crear Tienda',
     'add' => 'Agregar Tienda',
     'edit' => 'Editar Tienda',

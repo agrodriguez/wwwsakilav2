@@ -1,13 +1,16 @@
 @extends('layouts.app')
+@section('title', trans('staff.staffs'))
 @section('content')
 <div class="container">
 @include('flash')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-            <div class="panel-body">
-            	<table class="table table-hover table-bordered">
-                    <caption>{{ trans('staff.staffs') }} <a href="{{ action('StaffsController@create') }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></caption>
+                <div class="panel-heading">{{ trans('staff.staffs') }} </div class="panel-heading">
+                <div class="panel-body">
+                        <a class="btn btn-primary pull-left" href="{{ action('StaffsController@create') }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}">{{ trans('staff.create') }}</a>
+                </div>
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('staff.staff') }}</th>

@@ -16,5 +16,10 @@ return [
     'rentals' => 'Rentas',
     'rental_date' => 'Fecha de renta',
     'return_date' => 'Fecha de entrega',
+    'create' => 'Crear Renta',
+    'add' => 'Agregar Renta',
+    'edit' => 'Editar Renta',
+    'update' => 'Actualizar Renta',
+    'delete' => 'Eliminar Renta',
     
 ];

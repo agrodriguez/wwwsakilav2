@@ -11,6 +11,14 @@ class ActorTableSeeder extends Seeder
      **/
     public function run()
     {
+
+        // for individual use "php artisan db:seed --class=ActorTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('actor')->truncate();
+
         factory('App\Actor', 200)->create();
+
+        Schema::enableForeignKeyConstraints();
     }
 }

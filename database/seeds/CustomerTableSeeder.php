@@ -11,6 +11,11 @@ class CustomerTableSeeder extends Seeder
      **/
     public function run()
     {
+        // for individual use "php artisan db:seed --class=CustomerTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('customer')->truncate();
+
         /**
          * Could have used
          * factory('App\Customer', 600)->create();
@@ -32,5 +37,8 @@ class CustomerTableSeeder extends Seeder
                 'create_date' => $faker->date(),
             ]);
         };
+
+        Schema::enableForeignKeyConstraints();
+        
     }
 }

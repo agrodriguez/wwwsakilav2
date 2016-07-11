@@ -11,6 +11,11 @@ class CategoryTableSeeder extends Seeder
      **/
     public function run()
     {
+        // for individual use "php artisan db:seed --class=CategoryTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('category')->truncate();
+
         /**
          * Could have used
          * factory('App\Category', 16)->create();
@@ -43,6 +48,8 @@ class CategoryTableSeeder extends Seeder
         App\Category::create(['category_id'=>'14','name'=>'Sci-Fi',]);
         App\Category::create(['category_id'=>'15','name'=>'Sports',]);
         App\Category::create(['category_id'=>'16','name'=>'Travel',]);
+
+        Schema::enableForeignKeyConstraints();
 
         /*
         (1,'Action','2006-02-15 04:46:27'),

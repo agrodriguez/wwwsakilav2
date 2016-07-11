@@ -60,7 +60,7 @@ class RentalsController extends Controller
      */
     public function show(Rental $rental)
     {
-        return view('rentals.index', compact('rental'));
+        return view('rentals.show', compact('rental'));
     }
 
     /**

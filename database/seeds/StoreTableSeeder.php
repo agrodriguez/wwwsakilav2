@@ -11,8 +11,12 @@ class StoreTableSeeder extends Seeder
      **/
     public function run()
     {
-        //factory('App\Store', 2)->create();        
+        //factory('App\Store', 2)->create();
+        // for individual use "php artisan db:seed --class=StoreTableSeeder"
+        Schema::disableForeignKeyConstraints();
         
+        DB::table('store')->truncate();
+
         App\Store::create([
             'manager_staff_id' => 1,
             'address_id' => 1,
@@ -22,6 +26,8 @@ class StoreTableSeeder extends Seeder
             'manager_staff_id' => 2,
             'address_id' => 2,
         ]);
+
+        Schema::enableForeignKeyConstraints();
                 
     }
 }

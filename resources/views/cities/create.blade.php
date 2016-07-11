@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('city.create'))
 @section('content')
 <div class="container">
 	<div class="row">

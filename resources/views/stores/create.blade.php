@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('store.create'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,7 +8,7 @@
 
 				{!! Form::open(['url'=>'stores','class'=>'form-horizontal']) !!}
 		
-					@include('stores._form',['submitButtonText' => trans('store.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0','picture'=>null])
+					@include('stores._form',['submitButtonText' => trans('store.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0','manager'=>null])
 
 				{!! Form::close() !!}
 		</div>	

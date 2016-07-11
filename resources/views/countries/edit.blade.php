@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('country.edit'))
 @section('content')
 <div class="container">
 	<div class="row">

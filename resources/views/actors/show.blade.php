@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('actor.actor'))
 @section('content')
 <div class="container">
 @include('flash')

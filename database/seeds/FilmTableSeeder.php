@@ -12,11 +12,14 @@ class FilmTableSeeder extends Seeder
     public function run()
     {
         //factory('App\Film', 1000)->create();
-        //Schema::disableForeignKeyConstraints();
-        //DB::table('film_text')->truncate();
-        //DB::table('film')->truncate();
+        
+        // for individual use "php artisan db:seed --class=FilmTableSeeder"
+        Schema::disableForeignKeyConstraints();
         
         DB::table('film')->truncate();
+        // truncate this table because of the trigger created
+        DB::table('film_text')->truncate();
+
         $faker = Faker\Factory::create();
 
         $categories = App\Category::lists('category_id')->all();
@@ -40,6 +43,7 @@ class FilmTableSeeder extends Seeder
             $film->categories()->sync($faker->randomElements($categories, $faker->numberBetween(1, 4)));
             $film->actors()->sync($faker->randomElements($actors, $faker->numberBetween(3, 8)));
         };
-        //Schema::enableForeignKeyConstraints();
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

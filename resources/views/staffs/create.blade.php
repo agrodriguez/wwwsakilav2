@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('staff.create'))
 @section('content')
 <div class="container">
     <div class="row">

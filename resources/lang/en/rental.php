@@ -16,5 +16,10 @@ return [
     'rentals' => 'Rentals',
     'rental_date' => 'Rental date',
     'return_date' => 'Return date',
+    'create' => 'Create Rental',
+    'add' => 'Add Rental',
+    'edit' => 'Edit Rental',
+    'update' => 'Update Rental',
+    'delete' => 'Delete Rental',
     
 ];

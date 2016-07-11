@@ -11,6 +11,11 @@ class CityTableSeeder extends Seeder
      **/
     public function run()
     {
+        // for individual use "php artisan db:seed --class=CityTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('city')->truncate();
+
         /**
          * Could have used
          * factory('App\City', 600)->create();
@@ -627,6 +632,8 @@ class CityTableSeeder extends Seeder
         App\City::create(['city_id' => '598', 'city' => 'Zhezqazghan', 'country_id' => '51']);
         App\City::create(['city_id' => '599', 'city' => 'Zhoushan', 'country_id' => '23']);
         App\City::create(['city_id' => '600', 'city' => 'Ziguinchor', 'country_id' => '83']);
+
+        Schema::enableForeignKeyConstraints();
 
         /*
         (1,'A Corua (La Corua)',87,'2006-02-15 04:45:25'),

@@ -11,6 +11,10 @@ class LanguageTableSeeder extends Seeder
      **/
     public function run()
     {
+        // for individual use "php artisan db:seed --class=LanguageTableSeeder"
+        Schema::disableForeignKeyConstraints();
+        
+        DB::table('language')->truncate();
         /**
          * Could have used
          * factory('App\Language', 6)->create();
@@ -33,6 +37,8 @@ class LanguageTableSeeder extends Seeder
         App\Language::create(['language_id'=>'4', 'name'=>'Mandarin',]);
         App\Language::create(['language_id'=>'5', 'name'=>'French',]);
         App\Language::create(['language_id'=>'6', 'name'=>'German',]);
+
+        Schema::enableForeignKeyConstraints();
 
         /*
         (1,'English','2006-02-15 05:02:19'),

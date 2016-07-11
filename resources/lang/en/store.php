@@ -14,6 +14,7 @@ return [
     */
     'store' => 'Store',
     'stores' => 'Stores',
+    'manager_staff_id' => 'Manager',
     'create' => 'Create Store',
     'add' => 'Add Store',
     'edit' => 'Edit Store',
