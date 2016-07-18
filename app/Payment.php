@@ -69,6 +69,28 @@ class Payment extends Model
     }
 
     /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function getCustomerNameAttribute()
+    {
+        return $this->customer->first_name.' '.$this->customer->last_name;
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function getStaffNameAttribute()
+    {
+        return $this->staff->first_name.' '.$this->staff->last_name;
+    }
+
+    /**
      * relation
      *
      * @return relation

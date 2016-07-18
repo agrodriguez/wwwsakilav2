@@ -13,7 +13,7 @@ class CreatePaymentTable extends Migration
     public function up()
     {
         Schema::create('payment', function (Blueprint $table) {
-            $table->smallIncrements('paiment_id');
+            $table->smallIncrements('payment_id');
             $table->smallInteger('customer_id', false, true)->index('idx_fk_customer_id');
             $table->tinyInteger('staff_id', false, true)->index('idx_fk_staff_id');
             $table->integer('rental_id', false, true)->nullable()->default(null);

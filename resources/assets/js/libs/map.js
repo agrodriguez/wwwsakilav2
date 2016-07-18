@@ -40,6 +40,7 @@ function initShowMap() {
     });
 
 }
+
 //init city id combo box
 $('#store_id,#country_id').select2();
 $("#city_id").select2({

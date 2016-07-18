@@ -15,7 +15,9 @@
                             
                         </tr>
                     </thead>
+                    @if($languages->links())
                     <tfoot><tr><td colspan="2">{!! $languages->links() !!}</td></tr></tfoot>
+                    @endif
                     <tbody> 
                         @foreach ($languages as $language)
                             <tr>

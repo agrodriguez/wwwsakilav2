@@ -63,7 +63,7 @@ class Actor extends Model
      *
      * @return string
      **/
-    public function getFullName()
+    public function getFullNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;
     }
@@ -73,7 +73,7 @@ class Actor extends Model
      *
      * @return string
      **/
-    public function getSlug()
+    public function getSlugAttribute()
     {
         return str_slug($this->first_name.' '.$this->last_name, '-');
     }

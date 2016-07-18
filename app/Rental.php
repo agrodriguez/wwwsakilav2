@@ -115,7 +115,7 @@ class Rental extends Model
      * @return void
      * @author
      **/
-    public function getFilmAttribute()
+    public function getFilmTitleAttribute()
     {
         return $this->inventory->film->title;
     }

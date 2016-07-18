@@ -122,7 +122,7 @@
         </div>
     </div>
 </div>
-@section('footer')
+@push('scripts')
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw&callback=initMap">
     </script>
@@ -153,5 +153,5 @@
 
 
         </script>
-@endsection
+@endpush
 @stop

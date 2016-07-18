@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot($router);
 
         $router->bind('actor', function ($value) {
-            return \App\Actor::WhereSlug($value)->firstOrFail();
+            return \App\Actor::whereSlug($value)->firstOrFail();
         });
 
         /** dynamic 'where' to your Eloquent queries */

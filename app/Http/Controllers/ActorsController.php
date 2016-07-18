@@ -53,7 +53,7 @@ class ActorsController extends Controller
     {
         flash('Actor Created', 'success');
         $actor = actor::create($request->all());
-        return redirect('actors');
+        return redirect('actors/'.$actor->slug);
     }
 
     /**
@@ -88,10 +88,9 @@ class ActorsController extends Controller
      */
     public function update(ActorRequest $request, Actor $actor)
     {
-        flash('actor Updated', 'success');
+        flash('Actor Updated', 'success');
         $actor->update($request->all());
-        //$this->syncFields($actor, $request);
-        return redirect('actors/'.$actor->getSlug());
+        return redirect('actors/'.$actor->slug);
     }
 
     /**
@@ -103,11 +102,11 @@ class ActorsController extends Controller
     public function destroy(Actor $actor)
     {
         try {
-            flash('Actor Deleted', 'success');
             $actor->delete();
+            flash(trans('actor.delete'), 'success');
             return redirect('actors');
         } catch (\Illuminate\Database\QueryException $e) {
-            //add flash
+            flash(trans('actor.delete'), 'error');
             return redirect('errors.503');//dd($e);
         } catch (PDOException $e) {
             dd($e);

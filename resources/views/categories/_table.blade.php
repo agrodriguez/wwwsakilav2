@@ -11,7 +11,9 @@
                             <th class="text-center">{{ trans('category.name') }}</th>
                         </tr>
                     </thead>
+                    @if($categories->links())
                     <tfoot><tr><td>{!! $categories->links() !!}</td></tr></tfoot>
+                    @endif
                     <tbody> 
                         @foreach ($categories as $category)
                             <tr>

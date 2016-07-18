@@ -12,15 +12,16 @@
                             <th class="text-center">{{ trans('actor.first_name') }}</th>                            
                         </tr>
                     </thead>
+                    @if($actors->links())
                     <tfoot><tr><td>{!! $actors->links() !!}</td></tr></tfoot>
+                    @endif
                     <tbody> 
                         @foreach ($actors as $actor)
                             <tr>                                    
-                                <td><a href="{{ action('ActorsController@show', $actor->getSlug()) }}" title="" alt="">{{ $actor->getFullName() }}</a></td>
+                                <td><a href="{{ action('ActorsController@show', $actor->slug) }}" title="" alt="">{{ $actor->fullName }}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>
                 </table> 
-        
         </div>
         

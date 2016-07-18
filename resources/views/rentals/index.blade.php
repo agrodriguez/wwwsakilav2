@@ -29,11 +29,15 @@
                             <tr>
                                 <td><a href="{{ action('RentalsController@show', $rental->rental_id) }}" title="" alt="">{{ $rental->rental_id}}</a></td>
                                 <td>{{ $rental->rental_date->format('d-m-Y') }}</td>
-                                <td>{{ $rental->return_date->format('d-m-Y') }}</td>
-                                <td>{{ $rental->Film }}</td>
-                                <td>{{ $rental->CustomerName }}</td>
-                                <td>{{ $rental->StaffName }}</td>
-                                <td class="text-right">$ {{ number_format($rental->Total,2) }}</td>
+                                <td>
+                                @if ( $rental->return_date)
+                                {{ $rental->return_date->format('d-m-Y') }}
+                                @endif
+                                </td>                                
+                                <td>{{ $rental->filmTitle }}</td>
+                                <td>{{ $rental->customerName }}</td>
+                                <td>{{ $rental->staffName }}</td>
+                                <td class="text-right">$ {{ number_format($rental->total,2) }}</td>
                             </tr>   
                         @endforeach 
                     </tbody>

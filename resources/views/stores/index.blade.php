@@ -19,7 +19,9 @@
                                 <th class="text-center">{{ trans('store.store') }}</th>
                             </tr>
                         </thead>
+                        @if($stores->links())
                         <tfoot><tr><td>{!! $stores->links() !!}</td></tr></tfoot>
+                        @endif
                         <tbody> 
                             @foreach ($stores as $store)
                                 <tr>

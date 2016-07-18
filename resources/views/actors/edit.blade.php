@@ -11,14 +11,14 @@
         <div class="col-md-10 col-md-offset-1">
                 <h2>{{ trans('actor.actor') }} <p class="lead"> {{ trans('actor.edit') }} </p></h2>
 
-				{!! Form::model($actor,['action'=>['ActorsController@update',$actor->getSlug()],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
+				{!! Form::model($actor,['action'=>['ActorsController@update',$actor->slug],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
 						
 						@include('actors._form',['submitButtonText' => trans('actor.update')])
 
 				{!! Form::close() !!}
 
 				<h2><p class="lead"> {{ trans('actor.delete') }} </p></h2>
-                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->getSlug()],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->slug],'method'=>'DELETE','class'=>'form-horizontal']) !!}
 				<div class="form-group">
 				<div class="col-sm-6">
                         {!! Form::submit(trans('actor.delete') ,['class'=>'btn btn-primary']) !!}           

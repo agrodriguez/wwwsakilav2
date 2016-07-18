@@ -3,13 +3,11 @@
 @section('content')
 <div class="container">
 @include('flash')
-
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h2>{{ trans('actor.actor') }} <p class="lead">
-                
-                {{ trans('actor.edit') }} 
-                </p></h2>
+            <h2>{{ trans('actor.actor') }}
+                <p class="lead">{{ trans('actor.edit') }}</p>
+            </h2>
             <form class="form-horizontal col-sm-offset-0">
                 <div class="form-group">
                     <div class="col-sm-3">
@@ -23,7 +21,7 @@
                 </div>
                  <div class="form-group">
                     <div class="col-sm-12">
-                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->getSlug()) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->slug) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
                     </div>
                 </div>
             </form>
@@ -31,11 +29,11 @@
         </div>
     </div>
 </div>
-@section('footer')
+@push('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
         $('div#flash_message').delay(2000).slideUp(300);
     });
 </script>
-@endsection
+@endpush
 @stop

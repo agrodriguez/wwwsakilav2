@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label class="control-label" for="original_language">{{ trans('film.original_language') }}</label>
-                        <input type="text" class="form-control" id="original_language" placeholder="{{ trans('film.original_language') }}" value="{{ $film->originalLanguage->name }}" readonly="readonly">    
+                        <input type="text" class="form-control" id="original_language" placeholder="{{ trans('film.original_language') }}" value="{{ $film->originalLanguage{'name'} }}" readonly="readonly">    
                     </div>
                     <div class="col-sm-2">
                         <label class="control-label" for="rental_duration">{{ trans('film.rental_duration') }}</label>
@@ -89,59 +89,66 @@
     </div>
     <hr>    
     <div class="row">
-        <div class="col-md-4 col-md-offset-0">
-            @include('actors._table')
+        <div class="col-md-4 col-md-offset-0">            
+            @include('actors._table')            
         </div>
         <div class="col-md-4 col-md-offset-0">
             @include('categories._table')
         </div>
         <div class="col-md-4 col-md-offset-0">
-             <div class="panel panel-default">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>{{ trans('inventory.inventories') }}</b></div>
                 <div class="panel-body">
-                    <table class="table table-hover table-bordered">
-                        <caption>{{ trans('inventory.inventories') }}</caption>
-                        <thead>
+                    {!! $inventories->links() !!} 
+                    {!! Form::open(['url'=>'/api/inventories','class'=>'form-inline']) !!}
+                    {!! Form::hidden('film_id',$film->film_id) !!}
+                    {!! Form::hidden('store_id',Auth::user()->store_id) !!}                        
+                    {!! Form::submit(trans('inventory.create'),['class'=>'btn btn-primary btn-xs']) !!}           
+                    {!! Form::close() !!}
+                </div>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">{{ trans('inventory.inventory') }}</th>
+                        </tr>
+                    </thead>
+                    @if($inventories->links())
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                    @endif
+                    <tbody> 
+                        @foreach ($inventories as $inventory)
                             <tr>
-                                <th class="text-center">{{ trans('inventory.inventory') }}</th>
-                            </tr>
-                        </thead>
-                        <tfoot><tr><td>
-                            {!! $inventories->links() !!} 
-                            {!! Form::open(['url'=>'/api/inventories','class'=>'form-inline']) !!}
-                            {!! Form::hidden('film_id',$film->film_id) !!}
-                            {!! Form::hidden('store_id',Auth::user()->store_id) !!}                        
-                            {!! Form::submit(trans('inventory.create'),['class'=>'btn btn-primary btn-xs']) !!}           
-                        
-                            {!! Form::close() !!}
-                            </td></tr>
-                        </tfoot>
-                        <tbody> 
-                            @foreach ($inventories as $inventory)
-                                <tr>
-                                    <td>
-                                        <b>Inv. # :</b> {{ $inventory->inventory_id}}
-                                        @foreach ($inventory->rentals->where('return_date',null) as $rental)
-                                            <b>Rented :</b> {{ $rental->customer->getFullName() }}
-                                            <a href="{{ url('rentals/'.$rental->rental_id) }}" title="Return" alt="Return" class="btn btn-primary btn-xs pull-right">
-                                                Return
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                </tr>   
-                            @endforeach 
-                        </tbody>
-                    </table> 
-                </div>              
-            </div>
-            
+                                <td>
+                                    <b>Inv. # :</b> {{ $inventory->inventory_id}}
+                                    @foreach ($inventory->rentals->where('return_date',null) as $rental)
+                                        <b>Rented :</b> {{ $rental->customerName }}
+                                        <a href="{{ url('rentals/'.$rental->rental_id) }}" title="Return" alt="Return" class="btn btn-primary btn-xs pull-right">
+                                            Return
+                                        </a>
+                                    @endforeach
+                                </td>
+                            </tr>   
+                        @endforeach 
+                    </tbody>
+                </table> 
+            </div>            
         </div>        
     </div>
 </div>
-@section('footer')
+
+@push('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
         $('div#flash_message').delay(2000).slideUp(300);
+        $('#myModal').modal('show')
     });
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $('#myModal').modal('hide')
+    })
 </script>
-@endsection
+@endpush
 @stop

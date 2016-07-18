@@ -21,7 +21,9 @@
 
                         </tr>
                     </thead>
+                    @if($staffs->links())
                     <tfoot><tr><td colspan="5">{!! $staffs->links() !!}</td></tr></tfoot>
+                    @endif 
                     <tbody> 
                         @foreach ($staffs as $staff)
                             <tr>
