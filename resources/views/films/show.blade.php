@@ -140,15 +140,4 @@
     </div>
 </div>
 
-@push('scripts')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('div#flash_message').delay(2000).slideUp(300);
-        $('#myModal').modal('show')
-    });
-    $('#myModal').on('shown.bs.modal', function (e) {
-        $('#myModal').modal('hide')
-    })
-</script>
-@endpush
 @stop

@@ -55,6 +55,7 @@ class CustomersController extends Controller
     public function store(CustomerRequest $request)
     {
         $this->storeCustomer($request);
+        flash(trans('messages.store', ['name' => trans('customer.customer')]), 'success');
         return redirect('customers');
     }
 
@@ -91,6 +92,7 @@ class CustomersController extends Controller
     public function update(CustomerRequest $request, Customer $customer)
     {
         $this->updateCustomer($customer, $request);
+        flash(trans('messages.update', ['name' => trans('customer.customer')]), 'success');
         return redirect('customers/'.$customer->customer_id);
     }
 

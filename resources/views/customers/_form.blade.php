@@ -92,68 +92,9 @@
             </div>
         </div>  
 
-        @section('footer')
-            <script type="text/javascript">
-                $('#store_id,#country_id').select2();
-                $(document).ready(function(){
-                    
-                    //$("#store_id,#country_id").select2();
-
-                    $("#city_id").select2({
-                        minimumInputLength: 0,
-                        ajax: {
-                            url: "/api/cities",
-                            dataType: 'json',
-                            data: function (term) {
-                                return {
-                                    id:$("#country_id").val()
-                                };
-                            },
-                            processResults: function (data) {
-                                return { results: data };
-                            }
-                        }               
-                    });
-
-                    $("#country_id").on("change", function(e){ 
-                        $("#city_id").val(null).trigger("change");
-                    });
-                    
-                });
-            </script>
-            <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw&callback=initMap">
-            </script>
-            <script type="text/javascript">
-
-
-                var map;
-                function initMap() {
-
-                    var latlng = new google.maps.LatLng({{ $loc }});
-                    document.getElementById("location").value="{{ $loc }}"
-
-
-                    map = new google.maps.Map(document.getElementById('map_div'), {
-                        center: latlng,
-                        zoom: 5
-                    });
-
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: latlng,
-                        draggable: true
-                    });
-
-                    marker.addListener('dragend', function() {
-
-                        var point = marker.getPosition();
-                        map.panTo(point);
-                        //alert(point.lat().toFixed(5)+', '+point.lng().toFixed(5));
-                        document.getElementById("location").value =point.lat().toFixed(5)+', '+point.lng().toFixed(5) ;
-                    });
-
-                }
-
-            </script>
-        @endsection
+@push('scripts')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw"></script>
+<script type="text/javascript">    
+    google.maps.event.addDomListener(window, 'load', function(){initEditMap("map_div",{{ $loc }})});
+</script>
+@endpush

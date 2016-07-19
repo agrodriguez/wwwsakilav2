@@ -29,11 +29,4 @@
         </div>
     </div>
 </div>
-@push('scripts')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('div#flash_message').delay(2000).slideUp(300);
-    });
-</script>
-@endpush
 @stop

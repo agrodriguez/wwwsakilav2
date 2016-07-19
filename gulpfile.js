@@ -25,7 +25,8 @@ elixir(function(mix) {
     	'libs/jquery.min.js',
     	'libs/bootstrap.min.js',
         'libs/ie10-viewport-bug-workaround.js',
-    	'libs/select2.min.js'
+    	'libs/select2.min.js',
+        'libs/map.js'
     ]);
     mix.version(['public/css/all.css','public/js/all.js']);
 });

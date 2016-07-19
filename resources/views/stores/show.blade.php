@@ -73,33 +73,8 @@
 @endsection
 
 @push('scripts')
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw&callback=initMap">
-    </script>
-    <script type="text/javascript">
-
-        var map;
-        function initMap() {
-
-            var latlng = new google.maps.LatLng({{ $store->address->location }});
-
-
-            map = new google.maps.Map(document.getElementById('map_div'), {
-                center: latlng,
-                zoom: 5
-            });
-
-            var marker = new google.maps.Marker({
-                map: map,
-                position: latlng,
-                draggable: false,
-            });
-
-        }
-
-        $(document).ready(function(){
-            $('div#flash_message').delay(2000).slideUp(300);
-        });
-
-        </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw"></script>
+<script type="text/javascript">    
+    google.maps.event.addDomListener(window, 'load', function(){initShowMap("map_div",{{ $store->address->location }})});
+</script>
 @endpush

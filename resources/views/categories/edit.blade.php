@@ -17,14 +17,16 @@
 
 				{!! Form::close() !!}
 				<h2><p class="lead"> {{ trans('category.delete') }} </p></h2>
-                {!! Form::model($category,['action'=>['CategoriesController@destroy',$category->name],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+                {!! Form::model($category,['action'=>['CategoriesController@destroy',$category->name],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
 				<div class="form-group">
 				<div class="col-sm-6">
-                        {!! Form::submit(trans('category.delete') ,['class'=>'btn btn-primary']) !!}           
+                        {!! Form::submit(trans('category.delete') ,['class'=>'btn btn-primary', 'id' => 'delete_button']) !!}           
                 </div>
                 </div>
                 {!! Form::close() !!}
 		</div>	
 	</div>
+	@include('errors.list')
 </div>
+@include('confirm', ['title' => trans('category.delete'), 'name' => trans('category.category')])
 @stop

@@ -141,31 +141,10 @@
         </div>
     </div>
 </div>
-@section('footer')
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw&callback=initMap">
-    </script>
-    <script type="text/javascript">
-
-        var map;
-        function initMap() {
-
-            var latlng = new google.maps.LatLng({{ $customer->address->location }});
-
-
-            map = new google.maps.Map(document.getElementById('map_div'), {
-                center: latlng,
-                zoom: 5
-            });
-
-            var marker = new google.maps.Marker({
-                map: map,
-                position: latlng,
-                draggable: false,
-            });
-
-        }
-
-        </script>
-@endsection
+@push('scripts')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw"></script>
+<script type="text/javascript">    
+    google.maps.event.addDomListener(window, 'load', function(){initShowMap("map_div",{{ $customer->address->location }})});
+</script>
+@endpush
 @stop

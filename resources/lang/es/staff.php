@@ -15,6 +15,7 @@ return [
     'staff' => 'Empleado',
     'staffs' => 'Empleados',
     'picture' => 'Foto',
+    'upload' => 'Subir Foto',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
     'email' => 'Correo Electronico',

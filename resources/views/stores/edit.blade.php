@@ -13,10 +13,10 @@
 				{!! Form::close() !!}
 
 				<h2><p class="lead"> {{ trans('store.delete') }} </p></h2>
-                {!! Form::model($store,['action'=>['StoresController@destroy',$store->store_id],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+                {!! Form::model($store,['action'=>['StoresController@destroy',$store->store_id],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
                 <div class="form-group">
 				<div class="col-sm-6">
-                        {!! Form::submit(trans('store.delete') ,['class'=>'btn btn-primary']) !!}           
+                        {!! Form::submit(trans('store.delete') ,['class'=>'btn btn-primary', 'id' => 'delete_button']) !!}           
                 </div>
                 </div>
                 {!! Form::close() !!}
@@ -24,4 +24,5 @@
 	</div>
 	@include('errors.list')
 </div>
+@include('confirm', ['title' => trans('store.delete'), 'name' => trans('store.store')])
 @stop

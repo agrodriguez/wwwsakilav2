@@ -24,5 +24,4 @@
 	</div>
 	@include('errors.list')
 </div>
-
 @stop

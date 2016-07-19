@@ -51,8 +51,8 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        flash('Category Created', 'success');
         $category = Category::create($request->all());
+        flash(trans('messages.store', ['name' => trans('category.category')]), 'success');
         return redirect('categories');
     }
 
@@ -89,9 +89,8 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        flash('Category Updated', 'success');
         $category->update($request->all());
-        //$this->syncFields($category, $request);
+        flash(trans('messages.update', ['name' => trans('category.category')]), 'success');
         return redirect('categories/'.$category->name);
     }
 
@@ -104,12 +103,11 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         try {
-            flash('Category Deleted', 'success');
             $category->delete();
+            flash(trans('messages.delete', ['name' => trans('category.category')]), 'success');
             return redirect('categories');
         } catch (\Illuminate\Database\QueryException $e) {
-            //add error flash
-            return redirect('errors.503');//dd($e);
+            return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
             dd($e);
         }

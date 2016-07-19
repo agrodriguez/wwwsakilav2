@@ -1,9 +1,32 @@
+$(document).ready(function(){
+    //flash message
+    $('#ModalFlash').modal('show')
+    $('#ModalFlash').on('shown.bs.modal', function (e) {
+        setTimeout(function(){
+            $('#ModalFlash').modal('hide')
+        }, 1500);
+    })
+    
+    //confirm delete
+    $('#delete_button').on('click', function(e){
+        var $form=$('#delete_form');
+        e.preventDefault();
+        $('#ModalConfirm').modal({ backdrop: 'static', keyboard: false })
+        .one('click', '#btnDelete', function (e) {
+            $form.trigger('submit');
+        });
+    });    
+});
+
+
 var map;
-function initEditMap() {
 
-    var latlng = new google.maps.LatLng({{ $loc }});
+function initEditMap(map_element, lat, lng) {
 
-    map = new google.maps.Map(document.getElementById('map_div'), {
+    var latlng = new google.maps.LatLng(lat, lng);
+    document.getElementById("location").value= lat + ', ' + lng;
+
+    map = new google.maps.Map(document.getElementById(map_element), {
         center: latlng,
         zoom: 5
     });
@@ -15,20 +38,18 @@ function initEditMap() {
     });
 
     marker.addListener('dragend', function() {
-
         var point = marker.getPosition();
         map.panTo(point);        
-        document.getElementById("location").value =point.lat().toFixed(5)+', '+point.lng().toFixed(5) ;
+        document.getElementById("location").value = point.lat().toFixed(5) + ', ' + point.lng().toFixed(5) ;
     });
 
 }
 
-var map;
-function initShowMap() {
+function initShowMap(map_element, lat, lng) {
 
-    var latlng = new google.maps.LatLng({{ $customer->address->location }});
+    var latlng = new google.maps.LatLng(lat, lng);
 
-    map = new google.maps.Map(document.getElementById('map_div'), {
+    map = new google.maps.Map(document.getElementById(map_element), {
         center: latlng,
         zoom: 5
     });
@@ -41,8 +62,17 @@ function initShowMap() {
 
 }
 
-//init city id combo box
-$('#store_id,#country_id').select2();
+
+
+//init city combo boxes
+$('#country_id').select2();
+$('#store_id').select2();
+$('#manager_staff_id').select2();
+
+//$('#store_id,#country_id').select2();
+//$('#store_id,#country_id,#manager_staff_id').select2();
+
+//init city combo box
 $("#city_id").select2({
     minimumInputLength: 0,
     ajax: {
@@ -63,12 +93,14 @@ $("#country_id").on("change", function(e){
     $("#city_id").val(null).trigger("change");
 });
 
-$(document).ready(function(){
-    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        console.log(numFiles);
-        console.log(label);
-    });
+//init file upload button
+$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+    console.log(numFiles);
+    console.log(label);
 });
+
+
+
 
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this),

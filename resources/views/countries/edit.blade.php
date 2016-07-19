@@ -17,16 +17,17 @@
 
 				{!! Form::close() !!}
 				<h2><p class="lead"> {{ trans('country.delete') }} </p></h2>
-                {!! Form::model($country,['action'=>['CountriesController@destroy',$country->country],'method'=>'DELETE','class'=>'form-horizontal']) !!}
+                {!! Form::model($country,['action'=>['CountriesController@destroy',$country->country],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
 
                 <div class="form-group">
             		<div class="col-sm-12">
-                        {!! Form::submit(trans('country.delete') ,['class'=>'btn btn-primary']) !!}           
+                        {!! Form::submit(trans('country.delete') ,['class'=>'btn btn-primary', 'id' => 'delete_button']) !!}           
                      </div>
                 </div>
                 {!! Form::close() !!}
                 </div>
 		</div>	
-	</div>
+	@include('errors.list')
 </div>
+@include('confirm', ['title' => trans('country.delete'), 'name' => trans('country.country')])
 @stop

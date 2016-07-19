@@ -51,8 +51,8 @@ class CountriesController extends Controller
      */
     public function store(CountryRequest $request)
     {
-        flash('Country Created', 'success');
         $country = Country::create($request->all());
+        flash(trans('messages.store', ['name' => trans('country.country')]), 'success');
         return redirect('countries');
     }
 
@@ -91,9 +91,8 @@ class CountriesController extends Controller
      */
     public function update(CountryRequest $request, Country $country)
     {
-        flash('Country Updated', 'success');
         $country->update($request->all());
-        //$this->syncFields($country, $request);
+        flash(trans('messages.update', ['name' => trans('country.country')]), 'success');
         return redirect('countries/'.$country->country);
     }
 
@@ -106,12 +105,11 @@ class CountriesController extends Controller
     public function destroy(Country $country)
     {
         try {
-            flash('Country Deleted', 'success');
             $country->delete();
+            flash(trans('messages.delete', ['name' => trans('country.country')]), 'success');
             return redirect('countries');
         } catch (\Illuminate\Database\QueryException $e) {
-            //add flash
-            return view('errors.503', ['myError'=>$e]);//dd($e);
+            return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
             dd($e);
         }

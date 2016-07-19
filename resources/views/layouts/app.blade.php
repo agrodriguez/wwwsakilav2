@@ -50,7 +50,7 @@
                     <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
                     <li><a href="/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ trans('menu.contact') }}</a></li>
                     <li><a href="/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ trans('menu.about') }}</a></li>
-                    <li><a href="/rentals">     <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('rental.rentals') }}</a></li>
+                    <li><a href="/rentals">     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> {{ trans('rental.rentals') }}</a></li>
                     <li><a href="/films">       <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('film.films') }}</a></li>
                     <li><a href="/customers">   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('customer.customers') }}</a></li>
                     <li><a href="/staffs">      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('staff.staffs') }}</a></li>

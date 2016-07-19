@@ -51,8 +51,8 @@ class ActorsController extends Controller
      */
     public function store(ActorRequest $request)
     {
-        flash('Actor Created', 'success');
         $actor = actor::create($request->all());
+        flash(trans('messages.store', ['name' => trans('actor.actor')]), 'success');
         return redirect('actors/'.$actor->slug);
     }
 
@@ -88,8 +88,8 @@ class ActorsController extends Controller
      */
     public function update(ActorRequest $request, Actor $actor)
     {
-        flash('Actor Updated', 'success');
         $actor->update($request->all());
+        flash(trans('messages.update', ['name' => trans('actor.actor')]), 'success');
         return redirect('actors/'.$actor->slug);
     }
 
@@ -103,11 +103,10 @@ class ActorsController extends Controller
     {
         try {
             $actor->delete();
-            flash(trans('actor.delete'), 'success');
+            flash(trans('messages.delete', ['name' => trans('actor.actor')]), 'success');
             return redirect('actors');
         } catch (\Illuminate\Database\QueryException $e) {
-            flash(trans('actor.delete'), 'error');
-            return redirect('errors.503');//dd($e);
+            return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
             dd($e);
         }

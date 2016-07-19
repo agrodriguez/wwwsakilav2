@@ -54,9 +54,10 @@ class CitiesController extends Controller
      */
     public function store(CityRequest $request)
     {
-        flash('City Created', 'success');
         $city = city::create($request->all());
-        return redirect('cities');
+        flash(trans('messages.store', ['name' => trans('city.city')]), 'success');
+        return redirect('countries/'.$city->country->country);
+        //return redirect('cities');
     }
 
     /**
@@ -91,9 +92,8 @@ class CitiesController extends Controller
      */
     public function update(CityRequest $request, city $city)
     {
-        flash('City Updated', 'success');
         $city->update($request->all());
-        //$this->syncFields($city, $request);
+        flash(trans('messages.update', ['name' => trans('city.city')]), 'success');
         return redirect('cities/'.$city->city);
     }
 
@@ -106,12 +106,13 @@ class CitiesController extends Controller
     public function destroy(City $city)
     {
         try {
-            flash('City Deleted', 'success');
+            $country=$city->country->country;
             $city->delete();
+            flash(trans('messages.delete', ['name' => trans('city.city')]), 'success');
+            return redirect('countries/'.$country);
             return redirect('cities');
         } catch (\Illuminate\Database\QueryException $e) {
-            //add error flash
-            return redirect('errors.503');//dd($e);
+            return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
             dd($e);
         }
