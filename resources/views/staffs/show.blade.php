@@ -97,16 +97,21 @@
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="store">{{ trans('store.store') }}</label>
-                            <input type="text" class="form-control" id="store" placeholder="store" value="{{ $staff->store->getStoreName() }}" readonly="readonly">    
+                            <input type="text" class="form-control" id="store" placeholder="{{ trans('store.store') }}" value="{{ $staff->store->storeName }}" readonly="readonly">    
                         </div>
+
+                        <div class="col-sm-3">
+                            <label class="control-label" for="manager">{{ trans('store.manager_staff_id') }}</label>
+                            <input type="text" class="form-control" id="store" placeholder="{{ trans('store.manager_staff_id') }}" value="{{ $staff{'manages'}{'storeName'} }}" readonly="readonly">    
+                        </div>
+
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a class="btn btn-primary pull-left" href="{{ action('StaffsController@edit', $staff->staff_id) }}" title="{{ trans('staff.edit') }}" alt="{{ trans('staff.edit') }}">{{ trans('staff.edit') }}</a>
+                            <a class="btn btn-primary pull-left" href="{{ action('StaffsController@edit', $staff->slug) }}" title="{{ trans('staff.edit') }}" alt="{{ trans('staff.edit') }}">{{ trans('staff.edit') }}</a>
                         </div>
-                    </div>
-                    
+                    </div>                    
                 </form>
             
         </div>

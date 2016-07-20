@@ -8,7 +8,7 @@
 
 				{!! Form::open(['url'=>'staffs','class'=>'form-horizontal']) !!}
 		
-					@include('staffs._form',['submitButtonText' => trans('staff.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0','picture'=>null])
+					@include('staffs._form',['submitButtonText' => trans('staff.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0','picture'=>null, 'sto'=>$sto])
 
 				{!! Form::close() !!}
 		</div>	

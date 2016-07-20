@@ -31,7 +31,7 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        $cities = City::orderBy('country_id')->orderBy('city')->paginate(10);
+        $cities = City::OrderByCountry()->paginate(10);
         return view('cities.index', compact('cities'));
     }
 
@@ -57,7 +57,6 @@ class CitiesController extends Controller
         $city = city::create($request->all());
         flash(trans('messages.store', ['name' => trans('city.city')]), 'success');
         return redirect('countries/'.$city->country->country);
-        //return redirect('cities');
     }
 
     /**
@@ -110,7 +109,6 @@ class CitiesController extends Controller
             $city->delete();
             flash(trans('messages.delete', ['name' => trans('city.city')]), 'success');
             return redirect('countries/'.$country);
-            return redirect('cities');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

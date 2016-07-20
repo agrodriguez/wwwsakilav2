@@ -87,13 +87,13 @@
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="store">{{ trans('store.store') }}</label>
-                            <input type="text" class="form-control" id="store" placeholder="store" value="{{ $customer->store->getStoreName() }}" readonly="readonly">    
+                            <input type="text" class="form-control" id="store" placeholder="store" value="{{ $customer->store->storeName }}" readonly="readonly">    
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a class="btn btn-primary pull-left" href="{{ action('CustomersController@edit', $customer->customer_id) }}" title="{{ trans('customer.edit') }}" alt="{{ trans('customer.edit') }}">{{ trans('customer.edit') }}</a>
+                            <a class="btn btn-primary pull-left" href="{{ action('CustomersController@edit', $customer->slug) }}" title="{{ trans('customer.edit') }}" alt="{{ trans('customer.edit') }}">{{ trans('customer.edit') }}</a>
                         </div>
                     </div>
                     

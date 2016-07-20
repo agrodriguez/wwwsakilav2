@@ -27,11 +27,11 @@
                     <tbody> 
                         @foreach ($staffs as $staff)
                             <tr>
-                                <td><a href="{{ action('StaffsController@show', $staff->staff_id) }}" title="" alt="">{{ $staff->getFullName()}}</a></td>
-                                <td>{{ $staff->address->getCity() }}, {{ $staff->address->getCountry() }}</td>
+                                <td><a href="{{ action('StaffsController@show', $staff->slug) }}" title="" alt="">{{ $staff->fullName}}</a></td>
+                                <td>{{ $staff->addressName }}</td>
                                 <td>{{ $staff->email }}</td>
                                 <td class="text-center"><span class="glyphicon glyphicon-{{ $staff->active? 'ok': 'remove' }}" aria-hidden="true"></span></td>
-                                <td>{{ $staff->store->getStoreName() }}</td>
+                                <td>{{ $staff->store->storeName }}</td>
                             </tr>   
                         @endforeach 
                     </tbody>

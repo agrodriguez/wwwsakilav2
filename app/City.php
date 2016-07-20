@@ -62,4 +62,18 @@ class City extends Model
     {
         return $this->belongsTo('App\Country');
     }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function scopeOrderByCountry($query)
+    {
+        return $query->select(\DB::raw('city.*, country.country as countryName'))
+        ->join('country', 'city.country_id', '=', 'country.country_id')
+        ->orderBy('countryName')
+        ->orderBy('city');
+    }
 }

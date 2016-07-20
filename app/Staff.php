@@ -128,12 +128,59 @@ class Staff extends Model
     }
 
     /**
+     * relation
+     *
+     * change default id field names
+     * @return relation
+     */
+    public function getAddressNameAttribute()
+    {
+        return $this->address->city->city.', '.$this->address->city->country->country;
+    }
+
+    /**
      * get the full name
      *
      * @return string
      **/
-    public function getFullName()
+    public function getFullNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    /**
+     * get the full name of the customer
+     *
+     * @return string
+     **/
+    public function getSlugAttribute()
+    {
+        return str_slug($this->first_name.' '.$this->last_name, '-');
+    }
+    
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function scopeGetNotManager($query)
+    {
+        return $query->select(\DB::raw('staff_id, concat(first_name," ", last_name) as name, store.*'))
+        ->leftJoin('store', 'store.manager_staff_id', '=', 'staff.staff_id')
+        ->whereNull('manager_staff_id');
+    }
+
+
+    /**
+     * [scopeWhereSlug description]
+     * @param  [type] $query [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function scopeWhereSlug($query, $value)
+    {
+        $names=explode('-', $value);
+        return $query->where('first_name', $names[0])->where('last_name', $names[1]);
     }
 }

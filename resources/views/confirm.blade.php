@@ -8,7 +8,7 @@
 	        <h4 class="modal-title" id="myModalLabel">{{ $title }}</h4>
 	      </div>
 	      <div class="modal-body">
-	        <div class="alert alert-info" role="alert">
+	        <div class="alert alert-warning" role="alert">
 		    	{{ trans('messages.confirm', ['name' => $name]) }}
 			</div>
 	      </div>

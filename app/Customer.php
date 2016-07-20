@@ -127,7 +127,7 @@ class Customer extends Model
      *
      * @return decimal
      **/
-    public function getBalance()
+    public function getBalanceAttribute()
     {
         $queryString='select get_customer_balance('.$this->customer_id.',NOW()) as ammount;';
         $ammount=\DB::select($queryString);
@@ -135,12 +135,45 @@ class Customer extends Model
     }
 
     /**
+     * relation
+     *
+     * change default id field names
+     * @return relation
+     */
+    public function getAddressNameAttribute()
+    {
+        return $this->address->city->city.', '.$this->address->city->country->country;
+    }
+
+    /**
+     * get the full name
+     *
+     * @return string
+     **/
+    public function getFullNameAttribute()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    /**
      * get the full name of the customer
      *
      * @return string
      **/
-    public function getFullName()
+    public function getSlugAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return str_slug($this->first_name.' '.$this->last_name, '-');
+    }
+
+    /**
+     * [scopeWhereSlug description]
+     * @param  [type] $query [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function scopeWhereSlug($query, $value)
+    {
+        $names=explode('-', $value);
+        return $query->where('first_name', $names[0])->where('last_name', $names[1]);
     }
 }

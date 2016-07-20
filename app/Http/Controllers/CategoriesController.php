@@ -53,7 +53,7 @@ class CategoriesController extends Controller
     {
         $category = Category::create($request->all());
         flash(trans('messages.store', ['name' => trans('category.category')]), 'success');
-        return redirect('categories');
+        return redirect('categories/'.$category->name);
     }
 
     /**

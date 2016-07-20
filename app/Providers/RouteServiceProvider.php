@@ -32,7 +32,15 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Actor::whereSlug($value)->firstOrFail();
         });
 
-        /** dynamic 'where' to your Eloquent queries */
+        $router->bind('staff', function ($value) {
+            return \App\Staff::whereSlug($value)->firstOrFail();
+        });
+
+        $router->bind('customer', function ($value) {
+            return \App\Customer::whereSlug($value)->firstOrFail();
+        });
+
+        /** dynamic implicit 'where' to your Eloquent queries */
         
         $router->bind('category', function ($value) {
             return \App\Category::whereName($value)->firstOrFail();

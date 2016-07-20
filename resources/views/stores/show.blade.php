@@ -57,7 +57,7 @@
                             </div>                        
                             <div class="col-sm-2">
                                 <label class="control-label" for="manager_staff_id">{{ trans('store.manager_staff_id') }}</label>
-                                <input type="text" class="form-control" id="manager_staff_id" placeholder="{{ trans('store.manager_staff_id') }}" value="{{ $store->getManagerName() }}" readonly="readonly">    
+                                <input type="text" class="form-control" id="manager_staff_id" placeholder="{{ trans('store.manager_staff_id') }}" value="{{ $store->managerName }}" readonly="readonly">    
                             </div>
                         </div>
 
@@ -65,8 +65,34 @@
     	                    <div class="col-sm-12">
     	                        <a class="btn btn-primary pull-left" href="{{ action('StoresController@edit', $store->store_id) }}" title="{{ trans('store.edit') }}" alt="{{ trans('store.edit') }}">{{ trans('store.edit') }}</a>
     	                    </div>
-    	                </div>
+    	                </div>                        
                     </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-0">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ trans('staff.staffs') }}</div>
+                    <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('StaffsController@create', ['sto'=>$store->store_id]) }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}">{{ trans('staff.create') }}</a></div>
+                    <table class="table table-hover table-bordered">                        
+                        <thead>
+                            <tr>
+                                <th class="text-center">{{ trans('staff.staff') }}</th>
+                                <th class="text-center">{{ trans('store.manager_staff_id') }}</th>
+                            </tr>
+                        </thead>
+                        <tfoot><tr><td colspan="2"></td></tr></tfoot>
+                        <tbody> 
+                            @foreach ($store->staffs as $staff)
+                                <tr>                                    
+                                    <td><a href="{{ action('StaffsController@show', $staff->slug) }}" title="" alt="">{{ $staff->fullName }}</a></td>
+                                    <td class="text-center"><span class="glyphicon glyphicon-{{ $staff{'manages'}? 'ok': 'remove' }}" aria-hidden="true"></span></td>
+                                </tr>   
+                            @endforeach 
+                        </tbody>
+                    </table>                
+                </div>
+            </div>
             </div>
         </div>
     </div>

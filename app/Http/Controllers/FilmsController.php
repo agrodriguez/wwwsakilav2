@@ -56,7 +56,8 @@ class FilmsController extends Controller
         flash('Film Added', 'success');
         $film = Film::create($request->all());
         $this->syncFields($film, $request);
-        return redirect('films');
+        flash(trans('messages.store', ['name' => trans('film.film')]), 'success');
+        return redirect('films/'.$film->film_id);
     }
 
     /**
@@ -96,6 +97,7 @@ class FilmsController extends Controller
         flash('Film Updated', 'success');
         $film->update($request->all());
         $this->syncFields($film, $request);
+        flash(trans('messages.update', ['name' => trans('film.film')]), 'success');
         return redirect('films/'.$film->film_id);
     }
 
@@ -105,9 +107,17 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Film $film)
     {
-        //
+        try {
+            $film->delete();
+            flash(trans('messages.delete', ['name' => trans('film.film')]), 'success');
+            return redirect('films');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return view('errors.503', ['myError'=>$e]);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 
     /**

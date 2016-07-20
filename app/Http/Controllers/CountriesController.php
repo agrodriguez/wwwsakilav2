@@ -53,7 +53,7 @@ class CountriesController extends Controller
     {
         $country = Country::create($request->all());
         flash(trans('messages.store', ['name' => trans('country.country')]), 'success');
-        return redirect('countries');
+        return redirect('countries/'.$country->country);
     }
 
     /**
@@ -64,8 +64,6 @@ class CountriesController extends Controller
      */
     public function show(Country $country)
     {
-        //eager load address city and country
-        //$country->load('address.city.country', 'store.address.city.country')->get();
         $cities = $country->cities()->paginate(6);
         return view('countries.show', compact('country', 'cities'));
     }
@@ -113,9 +111,5 @@ class CountriesController extends Controller
         } catch (PDOException $e) {
             dd($e);
         }
-        /**
-        * $country->delete();
-        * return redirect('countries');
-        */
     }
 }

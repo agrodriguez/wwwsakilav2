@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Request;
 
+use Illuminate\Http\Request as HttpRequest;
+
 use App\Http\Requests;
 
 use App\Staff;
@@ -41,10 +43,11 @@ class StaffsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(HttpRequest $request)
     {
         $city=[];
-        return view('staffs.create', compact('city'));
+        $sto=isset($request->sto)?$request->sto:null;
+        return view('staffs.create', compact('city', 'sto'));
     }
 
     /**
@@ -55,8 +58,9 @@ class StaffsController extends Controller
      */
     public function store(StaffRequest $request)
     {
-        $this->storeStaff($request);
-        return redirect('staffs');
+        $staff=$this->storeStaff($request);
+        flash(trans('messages.store', ['name' => trans('staff.staff')]), 'success');
+        return redirect('staffs/'.$staff->slug);
     }
 
     /**
@@ -92,7 +96,8 @@ class StaffsController extends Controller
     public function update(StaffRequest $request, Staff $staff)
     {
         $this->updateStaff($staff, $request);
-        return redirect('staffs/'.$staff->staff_id);
+        flash(trans('messages.update', ['name' => trans('staff.staff')]), 'success');
+        return redirect('staffs/'.$staff->slug);
     }
 
     /**
@@ -101,9 +106,17 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Staff $staff)
     {
-        //
+        try {
+            $staff->delete();
+            flash(trans('messages.delete', ['name' => trans('staff.staff')]), 'success');
+            return redirect('staffs');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return view('errors.503', ['myError'=>$e]);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -130,6 +143,7 @@ class StaffsController extends Controller
              $staff->picture = $img->encode('png');
         }
         $staff->save();
+        return $staff;
         //$staff = Staff::create($request->all());
     }
 
@@ -142,19 +156,6 @@ class StaffsController extends Controller
      **/
     private function updateStaff(Staff $staff, StaffRequest $request)
     {
-        //dd($request->file('picture'));
-        //dd($request->file('picture')->getClientOriginalExtension());
-        //$file = $request->file('picture');
-        ////if ($request->hasFile('picture')) { }
-        ////if ($request->file('picture')->isValid()) { }
-        //$request->file('picture')->move($destinationPath);
-        //$request->file('picture')->move($destinationPath, $fileName);
-        //$path = $request->file('picture')->getRealPath();
-        //$name = $request->file('picture')->getClientOriginalName();
-        //$extension = $request->file('picture')->getClientOriginalExtension();
-        //$size = $request->file('picture')->getSize();
-        //$mime = $request->file('picture')->getMimeType();
-
         $tmpName='upload_'.uniqid('', true).'.png';
 
         if (!is_null($request->file('picture'))) {

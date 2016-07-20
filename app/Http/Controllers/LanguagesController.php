@@ -51,9 +51,9 @@ class LanguagesController extends Controller
      */
     public function store(LanguageRequest $request)
     {
-        flash('Language Created', 'success');
         $language = Language::create($request->all());
-        return redirect('languages');
+        flash(trans('messages.store', ['name' => trans('language.language')]), 'success');
+        return redirect('languages/'.$language->name);
     }
 
     /**
@@ -89,9 +89,8 @@ class LanguagesController extends Controller
      */
     public function update(LanguageRequest $request, Language $language)
     {
-        flash('Language Updated', 'success');
         $language->update($request->all());
-        //$this->syncFields($language, $request);
+        flash(trans('messages.update', ['name' => trans('language.language')]), 'success');
         return redirect('languages/'.$language->name);
     }
 
@@ -103,10 +102,9 @@ class LanguagesController extends Controller
      */
     public function destroy(Language $language)
     {
-        
         try {
-            flash('Language Deleted', 'success');
             $language->delete();
+            flash(trans('messages.delete', ['name' => trans('language.language')]), 'success');
             return redirect('languages');
         } catch (\Illuminate\Database\QueryException $e) {
             //add flash

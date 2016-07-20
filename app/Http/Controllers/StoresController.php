@@ -12,6 +12,8 @@ use App\Http\Requests\StoreRequest;
 
 use App\Address;
 
+use App\Staff;
+
 class StoresController extends Controller
 {
     /**
@@ -43,7 +45,7 @@ class StoresController extends Controller
     public function create()
     {
         $city=[];
-        $staffs=[];
+        $staffs= Staff::getNotManager()->lists('name', 'staff_id');
         return view('stores.create', compact('city', 'staffs'));
     }
 
@@ -55,9 +57,9 @@ class StoresController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        flash('Store Created', 'success');
-        $this->storeStore($request);
-        return redirect('stores');
+        $store=$this->storeStore($request);
+        flash(trans('messages.store', ['name' => trans('store.store')]), 'success');
+        return redirect('stores/'.$store->store_id);
     }
 
     /**
@@ -80,7 +82,7 @@ class StoresController extends Controller
     public function edit(Store $store)
     {
         $city=[$store->address->city_id=>$store->address->city->city];
-        $staffs= \DB::table('staff')->select(\DB::raw('staff_id, concat(first_name," ", last_name) as name'))->lists('name', 'staff_id');
+        $staffs= Staff::getNotManager()->lists('name', 'staff_id');
         return view('stores.edit', compact('store', 'city', 'staffs'));
     }
 
@@ -93,8 +95,8 @@ class StoresController extends Controller
      */
     public function update(StoreRequest $request, Store $store)
     {
-        flash('Store Updated', 'success');
         $this->updateStore($store, $request);
+        flash(trans('messages.update', ['name' => trans('store.store')]), 'success');
         return redirect('stores/'.$store->store_id);
     }
 
@@ -107,12 +109,11 @@ class StoresController extends Controller
     public function destroy(Store $store)
     {
         try {
-            flash('Store Deleted', 'success');
             $store->delete();
+            flash(trans('messages.delete', ['name' => trans('store.store')]), 'success');
             return redirect('stores');
         } catch (\Illuminate\Database\QueryException $e) {
-            //add flash
-            return redirect('errors.503');//dd($e);
+            return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
             dd($e);
         }
@@ -133,9 +134,13 @@ class StoresController extends Controller
         // set the store values
         // allow create the store with null manager to be addes later
         \Schema::disableForeignKeyConstraints();
+        if ($request->manager_staff_id==0) {
+            $request->manager_staff_id=null;
+        }
         $store_array = array_add($request->except('address', 'city_id', 'country_id', 'location'), 'address_id', $address->address_id);
         $store =Store::create($store_array);
         \Schema::enableForeignKeyConstraints();
+        return $store;
     }
 
     /**
@@ -147,9 +152,10 @@ class StoresController extends Controller
      */
     private function updateStore(Store $store, StoreRequest $request)
     {
+        \Schema::disableForeignKeyConstraints();
         $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
         $store->address->update($address_array);
-        
         $store->update($request->except('address', 'city_id', 'country_id', 'location'));
+        \Schema::enableForeignKeyConstraints();
     }
 }

@@ -1,21 +1,28 @@
 $(document).ready(function(){
     //flash message
-    $('#ModalFlash').modal('show')
+    $('#ModalFlash').modal({ backdrop: 'static', keyboard: false })
     $('#ModalFlash').on('shown.bs.modal', function (e) {
         setTimeout(function(){
             $('#ModalFlash').modal('hide')
-        }, 1500);
+        }, 1000);
     })
     
     //confirm delete
     $('#delete_button').on('click', function(e){
         var $form=$('#delete_form');
+        var $delete=false;
         e.preventDefault();
         $('#ModalConfirm').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#btnDelete', function (e) {
-            $form.trigger('submit');
+            $('#ModalConfirm').modal('hide');
+            $delete=true;
         });
-    });    
+        $('#ModalConfirm').on('hidden.bs.modal', function(){
+            if($delete) {
+                $form.trigger('submit');
+            }
+        })
+    });
 });
 
 

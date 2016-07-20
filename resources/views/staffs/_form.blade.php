@@ -113,7 +113,7 @@
             </div>
             <div class="col-sm-3">
                 {!! Form::label('store_id', trans('store.store'), ['class'=>'control-label']) !!}                
-                {!! Form::select('store_id',$stores,null, ['class'=>'form-control','id'=>'store_id']) !!}
+                {!! Form::select('store_id',$stores,$sto, ['class'=>'form-control','id'=>'store_id']) !!}
                 <small class="text-danger">{{ $errors->first('store_id') }}</small>
             </div>                
         </div>

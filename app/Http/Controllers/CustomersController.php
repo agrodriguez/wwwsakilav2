@@ -93,7 +93,7 @@ class CustomersController extends Controller
     {
         $this->updateCustomer($customer, $request);
         flash(trans('messages.update', ['name' => trans('customer.customer')]), 'success');
-        return redirect('customers/'.$customer->customer_id);
+        return redirect('customers/'.$customer->slug);
     }
 
     /**
@@ -102,9 +102,17 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        try {
+            $customer->delete();
+            flash(trans('messages.delete', ['name' => trans('customer.customer')]), 'success');
+            return redirect('customers');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return view('errors.503', ['myError'=>$e]);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 
     /**

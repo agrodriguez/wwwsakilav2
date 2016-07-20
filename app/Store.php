@@ -70,7 +70,7 @@ class Store extends Model
      * @return void
      * @author
      **/
-    public function staff()
+    public function staffs()
     {
         return $this->hasMany(Staff::class);
     }
@@ -91,7 +91,7 @@ class Store extends Model
      * change default id field names
      * @return relation
      */
-    public function getStoreName()
+    public function getStoreNameAttribute()
     {
         return $this->address->city->city.', '.$this->address->city->country->country;
     }
@@ -101,7 +101,7 @@ class Store extends Model
      *
      * @return void
      * @author     **/
-    public function getManagerName()
+    public function getManagerNameAttribute()
     {
         try {
             if (!is_null($this->manager)) {

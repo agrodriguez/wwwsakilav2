@@ -17,15 +17,17 @@
                         <thead>
                             <tr>
                                 <th class="text-center">{{ trans('store.store') }}</th>
+                                <th class="text-center">{{ trans('store.manager_staff_id') }}</th>
                             </tr>
                         </thead>
                         @if($stores->links())
-                        <tfoot><tr><td>{!! $stores->links() !!}</td></tr></tfoot>
+                        <tfoot><tr><td colspan="2">{!! $stores->links() !!}</td></tr></tfoot>
                         @endif
                         <tbody> 
                             @foreach ($stores as $store)
                                 <tr>
-                                    <td><a href="{{ action('StoresController@show', $store->store_id) }}" title="" alt="">{{ $store->address->getCity() }}, {{ $store->address->getCountry() }}</a></td>
+                                    <td><a href="{{ action('StoresController@show', $store->store_id) }}" title="" alt="">{{ $store->storeName }}</a></td>
+                                    <td>{{ $store->managerName }}</td>
                                 </tr>   
                             @endforeach 
                         </tbody>
