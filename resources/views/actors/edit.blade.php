@@ -18,7 +18,7 @@
 				{!! Form::close() !!}
 
 				<h2><p class="lead"> {{ trans('actor.delete') }} </p></h2>
-                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->slug],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
+                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->{'slug'}],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
 				<div class="form-group">
 				<div class="col-sm-6">
                         {!! Form::submit(trans('actor.delete') ,['class'=>'btn btn-primary', 'id' => 'delete_button']) !!}           

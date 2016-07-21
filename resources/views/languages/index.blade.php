@@ -21,7 +21,7 @@
                     <tbody> 
                         @foreach ($languages as $language)
                             <tr>
-                                <td><a href="{{ action('LanguagesController@show', $language->name) }}" title="" alt="">{{ $language->name}}</a></td>
+                                <td><a href="{{ action('LanguagesController@show', $language->{'name'}) }}" title="" alt="">{{ $language->{'name'} }}</a></td>
                                 
                             </tr>   
                         @endforeach 

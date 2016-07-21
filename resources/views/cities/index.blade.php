@@ -20,8 +20,8 @@
                     <tbody> 
                         @foreach ($cities as $city)
                             <tr>
-                                <td><a href="{{ action('CountriesController@show', $city->country->country) }}" title="" alt="">{{ $city->country->country }}</a></td>
-                                <td><a href="{{ action('CitiesController@show', $city->city) }}" title="" alt="">{{ $city->city }}</a></td>
+                                <td><a href="{{ action('CountriesController@show', $city->{'countryName'}) }}" title="" alt="">{{ $city->{'countryName'} }}</a></td>
+                                <td><a href="{{ action('CitiesController@show', $city->{'city'}) }}" title="" alt="">{{ $city->{'city'} }}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>

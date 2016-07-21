@@ -24,11 +24,11 @@
                     <tbody> 
                         @foreach ($customers as $customer)
                             <tr>
-                                <td><a href="{{ action('CustomersController@show', $customer->slug) }}" title="" alt="">{{ $customer->fullName }}</a></td>
-                                <td>{{ $customer->addressName }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td class="text-center"><span class="glyphicon glyphicon-{{ $customer->active? 'ok': 'remove' }}" aria-hidden="true"></span></td>
-                                <td>{{ $customer->create_date->format('d-M-Y') }}</td>
+                                <td><a href="{{ action('CustomersController@show', $customer->{'slug'}) }}" title="" alt="">{{ $customer->{'fullName'} }}</a></td>
+                                <td>{{ $customer->{'addressName'} }}</td>
+                                <td>{{ $customer->{'email'} }}</td>
+                                <td class="text-center"><span class="glyphicon glyphicon-{{ $customer->{'active'}? 'ok': 'remove' }}" aria-hidden="true"></span></td>
+                                <td>{{ $customer->{'create_date'}->format('d-M-Y') }}</td>
                                 
                             </tr>   
                         @endforeach 

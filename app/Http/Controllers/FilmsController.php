@@ -110,6 +110,9 @@ class FilmsController extends Controller
     public function destroy(Film $film)
     {
         try {
+            //create new request to delete related categories and actors via sync
+            $request = new FilmRequest;
+            $this->syncFields($film, $request);
             $film->delete();
             flash(trans('messages.delete', ['name' => trans('film.film')]), 'success');
             return redirect('films');
@@ -130,7 +133,6 @@ class FilmsController extends Controller
      */
     private function syncFields(Film $film, FilmRequest $request)
     {
-
         if (!$request->has('actor_list')) {
             array_add($request, 'actor_list', []);
         }
@@ -138,7 +140,6 @@ class FilmsController extends Controller
         if (!$request->has('category_list')) {
             array_add($request, 'category_list', []);
         }
-
         $film->categories()->sync($request->input('category_list'));
         $film->actors()->sync($request->input('actor_list'));
     }

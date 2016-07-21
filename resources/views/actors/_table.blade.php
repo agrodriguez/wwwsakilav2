@@ -18,7 +18,7 @@
                     <tbody> 
                         @foreach ($actors as $actor)
                             <tr>                                    
-                                <td><a href="{{ action('ActorsController@show', $actor->slug) }}" title="" alt="">{{ $actor->fullName }}</a></td>
+                                <td><a href="{{ action('ActorsController@show', $actor->{'slug'}) }}" title="" alt="">{{ $actor{'fullName'} }}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>

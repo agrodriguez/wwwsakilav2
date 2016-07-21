@@ -11,8 +11,8 @@
                     <tbody>                         
                         @foreach ($films as $film)
                         <tr>                                    
-                            <td><a href="{{ action('FilmsController@show', $film->film_id) }}" title="" alt="">{{ $film->title }}</a></td>
-                            <td>{{ $film->description }}</td>
+                            <td><a href="{{ action('FilmsController@show', $film->{'film_id'}) }}" title="" alt="">{{ $film->{'title'} }}</a></td>
+                            <td>{{ $film->{'description'} }}</td>
                         </tr>   
                         @endforeach                         
                     </tbody>

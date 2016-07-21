@@ -29,6 +29,8 @@ class Inventory extends Model
         'last_update'
     ];
 
+    protected $dateFormat ='Y-m-d';
+
     /**
      * override the set date attribute
      * as per the example
@@ -38,11 +40,11 @@ class Inventory extends Model
      */
     public function setLastUpdateAttribute($date)
     {
-        $myDate = Carbon::createFromFormat('Y-m-d', $date);
+        $myDate = Carbon::createFromFormat($this->dateFormat, $date);
         if ($myDate > Carbon::now()) {
             $this->attributes['last_update'] =  Carbon::parse($date);
         } else {
-            $this->attributes['last_update'] =  Carbon::createFromFormat('Y-m-d', $date);
+            $this->attributes['last_update'] =  Carbon::createFromFormat($this->dateFormat, $date);
         }
     }
 

@@ -142,7 +142,7 @@ class Customer extends Model
      */
     public function getAddressNameAttribute()
     {
-        return $this->address->city->city.', '.$this->address->city->country->country;
+        return $this->address->cityName.', '.$this->address->countryName;
     }
 
     /**

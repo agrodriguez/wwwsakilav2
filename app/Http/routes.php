@@ -33,8 +33,9 @@ Route::resource('rentals', 'RentalsController', ['parameters'=>['rentals'=>'rent
 Route::resource('staffs', 'StaffsController', ['parameters'=>['staffs'=>'staff']]);
 Route::resource('stores', 'StoresController', ['parameters'=>['stores'=>'store']]);
 
-Route::group(['prefix' => 'api'], function () {
-    Route::get('cities', 'Api\ApiController@cities');
-    Route::get('inventories', 'Api\ApiController@inventories');
-    Route::post('inventories', 'Api\ApiController@storeInventory');
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
+    Route::get('cities', 'ApiController@cities');
+    Route::get('inventories', 'ApiController@inventories')->name('inventory.show');
+    Route::post('inventories', 'ApiController@storeInventory')->name('inventory.store');
+    Route::delete('inventories/{inventory}', 'ApiController@destroyInventory')->name('inventory.destroy');
 });

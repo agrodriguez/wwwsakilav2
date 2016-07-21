@@ -16,6 +16,7 @@ return [
     'rentals' => 'Rentals',
     'rental_date' => 'Rental date',
     'return_date' => 'Return date',
+    'return' => 'Return',
     'create' => 'Create Rental',
     'add' => 'Add Rental',
     'edit' => 'Edit Rental',

@@ -26,8 +26,8 @@
                         <tbody> 
                             @foreach ($stores as $store)
                                 <tr>
-                                    <td><a href="{{ action('StoresController@show', $store->store_id) }}" title="" alt="">{{ $store->storeName }}</a></td>
-                                    <td>{{ $store->managerName }}</td>
+                                    <td><a href="{{ action('StoresController@show', $store->{'store_id'}) }}" title="" alt="">{{ $store->{'storeName'} }}</a></td>
+                                    <td>{{ $store->{'managerName'} }}</td>
                                 </tr>   
                             @endforeach 
                         </tbody>

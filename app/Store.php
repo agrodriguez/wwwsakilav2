@@ -93,7 +93,7 @@ class Store extends Model
      */
     public function getStoreNameAttribute()
     {
-        return $this->address->city->city.', '.$this->address->city->country->country;
+        return $this->address->cityName.', '.$this->address->countryName;
     }
 
     /**

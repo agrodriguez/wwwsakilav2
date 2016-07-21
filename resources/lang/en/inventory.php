@@ -15,4 +15,5 @@ return [
     'inventory' => 'Inventory',
     'inventories' => 'Inventories',
     'create' => 'Add Inventory',
+    'delete' => 'Remove Inventory',
 ];

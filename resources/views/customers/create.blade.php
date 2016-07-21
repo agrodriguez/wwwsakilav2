@@ -8,7 +8,7 @@
 
 				{!! Form::open(['url'=>'customers','class'=>'form-horizontal']) !!}
 		
-					@include('customers._form',['submitButtonText' => trans('customer.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0'])
+					@include('customers._form',['submitButtonText' => trans('customer.add'), 'cid'=>null, 'ccid'=>null, 'loc'=>'0,0', 'cd' => \Carbon\Carbon::now()->format('d/m/Y')])
 
 				{!! Form::close() !!}
 		</div>	

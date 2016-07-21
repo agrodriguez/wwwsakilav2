@@ -13,17 +13,17 @@
                 <div class="form-group">
                     <div class="col-sm-6">
                         <label class="control-label" for="language">{{ trans('language.language') }}</label>
-                        <input type="text" class="form-control" id="language" placeholder="{{ trans('language.language') }}" value="{{ $language->name }}" readonly="readonly">
+                        <input type="text" class="form-control" id="language" placeholder="{{ trans('language.language') }}" value="{{ $language->{'name'} }}" readonly="readonly">
                     </div>                    
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->name) }}" title="{{ trans('language.edit') }}" alt="{{ trans('language.edit') }}">{{ trans('language.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->{'name'}) }}" title="{{ trans('language.edit') }}" alt="{{ trans('language.edit') }}">{{ trans('language.edit') }}</a>
                     </div>
                 </div>
             </form>
             
-            @include('films._shortTable', ['count'=> $language->films->count() ])
+            @include('films._shortTable', ['count'=> $language->{'films'}->count() ])
             
         </div>
     </div>

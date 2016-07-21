@@ -12,16 +12,16 @@
                 <div class="form-group">
                     <div class="col-sm-3">
                         <label class="control-label" for="actor">{{ trans('actor.first_name') }}</label>
-                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.first_name') }}" value="{{ $actor->first_name }}" readonly="readonly">
+                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.first_name') }}" value="{{ $actor->{'first_name'} }}" readonly="readonly">
                     </div>
                     <div class="col-sm-3">
                         <label class="control-label" for="actor">{{ trans('actor.last_name') }}</label>
-                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.last_name') }}" value="{{ $actor->last_name }}" readonly="readonly">
+                        <input type="text" class="form-control" id="actor" placeholder="{{ trans('actor.last_name') }}" value="{{ $actor->{'last_name'} }}" readonly="readonly">
                     </div>
                 </div>
                  <div class="form-group">
                     <div class="col-sm-12">
-                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->slug) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->{'slug'}) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
                     </div>
                 </div>
             </form>

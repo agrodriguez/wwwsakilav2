@@ -17,7 +17,7 @@
                     <tbody> 
                         @foreach ($categories as $category)
                             <tr>
-                                <td><a href="{{ action('CategoriesController@show', $category->name) }}" title="" alt="">{{ $category->name}}</a></td>
+                                <td><a href="{{ action('CategoriesController@show', $category->{'name'}) }}" title="" alt="">{{ $category->{'name'} }}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>

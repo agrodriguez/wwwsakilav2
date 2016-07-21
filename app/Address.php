@@ -141,7 +141,7 @@ class Address extends Model
      *
      * @return String
      **/
-    public function getCity()
+    public function getCityNameAttribute()
     {
         return $this->city->city;
     }
@@ -151,7 +151,7 @@ class Address extends Model
      *
      * @return String
      **/
-    public function getCountry()
+    public function getCountryNameAttribute()
     {
         return $this->city->country->country;
     }

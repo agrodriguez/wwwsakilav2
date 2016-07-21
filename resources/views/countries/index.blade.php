@@ -19,8 +19,8 @@
                     <tbody> 
                         @foreach ($countries as $country)
                             <tr>                                    
-                                <td><a href="{{ action('CountriesController@show', $country->country) }}" title="" alt="">{{ $country->country }}</a></td>
-                                <td class="text-right">{{ $country->cities->count() }}</td>                                
+                                <td><a href="{{ action('CountriesController@show', $country->{'country'}) }}" title="" alt="">{{ $country->{'country'} }}</a></td>
+                                <td class="text-right">{{ $country->{'cities'}->count() }}</td>                                
                             </tr>   
                         @endforeach 
                     </tbody>

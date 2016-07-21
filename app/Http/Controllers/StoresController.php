@@ -152,6 +152,7 @@ class StoresController extends Controller
      */
     private function updateStore(Store $store, StoreRequest $request)
     {
+        //disable constraints to add new store without manager
         \Schema::disableForeignKeyConstraints();
         $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
         $store->address->update($address_array);

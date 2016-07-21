@@ -60,6 +60,28 @@ class ApiController extends Controller
     public function storeInventory(Request $request)
     {
         Inventory::create($request->all());
+        flash(trans('messages.store', ['name' => trans('inventory.inventory')]), 'success');
         return redirect('films/'.$request->film_id);
+    }
+
+    /**
+     * create a new inventory for the film and store
+     *
+     * @param  Request $request
+     * @return redirect
+     */
+    public function destroyInventory(Inventory $inventory)
+    {
+        try {
+            $film_id=$inventory->film->film_id;
+            $inventory->delete();
+            flash(trans('messages.delete', ['name' => trans('inventory.inventory')]), 'success');
+            return redirect('films/'.$film_id);
+        } catch (\Illuminate\Database\QueryException $e) {
+            //return view('errors.503', ['myError'=>$e]);
+            dd($e);
+        } catch (PDOException $e) {
+            dd($e);
+        }
     }
 }

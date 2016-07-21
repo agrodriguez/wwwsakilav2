@@ -13,16 +13,16 @@
 	                <div class="form-group">
 	                    <div class="col-sm-6">
 	                        <label class="control-label" for="city">{{ trans('city.city') }}</label>
-	                        <input type="text" class="form-control" id="city" placeholder="{{ trans('city.city') }}" value="{{ $city->city }}" readonly="readonly">
+	                        <input type="text" class="form-control" id="city" placeholder="{{ trans('city.city') }}" value="{{ $city->{'city'} }}" readonly="readonly">
 	                    </div>
 	                    <div class="col-sm-3">
 	                        <label class="control-label" for="country_id">{{ trans('country.country') }}</label>
-	                        <input type="text" class="form-control" id="country_id" placeholder="{{ trans('country_id.country_id') }}" value="{{ $city->country->country }}" readonly="readonly">
+	                        <input type="text" class="form-control" id="country_id" placeholder="{{ trans('country_id.country_id') }}" value="{{ $city->{'countryName'} }}" readonly="readonly">
 	                    </div>
 	                </div>
 	                <div class="form-group">
 			            <div class="col-sm-12">
-			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', $city->city) }}" title="{{ trans('city.edit') }}" alt="{{ trans('city.edit') }}">{{ trans('city.edit') }}</a>
+			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', $city->{'city'}) }}" title="{{ trans('city.edit') }}" alt="{{ trans('city.edit') }}">{{ trans('city.edit') }}</a>
 			            </div>
 			        </div>
                 </form>

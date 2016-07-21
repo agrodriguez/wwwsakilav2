@@ -69,6 +69,17 @@ class City extends Model
      * @return void
      * @author
      **/
+    public function getCountryNameAttribute()
+    {
+        return $this->country->country;
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
     public function scopeOrderByCountry($query)
     {
         return $query->select(\DB::raw('city.*, country.country as countryName'))

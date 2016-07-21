@@ -20,10 +20,16 @@
                 <div class="col-sm-2">{!! Form::checkbox('active') !!}</div>                
                 <small class="text-danger">{{ $errors->first('active') }}</small>
             </div>
+            {{--
             <div class="col-sm-3">                
                 {!! Form::label('create_date',trans('customer.create_date'),['class'=>'control-label']) !!}
-                {!! Form::text('create_date',null,['class'=>'form-control','placeholder'=>trans('customer.create_date')]) !!}
+                {!! Form::date('create_date',null,['class'=>'form-control','placeholder'=>trans('customer.create_date'), 'id'=>'create_date']) !!}
                 <small class="text-danger">{{ $errors->first('create_date') }}</small>
+            </div>
+            --}}
+            <div class="col-sm-3">
+                <label class="control-label" for="cd">{{ trans('customer.create_date') }}</label>
+                <input type="text" class="form-control" id="cd" placeholder="{{ trans('address.address') }}" value="{{ $cd }}" readonly="readonly">    
             </div>
         </div>
 
