@@ -11,7 +11,7 @@
         <div class="col-md-10 col-md-offset-1">
                 <h2>{{ trans('actor.actor') }} <p class="lead"> {{ trans('actor.create') }} </p></h2>
 
-				{!! Form::open(['url'=>'actors','class'=>'form-horizontal']) !!}
+				{!! Form::open(['url'=>App::getLocale().'/actors','class'=>'form-horizontal']) !!}
 		
 					@include('actors._form',['submitButtonText' => trans('actor.add')])
 

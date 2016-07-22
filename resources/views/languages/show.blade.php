@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', $language->{'name'}) }}" title="{{ trans('language.edit') }}" alt="{{ trans('language.edit') }}">{{ trans('language.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('LanguagesController@edit', [$language->{'name'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('language.edit') }}" alt="{{ trans('language.edit') }}">{{ trans('language.edit') }}</a>
                     </div>
                 </div>
             </form>

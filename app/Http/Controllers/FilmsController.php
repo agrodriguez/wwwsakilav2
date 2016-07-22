@@ -51,13 +51,13 @@ class FilmsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FilmRequest $request)
+    public function store($locale, FilmRequest $request)
     {
         flash('Film Added', 'success');
         $film = Film::create($request->all());
         $this->syncFields($film, $request);
         flash(trans('messages.store', ['name' => trans('film.film')]), 'success');
-        return redirect('films/'.$film->film_id);
+        return redirect(\App::getLocale().'/films/'.$film->film_id);
     }
 
     /**
@@ -66,7 +66,7 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show($locale, Film $film)
     {
         $actors = $film->actors()->paginate(8);
         $categories = $film->categories()->paginate(8);
@@ -80,7 +80,7 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
+    public function edit($locale, Film $film)
     {
         return view('films.edit', compact('film'));
     }
@@ -92,13 +92,13 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FilmRequest $request, Film $film)
+    public function update($locale, FilmRequest $request, Film $film)
     {
         flash('Film Updated', 'success');
         $film->update($request->all());
         $this->syncFields($film, $request);
         flash(trans('messages.update', ['name' => trans('film.film')]), 'success');
-        return redirect('films/'.$film->film_id);
+        return redirect(\App::getLocale().'/films/'.$film->film_id);
     }
 
     /**
@@ -107,7 +107,7 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
+    public function destroy($locale, Film $film)
     {
         try {
             //create new request to delete related categories and actors via sync
@@ -115,7 +115,7 @@ class FilmsController extends Controller
             $this->syncFields($film, $request);
             $film->delete();
             flash(trans('messages.delete', ['name' => trans('film.film')]), 'success');
-            return redirect('films');
+            return redirect(\App::getLocale().'/films');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

@@ -63,7 +63,7 @@
 
                         <div class="form-group">
     	                    <div class="col-sm-12">
-    	                        <a class="btn btn-primary pull-left" href="{{ action('StoresController@edit', $store->{'store_id'}) }}" title="{{ trans('store.edit') }}" alt="{{ trans('store.edit') }}">{{ trans('store.edit') }}</a>
+    	                        <a class="btn btn-primary pull-left" href="{{ action('StoresController@edit', [$store->{'store_id'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('store.edit') }}" alt="{{ trans('store.edit') }}">{{ trans('store.edit') }}</a>
     	                    </div>
     	                </div>                        
                     </form>
@@ -74,7 +74,7 @@
             <div class="col-md-6 col-md-offset-0">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ trans('staff.staffs') }}</div>
-                    <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('StaffsController@create', ['sto'=>$store->{'store_id'}]) }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}">{{ trans('staff.create') }}</a></div>
+                    <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('StaffsController@create', ['sto'=>$store->{'store_id'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('staff.create') }}" alt="{{ trans('staff.create') }}">{{ trans('staff.create') }}</a></div>
                     <table class="table table-hover table-bordered">                        
                         <thead>
                             <tr>
@@ -86,7 +86,7 @@
                         <tbody> 
                             @foreach ($store->staffs as $staff)
                                 <tr>                                    
-                                    <td><a href="{{ action('StaffsController@show', $staff->{'slug'}) }}" title="" alt="">{{ $staff->{'fullName'} }}</a></td>
+                                    <td><a href="{{ action('StaffsController@show',[ $staff->{'slug'}, 'locale' => App::getLocale() ]) }}" title="" alt="">{{ $staff->{'fullName'} }}</a></td>
                                     <td class="text-center"><span class="glyphicon glyphicon-{{ $staff{'manages'}? 'ok': 'remove' }}" aria-hidden="true"></span></td>
                                 </tr>   
                             @endforeach 

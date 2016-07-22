@@ -49,11 +49,11 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store($locale, CategoryRequest $request)
     {
         $category = Category::create($request->all());
         flash(trans('messages.store', ['name' => trans('category.category')]), 'success');
-        return redirect('categories/'.$category->name);
+        return redirect(\App::getLocale().'/categories/'.$category->name);
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($locale, Category $category)
     {
         $category->load('films');
         $films = $category->films()->paginate(8);
@@ -75,7 +75,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($locale, Category $category)
     {
         return view('categories.edit', compact('category'));
     }
@@ -87,11 +87,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update($locale, CategoryRequest $request, Category $category)
     {
         $category->update($request->all());
         flash(trans('messages.update', ['name' => trans('category.category')]), 'success');
-        return redirect('categories/'.$category->name);
+        return redirect(\App::getLocale().'/categories/'.$category->name);
     }
 
     /**
@@ -100,12 +100,12 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($locale, Category $category)
     {
         try {
             $category->delete();
             flash(trans('messages.delete', ['name' => trans('category.category')]), 'success');
-            return redirect('categories');
+            return redirect(\App::getLocale().'/categories');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

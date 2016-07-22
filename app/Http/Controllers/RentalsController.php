@@ -47,7 +47,7 @@ class RentalsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($locale, Request $request)
     {
         //
     }
@@ -58,7 +58,7 @@ class RentalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rental $rental)
+    public function show($locale, Rental $rental)
     {
         return view('rentals.show', compact('rental'));
     }
@@ -69,7 +69,7 @@ class RentalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($locale, $id)
     {
         //
     }
@@ -81,7 +81,7 @@ class RentalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($locale, Request $request, $id)
     {
         //
     }
@@ -92,7 +92,7 @@ class RentalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($locale, $id)
     {
         //
     }

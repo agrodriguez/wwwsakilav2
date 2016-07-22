@@ -21,7 +21,7 @@
                 </div>
                  <div class="form-group">
                     <div class="col-sm-12">
-                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', $actor->{'slug'}) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('ActorsController@edit', [$actor->{'slug'}, 'locale'=>App::getLocale() ]) }}" title="{{ trans('actor.edit') }}" alt="{{ trans('actor.edit') }}">{{ trans('actor.edit') }}</a>
                     </div>
                 </div>
             </form>

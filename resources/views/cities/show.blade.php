@@ -22,7 +22,7 @@
 	                </div>
 	                <div class="form-group">
 			            <div class="col-sm-12">
-			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', $city->{'city'}) }}" title="{{ trans('city.edit') }}" alt="{{ trans('city.edit') }}">{{ trans('city.edit') }}</a>
+			                <a class="btn btn-primary pull-left" href="{{ action('CitiesController@edit', [$city->{'city'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('city.edit') }}" alt="{{ trans('city.edit') }}">{{ trans('city.edit') }}</a>
 			            </div>
 			        </div>
                 </form>

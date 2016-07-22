@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Routing\Router;
+
+use Illuminate\Http\Request;
+
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -66,11 +69,12 @@ class RouteServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function map(Router $router)
+    public function map(Router $router, Request $request)
     {
-        $this->mapWebRoutes($router);
+        //$this->mapWebRoutes($router);
 
-        //
+        $this->mapPrefixRoutes($router, $request);
+
     }
 
     /**
@@ -85,6 +89,27 @@ class RouteServiceProvider extends ServiceProvider
     {
         $router->group([
             'namespace' => $this->namespace, 'middleware' => 'web',
+        ], function ($router) {
+            require app_path('Http/routes.php');
+        });
+    }
+
+    /**
+     * Define the "localization" routes for the application.
+     *
+     * These routes all receive licalization prefix.
+     *
+     * @param  \Illuminate\Routing\Router  $router
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function mapPrefixRoutes(Router $router, Request $request)
+    {
+        $locale = $request->segment(1);
+        $this->app->setLocale($locale);
+
+        $router->group([
+            'namespace' => $this->namespace, 'prefix' => $locale, 'middleware' => 'web',
         ], function ($router) {
             require app_path('Http/routes.php');
         });

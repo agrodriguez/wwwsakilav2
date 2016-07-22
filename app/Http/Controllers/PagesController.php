@@ -13,8 +13,9 @@ class PagesController extends Controller
      *
      * @return view
      */
-    public function index()
+    public function index($locale)
     {
+        \App::setLocale($locale);
         return view('pages.home')->with('name', 'Sakila');
     }
 
@@ -23,7 +24,7 @@ class PagesController extends Controller
      *
      * @return view
      */
-    public function about()
+    public function about($locale)
     {
         return view('pages.about');
     }
@@ -33,7 +34,7 @@ class PagesController extends Controller
      *
      * @return [type]
      */
-    public function contact()
+    public function contact($locale)
     {
         return view('pages.contact');
     }

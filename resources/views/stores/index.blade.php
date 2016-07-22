@@ -10,7 +10,7 @@
                 <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('store.stores') }}</div>
                 <div class="panel-body">
-                    <a class="btn btn-primary pull-left" href="{{ action('StoresController@create') }}" title="{{ trans('store.create') }}" alt="{{ trans('store.create') }}">{{ trans('store.create') }}</a>
+                    <a class="btn btn-primary pull-left" href="{{ action('StoresController@create', [ 'locale' => App::getLocale() ]) }}" title="{{ trans('store.create') }}" alt="{{ trans('store.create') }}">{{ trans('store.create') }}</a>
                 </div>
                     <table class="table table-hover table-bordered">
                         
@@ -26,7 +26,7 @@
                         <tbody> 
                             @foreach ($stores as $store)
                                 <tr>
-                                    <td><a href="{{ action('StoresController@show', $store->{'store_id'}) }}" title="" alt="">{{ $store->{'storeName'} }}</a></td>
+                                    <td><a href="{{ action('StoresController@show', [$store->{'store_id'}, 'locale' => App::getLocale() ]) }}" title="" alt="">{{ $store->{'storeName'} }}</a></td>
                                     <td>{{ $store->{'managerName'} }}</td>
                                 </tr>   
                             @endforeach 

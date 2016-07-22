@@ -49,11 +49,11 @@ class LanguagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LanguageRequest $request)
+    public function store($locale, LanguageRequest $request)
     {
         $language = Language::create($request->all());
         flash(trans('messages.store', ['name' => trans('language.language')]), 'success');
-        return redirect('languages/'.$language->name);
+        return redirect(\App::getLocale().'/languages/'.$language->name);
     }
 
     /**
@@ -62,7 +62,7 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Language $language)
+    public function show($locale, Language $language)
     {
         $language->load('films');
         $films = $language->films()->paginate(8);
@@ -75,7 +75,7 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Language $language)
+    public function edit($locale, Language $language)
     {
         return view('languages.edit', compact('language'));
     }
@@ -87,11 +87,11 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LanguageRequest $request, Language $language)
+    public function update($locale, LanguageRequest $request, Language $language)
     {
         $language->update($request->all());
         flash(trans('messages.update', ['name' => trans('language.language')]), 'success');
-        return redirect('languages/'.$language->name);
+        return redirect(\App::getLocale().'/languages/'.$language->name);
     }
 
     /**
@@ -100,12 +100,12 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Language $language)
+    public function destroy($locale, Language $language)
     {
         try {
             $language->delete();
             flash(trans('messages.delete', ['name' => trans('language.language')]), 'success');
-            return redirect('languages');
+            return redirect(\App::getLocale().'/languages');
         } catch (\Illuminate\Database\QueryException $e) {
             //add flash
             return redirect('errors.503');//dd($e);

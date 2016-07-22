@@ -7,7 +7,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading"><b>{{ trans('language.languages') }} </b></div>
-                <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('LanguagesController@create') }}" title="{{ trans('language.create') }}" alt="{{ trans('language.create') }}">{{ trans('language.create') }}</a></div>         
+                <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('LanguagesController@create', ['locale' => App::getLocale() ]) }}" title="{{ trans('language.create') }}" alt="{{ trans('language.create') }}">{{ trans('language.create') }}</a></div>         
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
@@ -21,7 +21,7 @@
                     <tbody> 
                         @foreach ($languages as $language)
                             <tr>
-                                <td><a href="{{ action('LanguagesController@show', $language->{'name'}) }}" title="" alt="">{{ $language->{'name'} }}</a></td>
+                                <td><a href="{{ action('LanguagesController@show', [$language->{'name'}, 'locale' => App::getLocale() ]) }}" title="" alt="">{{ $language->{'name'} }}</a></td>
                                 
                             </tr>   
                         @endforeach 

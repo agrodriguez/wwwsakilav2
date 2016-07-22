@@ -93,7 +93,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a class="btn btn-primary pull-left" href="{{ action('CustomersController@edit', $customer->{'slug'}) }}" title="{{ trans('customer.edit') }}" alt="{{ trans('customer.edit') }}">{{ trans('customer.edit') }}</a>
+                            <a class="btn btn-primary pull-left" href="{{ action('CustomersController@edit', [$customer->{'slug'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('customer.edit') }}" alt="{{ trans('customer.edit') }}">{{ trans('customer.edit') }}</a>
                         </div>
                     </div>
                     
@@ -120,7 +120,8 @@
                 @foreach( $customer->{'rentals'} as $rental)
                         <tbody>
                             <tr>
-                                <td>{{ $rental->{'inventory'}->{'film'}->{'title'} }}</td>
+                                <td>
+                                <a href="{{ action('FilmsController@show',[ $rental->{'inventory'}->{'film'}->{'film_id'}, 'locale'=>App::getLocale() ]) }}" title="" alt="">{{ $rental->{'inventory'}->{'film'}->{'title'} }}</a></td>
                                 <td>{{ $rental->{'rental_date'}->{'format'}('d/m/Y') }}</td>
                                 
                                 

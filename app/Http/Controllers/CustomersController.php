@@ -52,11 +52,11 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store($locale, CustomerRequest $request)
     {
         $this->storeCustomer($request);
         flash(trans('messages.store', ['name' => trans('customer.customer')]), 'success');
-        return redirect('customers');
+        return redirect(\App::getLocale().'/customers');
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($locale, Customer $customer)
     {
         return view('customers.show', compact('customer'));
     }
@@ -76,7 +76,7 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($locale, Customer $customer)
     {
         $city=[$customer->address->city_id=>$customer->address->city->city];
         return view('customers.edit', compact('customer', 'city'));
@@ -89,11 +89,11 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomerRequest $request, Customer $customer)
+    public function update($locale, CustomerRequest $request, Customer $customer)
     {
         $this->updateCustomer($customer, $request);
         flash(trans('messages.update', ['name' => trans('customer.customer')]), 'success');
-        return redirect('customers/'.$customer->slug);
+        return redirect(\App::getLocale().'/customers/'.$customer->slug);
     }
 
     /**
@@ -102,12 +102,12 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($locale, Customer $customer)
     {
         try {
             $customer->delete();
             flash(trans('messages.delete', ['name' => trans('customer.customer')]), 'success');
-            return redirect('customers');
+            return redirect(\App::getLocale().'/customers');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

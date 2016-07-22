@@ -67,12 +67,12 @@
 
                         <div class="col-sm-2">
                             <label class="control-label" for="country_id">{{ trans('country.country') }}</label>
-                            <input type="text" class="form-control" id="country_id" placeholder="{{ trans('country.country') }}" value="{{ $staff->address->getCountry() }}" readonly="readonly">    
+                            <input type="text" class="form-control" id="country_id" placeholder="{{ trans('country.country') }}" value="{{ $staff->address->countryName }}" readonly="readonly">    
                         </div>
 
                         <div class="col-sm-2">
                             <label class="control-label" for="city_id">{{ trans('city.city') }}</label>
-                            <input type="text" class="form-control" id="city_id" placeholder="{{ trans('city.city') }}" value="{{ $staff->address->getCity() }}" readonly="readonly">    
+                            <input type="text" class="form-control" id="city_id" placeholder="{{ trans('city.city') }}" value="{{ $staff->address->cityName }}" readonly="readonly">    
                         </div>
                         <div class="col-sm-2">
                             <label class="control-label" for="district">{{ trans('address.district') }}</label>
@@ -109,7 +109,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a class="btn btn-primary pull-left" href="{{ action('StaffsController@edit', $staff->slug) }}" title="{{ trans('staff.edit') }}" alt="{{ trans('staff.edit') }}">{{ trans('staff.edit') }}</a>
+                            <a class="btn btn-primary pull-left" href="{{ action('StaffsController@edit', [$staff->{'slug'}, 'locale' => App::getLocale() ]) }}" title="{{ trans('staff.edit') }}" alt="{{ trans('staff.edit') }}">{{ trans('staff.edit') }}</a>
                         </div>
                     </div>                    
                 </form>

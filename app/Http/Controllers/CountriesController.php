@@ -49,11 +49,11 @@ class CountriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryRequest $request)
+    public function store($locale, CountryRequest $request)
     {
         $country = Country::create($request->all());
         flash(trans('messages.store', ['name' => trans('country.country')]), 'success');
-        return redirect('countries/'.$country->country);
+        return redirect(\App::getLocale().'/countries/'.$country->country);
     }
 
     /**
@@ -62,7 +62,7 @@ class CountriesController extends Controller
      * @param  App\Customer $customer
      * @return view
      */
-    public function show(Country $country)
+    public function show($locale, Country $country)
     {
         $cities = $country->cities()->paginate(6);
         return view('countries.show', compact('country', 'cities'));
@@ -74,7 +74,7 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit($locale, Country $country)
     {
         return view('countries.edit', compact('country'));
     }
@@ -87,11 +87,11 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CountryRequest $request, Country $country)
+    public function update($locale, CountryRequest $request, Country $country)
     {
         $country->update($request->all());
         flash(trans('messages.update', ['name' => trans('country.country')]), 'success');
-        return redirect('countries/'.$country->country);
+        return redirect(\App::getLocale().'/countries/'.$country->country);
     }
 
     /**
@@ -100,12 +100,12 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($locale, Country $country)
     {
         try {
             $country->delete();
             flash(trans('messages.delete', ['name' => trans('country.country')]), 'success');
-            return redirect('countries');
+            return redirect(\App::getLocale().'/countries');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

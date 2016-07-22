@@ -11,14 +11,14 @@
         <div class="col-md-10 col-md-offset-1">
                 <h2>{{ trans('actor.actor') }} <p class="lead"> {{ trans('actor.edit') }} </p></h2>
 
-				{!! Form::model($actor,['action'=>['ActorsController@update',$actor->slug],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
+				{!! Form::model($actor,['action'=>['ActorsController@update',$actor->slug, 'locale'=>App::getLocale() ],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
 						
 						@include('actors._form',['submitButtonText' => trans('actor.update')])
 
 				{!! Form::close() !!}
 
 				<h2><p class="lead"> {{ trans('actor.delete') }} </p></h2>
-                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->{'slug'}],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
+                {!! Form::model($actor,['action'=>['ActorsController@destroy',$actor->{'slug'}, 'locale'=>App::getLocale() ],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
 				<div class="form-group">
 				<div class="col-sm-6">
                         {!! Form::submit(trans('actor.delete') ,['class'=>'btn btn-primary', 'id' => 'delete_button']) !!}           

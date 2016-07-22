@@ -41,32 +41,31 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/'.App::getLocale().'/') }}">
                     Sakila V2
                 </a>
             </div>
-
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
-                    <li><a href="/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ trans('menu.contact') }}</a></li>
-                    <li><a href="/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ trans('menu.about') }}</a></li>
-                    <li><a href="/rentals">     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> {{ trans('rental.rentals') }}</a></li>
-                    <li><a href="/films">       <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('film.films') }}</a></li>
-                    <li><a href="/customers">   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('customer.customers') }}</a></li>
-                    <li><a href="/staffs">      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('staff.staffs') }}</a></li>
+                    <li><a href="{{ url('/'.App::getLocale().'/home') }}">{{ trans('menu.home') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/contact">     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ trans('menu.contact') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/about">       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ trans('menu.about') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/rentals">     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> {{ trans('rental.rentals') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/films">       <span class="glyphicon glyphicon-film" aria-hidden="true"></span> {{ trans('film.films') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/customers">   <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('customer.customers') }}</a></li>
+                    <li><a href="/{{ App::getLocale() }}/staffs">      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ trans('staff.staffs') }}</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.database') }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Sakila V2</li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/countries">{{ trans('country.countries') }}</a></li>
-                            <li><a href="/cities">{{ trans('city.cities') }}</a></li>
-                            <li><a href="/categories">{{ trans('category.categories') }}</a></li>
-                            <li><a href="/languages">{{ trans('language.languages') }}</a></li>
-                            <li><a href="/actors">{{ trans('actor.actors') }}</a></li>
-                            <li><a href="/stores">{{ trans('store.stores') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/countries">{{ trans('country.countries') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/cities">{{ trans('city.cities') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/categories">{{ trans('category.categories') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/languages">{{ trans('language.languages') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/actors">{{ trans('actor.actors') }}</a></li>
+                            <li><a href="/{{ App::getLocale() }}/stores">{{ trans('store.stores') }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -75,8 +74,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/'.App::getLocale().'/login') }}">Login</a></li>
+                        <li><a href="{{ url('/'.App::getLocale().'/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -84,10 +83,35 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/'.App::getLocale().'/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="{{ trans('menu.set_locale') }}" alt="{{ trans('menu.set_locale') }}">
+                            <i class="glyphicon glyphicon-flag"></i>
+                               <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>                                    
+                                    <a href="{{ url('/es') }}" title="{{ trans('menu.es_set_locale') }}" alt="{{ trans('menu.es_set_locale') }}">
+                                    @if( App::getLocale()=='es')
+                                        <i class="glyphicon glyphicon-ok pull-right"></i>
+                                    @endif
+                                        {{  Config::get('app.locales')['es'] }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/en') }}" title="{{ trans('menu.en_set_locale') }}" alt="{{ trans('menu.en_set_locale') }}">
+                                    @if( App::getLocale()=='en')
+                                        <i class="glyphicon glyphicon-ok pull-right"></i>
+                                    @endif
+                                        {{  Config::get('app.locales')['en'] }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                 </ul>
             </div>
         </div>

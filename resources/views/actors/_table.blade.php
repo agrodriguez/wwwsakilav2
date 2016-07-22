@@ -3,7 +3,7 @@
             <div class="panel-heading"><b>{{ trans('actor.actors') }}</b></div>
             @if(isset($show))
                 <div class="panel-body">
-                   <a class="btn btn-primary pull-left" href="{{ action('ActorsController@create') }}" title="{{ trans('actor.create') }}" alt="{{ trans('actor.create') }}">{{ trans('actor.create') }}</a>
+                   <a class="btn btn-primary pull-left" href="{{ action('ActorsController@create', ['locale'=>App::getLocale()]) }}" title="{{ trans('actor.create') }}" alt="{{ trans('actor.create') }}">{{ trans('actor.create') }}</a>
                </div>
             @endif
                 <table class="table table-hover table-bordered">
@@ -18,7 +18,7 @@
                     <tbody> 
                         @foreach ($actors as $actor)
                             <tr>                                    
-                                <td><a href="{{ action('ActorsController@show', $actor->{'slug'}) }}" title="" alt="">{{ $actor{'fullName'} }}</a></td>
+                                <td><a href="{{ action('ActorsController@show', [$actor->{'slug'}, 'locale'=>App::getLocale()]) }}" title="" alt="">{{ $actor{'fullName'} }}</a></td>
                             </tr>   
                         @endforeach 
                     </tbody>

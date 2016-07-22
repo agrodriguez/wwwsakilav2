@@ -81,7 +81,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <a class="btn btn-primary pull-left" href="{{ action('FilmsController@edit', $film->{'film_id'}) }}" title="{{ trans('film.edit') }}" alt="{{ trans('film.edit') }}">{{ trans('film.edit') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('FilmsController@edit', [$film->{'film_id'}, 'locale'=>App::getLocale() ]) }}" title="{{ trans('film.edit') }}" alt="{{ trans('film.edit') }}">{{ trans('film.edit') }}</a>
                     </div>
                 </div>
             </form>
@@ -132,7 +132,7 @@
                                         </a>
                                     @endforeach
                                 </td>
-                                <td>{!! Form::model($inventory,['action'=>['Api\ApiController@destroyInventory',$inventory->{'inventory_id'}],'method'=>'DELETE','class'=>'form-inline']) !!}
+                                <td>{!! Form::model($inventory,['action'=>['Api\ApiController@destroyInventory',$inventory->{'inventory_id'}, 'locale'=>App::getLocale() ],'method'=>'DELETE','class'=>'form-inline']) !!}
                                     {!! Form::submit(trans('inventory.delete') ,['class'=>'btn btn-primary btn-xs pull-right', 'alt' => trans('inventory.delete')]) !!}           
                                     {!! Form::close() !!}</td>
                             </tr>   

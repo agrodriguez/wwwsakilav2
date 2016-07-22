@@ -49,11 +49,11 @@ class ActorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ActorRequest $request)
+    public function store($locale, ActorRequest $request)
     {
         $actor = actor::create($request->all());
         flash(trans('messages.store', ['name' => trans('actor.actor')]), 'success');
-        return redirect('actors/'.$actor->slug);
+        return redirect(\App::getLocale().'/actors/'.$actor->slug);
     }
 
     /**
@@ -62,7 +62,7 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Actor $actor)
+    public function show($locale, Actor $actor)
     {
         $films = $actor->films()->paginate(6);
         return view('actors.show', compact('actor', 'films'));
@@ -74,7 +74,7 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actor $actor)
+    public function edit($locale, Actor $actor)
     {
         return view('actors.edit', compact('actor'));
     }
@@ -86,11 +86,11 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ActorRequest $request, Actor $actor)
+    public function update($locale, ActorRequest $request, Actor $actor)
     {
         $actor->update($request->all());
         flash(trans('messages.update', ['name' => trans('actor.actor')]), 'success');
-        return redirect('actors/'.$actor->slug);
+        return redirect(\App::getLocale().'/actors/'.$actor->slug);
     }
 
     /**
@@ -99,12 +99,12 @@ class ActorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actor $actor)
+    public function destroy($locale, Actor $actor)
     {
         try {
             $actor->delete();
             flash(trans('messages.delete', ['name' => trans('actor.actor')]), 'success');
-            return redirect('actors');
+            return redirect(\App::getLocale().'/actors');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

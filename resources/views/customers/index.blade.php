@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><b>{{ trans('customer.customers') }}</b></div class="panel-heading">
                 <div class="panel-body">
-                        <a class="btn btn-primary pull-left" href="{{ action('CustomersController@create') }}" title="{{ trans('customer.create') }}" alt="{{ trans('customer.create') }}">{{ trans('customer.create') }}</a>
+                        <a class="btn btn-primary pull-left" href="{{ action('CustomersController@create', ['locale' => App::getLocale() ]) }}" title="{{ trans('customer.create') }}" alt="{{ trans('customer.create') }}">{{ trans('customer.create') }}</a>
                 </div>
                 <table class="table table-hover table-bordered">
                     <thead>
@@ -24,7 +24,7 @@
                     <tbody> 
                         @foreach ($customers as $customer)
                             <tr>
-                                <td><a href="{{ action('CustomersController@show', $customer->{'slug'}) }}" title="" alt="">{{ $customer->{'fullName'} }}</a></td>
+                                <td><a href="{{ action('CustomersController@show',[ $customer->{'slug'}, 'locale' => App::getLocale() ]) }}" title="" alt="">{{ $customer->{'fullName'} }}</a></td>
                                 <td>{{ $customer->{'addressName'} }}</td>
                                 <td>{{ $customer->{'email'} }}</td>
                                 <td class="text-center"><span class="glyphicon glyphicon-{{ $customer->{'active'}? 'ok': 'remove' }}" aria-hidden="true"></span></td>

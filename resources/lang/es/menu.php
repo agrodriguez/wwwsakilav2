@@ -16,6 +16,9 @@ return [
     'contact' => 'Contacto',
     'about' => 'Acerca de',
     'database' => 'Catalogos',
+    'en_set_locale' => 'Change Language',
+    'es_set_locale' => 'Cambiar el Idioma',
+    'set_locale' => 'Change language',
     'text' => '
 <p>La base de datos de ejemplo Sakila fue diseñado como un reemplazo de la base de datos de ejemplo <a class="ulink" href="/doc/world-setup/en/" target="_top"><code class="literal">world</code></a>, también proporcionado por Oracle.</p>
 

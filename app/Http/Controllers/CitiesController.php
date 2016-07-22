@@ -52,11 +52,11 @@ class CitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CityRequest $request)
+    public function store($locale, CityRequest $request)
     {
         $city = city::create($request->all());
         flash(trans('messages.store', ['name' => trans('city.city')]), 'success');
-        return redirect('countries/'.$city->country->country);
+        return redirect(\App::getLocale().'/countries/'.$city->country->country);
     }
 
     /**
@@ -65,7 +65,7 @@ class CitiesController extends Controller
      * @param  App\Customer $city
      * @return view
      */
-    public function show(City $city)
+    public function show($locale, City $city)
     {
         return view('cities.show', compact('city'));
     }
@@ -76,7 +76,7 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(city $city)
+    public function edit($locale, city $city)
     {
         return view('cities.edit', compact('city'));
     }
@@ -89,11 +89,11 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CityRequest $request, city $city)
+    public function update($locale, CityRequest $request, city $city)
     {
         $city->update($request->all());
         flash(trans('messages.update', ['name' => trans('city.city')]), 'success');
-        return redirect('cities/'.$city->city);
+        return redirect(\App::getLocale().'/cities/'.$city->city);
     }
 
     /**
@@ -102,13 +102,13 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy($locale, City $city)
     {
         try {
             $country=$city->country->country;
             $city->delete();
             flash(trans('messages.delete', ['name' => trans('city.city')]), 'success');
-            return redirect('countries/'.$country);
+            return redirect(\App::getLocale().'/countries/'.$country);
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

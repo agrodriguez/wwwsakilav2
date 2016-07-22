@@ -56,11 +56,11 @@ class StaffsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StaffRequest $request)
+    public function store($locale, StaffRequest $request)
     {
         $staff=$this->storeStaff($request);
         flash(trans('messages.store', ['name' => trans('staff.staff')]), 'success');
-        return redirect('staffs/'.$staff->slug);
+        return redirect(\App::getLocale().'/staffs/'.$staff->slug);
     }
 
     /**
@@ -69,7 +69,7 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Staff $staff)
+    public function show($locale, Staff $staff)
     {
         return view('staffs.show', compact('staff'));
     }
@@ -80,7 +80,7 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Staff $staff)
+    public function edit($locale, Staff $staff)
     {
         $city=[$staff->address->city_id=>$staff->address->city->city];
         return view('staffs.edit', compact('staff', 'city'));
@@ -93,11 +93,11 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StaffRequest $request, Staff $staff)
+    public function update($locale, StaffRequest $request, Staff $staff)
     {
         $this->updateStaff($staff, $request);
         flash(trans('messages.update', ['name' => trans('staff.staff')]), 'success');
-        return redirect('staffs/'.$staff->slug);
+        return redirect(\App::getLocale().'/staffs/'.$staff->slug);
     }
 
     /**
@@ -106,12 +106,12 @@ class StaffsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Staff $staff)
+    public function destroy($locale, Staff $staff)
     {
         try {
             $staff->delete();
             flash(trans('messages.delete', ['name' => trans('staff.staff')]), 'success');
-            return redirect('staffs');
+            return redirect(\App::getLocale().'/staffs');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

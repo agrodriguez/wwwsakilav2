@@ -16,6 +16,9 @@ return [
     'contact' => 'Contact',
     'about' => 'About',
     'database' => 'Database',
+    'en_set_locale' => 'Change Language',
+    'es_set_locale' => 'Cambiar el Idioma',
+    'set_locale' => 'Cambiar el Idioma',
     'text' => '
     <p>
           The Sakila sample database was designed as a replacement to the

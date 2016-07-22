@@ -11,13 +11,13 @@
         <div class="col-md-12 col-md-offset-0">
                 <h2>{{ trans('country.country') }} <p class="lead"> {{ trans('country.edit') }} </p></h2>
 
-				{!! Form::model($country,['action'=>['CountriesController@update',$country->{'country'}],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
+				{!! Form::model($country,['action'=>['CountriesController@update',$country->{'country'}, 'locale' => App::getLocale() ],'method'=>'PATCH','class'=>'form-horizontal col-sm-offset-0']) !!}
 						
 						@include('countries._form',['submitButtonText' => trans('country.update')])
 
 				{!! Form::close() !!}
 				<h2><p class="lead"> {{ trans('country.delete') }} </p></h2>
-                {!! Form::model($country,['action'=>['CountriesController@destroy',$country->{'country'}],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
+                {!! Form::model($country,['action'=>['CountriesController@destroy',$country->{'country'}, 'locale' => App::getLocale() ],'method'=>'DELETE','class'=>'form-horizontal', 'id' => 'delete_form']) !!}
 
                 <div class="form-group">
             		<div class="col-sm-12">

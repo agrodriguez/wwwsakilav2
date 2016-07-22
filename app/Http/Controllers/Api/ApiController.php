@@ -61,7 +61,7 @@ class ApiController extends Controller
     {
         Inventory::create($request->all());
         flash(trans('messages.store', ['name' => trans('inventory.inventory')]), 'success');
-        return redirect('films/'.$request->film_id);
+        return redirect(\App::getLocale().'/films/'.$request->film_id);
     }
 
     /**
@@ -76,7 +76,7 @@ class ApiController extends Controller
             $film_id=$inventory->film->film_id;
             $inventory->delete();
             flash(trans('messages.delete', ['name' => trans('inventory.inventory')]), 'success');
-            return redirect('films/'.$film_id);
+            return redirect(\App::getLocale().'/films/'.$film_id);
         } catch (\Illuminate\Database\QueryException $e) {
             //return view('errors.503', ['myError'=>$e]);
             dd($e);

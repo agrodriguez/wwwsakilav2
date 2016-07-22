@@ -11,7 +11,7 @@
         <div class="col-md-12 col-md-offset-0">
                 <h2>{{ trans('country.country') }} <p class="lead"> {{ trans('country.create') }} </p></h2>
 
-				{!! Form::open(['url'=>'countries','class'=>'form-horizontal']) !!}
+				{!! Form::open(['url'=>App::getLocale().'/countries','class'=>'form-horizontal']) !!}
 		
 					@include('countries._form',['submitButtonText' => trans('country.add'), 'cid'=>null])
 

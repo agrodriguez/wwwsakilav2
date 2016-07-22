@@ -55,11 +55,11 @@ class StoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store($locale, StoreRequest $request)
     {
         $store=$this->storeStore($request);
         flash(trans('messages.store', ['name' => trans('store.store')]), 'success');
-        return redirect('stores/'.$store->store_id);
+        return redirect(\App::getLocale().'/stores/'.$store->store_id);
     }
 
     /**
@@ -68,7 +68,7 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Store $store)
+    public function show($locale, Store $store)
     {
         return view('stores.show', compact('store'));
     }
@@ -79,7 +79,7 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Store $store)
+    public function edit($locale, Store $store)
     {
         $city=[$store->address->city_id=>$store->address->city->city];
         $staffs= Staff::getNotManager()->lists('name', 'staff_id');
@@ -93,11 +93,11 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRequest $request, Store $store)
+    public function update($locale, StoreRequest $request, Store $store)
     {
         $this->updateStore($store, $request);
         flash(trans('messages.update', ['name' => trans('store.store')]), 'success');
-        return redirect('stores/'.$store->store_id);
+        return redirect(\App::getLocale().'/stores/'.$store->store_id);
     }
 
     /**
@@ -106,12 +106,12 @@ class StoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Store $store)
+    public function destroy($locale, Store $store)
     {
         try {
             $store->delete();
             flash(trans('messages.delete', ['name' => trans('store.store')]), 'success');
-            return redirect('stores');
+            return redirect(\App::getLocale().'/stores');
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {

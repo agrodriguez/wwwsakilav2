@@ -9,7 +9,7 @@
                 {{ trans('rental.rentals') }}
             </div>
             <div class="panel-body">
-                <a class="btn btn-primary pull-left" href="{{ action('RentalsController@create') }}" title="{{ trans('rental.create') }}" alt="{{ trans('rental.create') }}">{{ trans('rental.create') }}</a>
+                <a class="btn btn-primary pull-left" href="{{ action('RentalsController@create', ['locale' => App::getLocale() ]) }}" title="{{ trans('rental.create') }}" alt="{{ trans('rental.create') }}">{{ trans('rental.create') }}</a>
             </div>
                 <table class="table table-hover table-bordered">
                     <thead>
@@ -27,7 +27,7 @@
                     <tbody> 
                         @foreach ($rentals as $rental)
                             <tr>
-                                <td><a href="{{ action('RentalsController@show', $rental->{'rental_id'}) }}" title="" alt="">{{ $rental->{'rental_id'} }}</a></td>
+                                <td><a href="{{ action('RentalsController@show', [$rental->{'rental_id'}, 'locale' => App::getLocale() ]) }}" title="" alt="">{{ $rental->{'rental_id'} }}</a></td>
                                 <td>{{ $rental->{'rental_date'}->format('d-m-Y') }}</td>
                                 <td>
                                 @if ( $rental->{'return_date'})
