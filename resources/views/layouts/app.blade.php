@@ -75,7 +75,7 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/'.App::getLocale().'/login') }}">Login</a></li>
-                        <li><a href="{{ url('/'.App::getLocale().'/register') }}">Register</a></li>
+                        {{-- <li><a href="{{ url('/'.App::getLocale().'/register') }}">Register</a></li> --}}
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -95,15 +95,15 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>                                    
-                                    <a href="{{ url('/es') }}" title="{{ trans('menu.es_set_locale') }}" alt="{{ trans('menu.es_set_locale') }}">
+                                    <a href="{{ url(Request::path().'?lang=es') }}" title="{{ trans('menu.es_set_locale') }}" alt="{{ trans('menu.es_set_locale') }}">
                                     @if( App::getLocale()=='es')
                                         <i class="glyphicon glyphicon-ok pull-right"></i>
                                     @endif
-                                        {{  Config::get('app.locales')['es'] }}
+                                        {{ Config::get('app.locales')['es'] }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/en') }}" title="{{ trans('menu.en_set_locale') }}" alt="{{ trans('menu.en_set_locale') }}">
+                                    <a href="{{ url(Request::path().'?lang=en') }}" title="{{ trans('menu.en_set_locale') }}" alt="{{ trans('menu.en_set_locale') }}">
                                     @if( App::getLocale()=='en')
                                         <i class="glyphicon glyphicon-ok pull-right"></i>
                                     @endif
@@ -116,7 +116,11 @@
             </div>
         </div>
     </nav>
-    
+    {{-- <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+    </ol> --}}
     @yield('content')
 
     <!-- JavaScripts -->

@@ -11,19 +11,7 @@
 |
 */
 
-Route::get('/{locale}/', function () {
-    return view('welcome');
-});
-
-/**
- * Route::group(['middleware' => 'language'], function () {
- *    //Route::controllers([ 'auth' => 'Auth\AuthController', 'password' => 'Auth\PasswordController', ]);
- *
- * });
-*/
-
 // give precedenco to api namespace prefix, dont need to be localised
-
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::get('cities', 'ApiController@cities');
     Route::get('inventories', 'ApiController@inventories')->name('inventory.show');
@@ -31,9 +19,10 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::delete('inventories/{inventory}', 'ApiController@destroyInventory')->name('inventory.destroy');
 });
 
-//Route::auth();
+// Overrride Authentication routes
+// Route::auth();
 
-//localised Auth
+// For localised Auth
 // Authentication routes...
 Route::get('{locale}/login', 'Auth\AuthController@showLoginForm');
 Route::post('{locale}/login', 'Auth\AuthController@login');
@@ -50,12 +39,14 @@ Route::post('{locale}/password/email', 'Auth\PasswordController@sendResetLinkEma
 Route::post('{locale}/password/reset', 'Auth\PasswordController@reset');
 Route::get('{locale}/password/reset/{token}', 'Auth\PasswordController@showResetForm');
 
-
+// Static pages
+Route::get('/', 'PagesController@index');
 Route::get('/{locale}/', 'PagesController@index');
 Route::get('{locale}/home', 'PagesController@index');
 Route::get('{locale}/about', 'PagesController@about');
 Route::get('{locale}/contact', 'PagesController@contact');
 
+// App Controllers
 Route::resource('{locale}/actors', 'ActorsController', ['parameters'=>['actors'=>'actor']]);
 Route::resource('{locale}/categories', 'CategoriesController', ['parameters'=>['categories'=>'category']]);
 Route::resource('{locale}/cities', 'CitiesController', ['parameters'=>['cities'=>'city']]);

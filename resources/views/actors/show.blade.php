@@ -4,7 +4,7 @@
 <div class="container">
 @include('flash')
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 col-md-offset-0">
             <h2>{{ trans('actor.actor') }}
                 <p class="lead">{{ trans('actor.edit') }}</p>
             </h2>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </form>
-            @include('films._shortTable', ['count'=> $actor->films->count() ])            
+            @include('films._shortTable', ['count'=> $actor->{'films'}->count() ])            
         </div>
     </div>
 </div>

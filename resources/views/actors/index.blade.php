@@ -4,7 +4,7 @@
 <div class="container">
 @include('flash')
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-12 col-md-offset-0">
             @include('actors._table', ['show'=>'true'])
         </div>
     </div>

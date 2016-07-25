@@ -29,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('films')->paginate(10);
+        $categories = Category::with('films')->paginate(10, ['*'], 'categories_page');
         return view('categories.index', compact('categories'));
     }
 
@@ -46,7 +46,8 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\ActorRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store($locale, CategoryRequest $request)
@@ -59,7 +60,8 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Category $category the selected category
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Category $category)
@@ -72,7 +74,8 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Category $category the selected category
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Category $category)
@@ -83,8 +86,9 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CategoryRequest  $request
+     * @param App\Category $category the selected category
      * @return \Illuminate\Http\Response
      */
     public function update($locale, CategoryRequest $request, Category $category)
@@ -97,7 +101,8 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Category $category the selected category
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Category $category)

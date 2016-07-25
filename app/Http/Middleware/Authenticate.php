@@ -21,7 +21,8 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                // handle localised failed login atempt
+                return redirect()->guest('/'.\App::getLocale().'/login');
             }
         }
 

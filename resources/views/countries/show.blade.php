@@ -22,7 +22,7 @@
 			        </div>
                 </form>
             </div>
-         </div>
+        </div>
         <hr>    
     	<div class="row">
     		<div class="col-md-6 col-md-offset-0">
@@ -35,7 +35,9 @@
 	                            <th class="text-center">{{ trans('city.city') }}</th>
 	                        </tr>
 	                    </thead>
+	                    @if($cities->links())
 	                    <tfoot><tr><td>{!! $cities->links() !!}</td></tr></tfoot>
+	                    @endif
 	                    <tbody> 
 	                        @foreach ($cities as $city)
 	                            <tr>                                    
@@ -46,9 +48,6 @@
 	                </table>                
 	        	</div>
 	        </div>
-	        </div>
 	    </div>
 	</div>
-
 @stop
-

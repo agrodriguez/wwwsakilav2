@@ -49,7 +49,8 @@ class CitiesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CityRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store($locale, CityRequest $request)
@@ -62,7 +63,8 @@ class CitiesController extends Controller
     /**
      * show city detail
      *
-     * @param  App\Customer $city
+     * @param String $locale the selected locale
+     * @param App\City $city the selected city
      * @return view
      */
     public function show($locale, City $city)
@@ -73,7 +75,8 @@ class CitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\City $city the selected city
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, city $city)
@@ -85,8 +88,9 @@ class CitiesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CityRequest  $request
+     * @param App\City $city the selected city
      * @return \Illuminate\Http\Response
      */
     public function update($locale, CityRequest $request, city $city)
@@ -99,7 +103,8 @@ class CitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\City $city the selected city
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, City $city)

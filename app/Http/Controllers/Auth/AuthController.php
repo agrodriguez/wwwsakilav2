@@ -28,7 +28,23 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '';
+
+    /**
+     * Where to redirect users after successful login / registration.
+     * Illuminate\Foundation\Auth\AuthenticatesUsers
+     *
+     * @var string
+     */
+    protected $redirectPath='';
+    
+    /**
+     * Where to redirect users after logout / registration.
+     * Illuminate\Foundation\Auth\AuthenticatesUsers
+     *
+     * @var string
+     */
+    protected $redirectAfterLogout = '';
 
     /**
      * Create a new authentication controller instance.
@@ -38,7 +54,9 @@ class AuthController extends Controller
     public function __construct()
     {
         
-        $this->redirectTo='/'.\App::getLocale().'/';
+        $this->redirectTo = '/'.\App::getLocale();
+        $this->redirectPath = '/'.\App::getLocale();
+        $this->redirectAfterLogout = '/'.\App::getLocale();
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 

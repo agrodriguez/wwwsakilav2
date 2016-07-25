@@ -41,6 +41,7 @@ class StaffsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Illuminate\Http\Requests $request use the request to get the store param
      * @return \Illuminate\Http\Response
      */
     public function create(HttpRequest $request)
@@ -53,7 +54,9 @@ class StaffsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\StaffRequest  $request
+     * @param App\Staff $staff the selected staff
      * @return \Illuminate\Http\Response
      */
     public function store($locale, StaffRequest $request)
@@ -66,7 +69,8 @@ class StaffsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Staff $staff the selected staff
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Staff $staff)
@@ -77,7 +81,8 @@ class StaffsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Staff $staff the selected staff
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Staff $staff)
@@ -89,8 +94,9 @@ class StaffsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\StaffRequest  $request
+     * @param App\Staff $staff the selected staff
      * @return \Illuminate\Http\Response
      */
     public function update($locale, StaffRequest $request, Staff $staff)
@@ -103,7 +109,8 @@ class StaffsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Staff $staff the selected staff
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Staff $staff)

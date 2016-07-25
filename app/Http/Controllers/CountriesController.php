@@ -46,7 +46,9 @@ class CountriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CountryRequest  $request
+     * @param App\Country $country the selected country
      * @return \Illuminate\Http\Response
      */
     public function store($locale, CountryRequest $request)
@@ -59,7 +61,8 @@ class CountriesController extends Controller
     /**
      * show customere detail
      *
-     * @param  App\Customer $customer
+     * @param String $locale the selected locale
+     * @param App\Country $country the selected country
      * @return view
      */
     public function show($locale, Country $country)
@@ -71,7 +74,8 @@ class CountriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Country $country the selected country
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Country $country)
@@ -83,8 +87,9 @@ class CountriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CountryRequest  $request
+     * @param App\Country $country the selected country
      * @return \Illuminate\Http\Response
      */
     public function update($locale, CountryRequest $request, Country $country)
@@ -97,7 +102,8 @@ class CountriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Country $country the selected country
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Country $country)

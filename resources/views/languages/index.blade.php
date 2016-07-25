@@ -4,7 +4,7 @@
 <div class="container">
 @include('flash')
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading"><b>{{ trans('language.languages') }} </b></div>
                 <div class="panel-body"><a class="btn btn-primary pull-left" href="{{ action('LanguagesController@create', ['locale' => App::getLocale() ]) }}" title="{{ trans('language.create') }}" alt="{{ trans('language.create') }}">{{ trans('language.create') }}</a></div>         

@@ -4,7 +4,7 @@
 <div class="container">
 @include('flash')
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
             
                 <div class="panel-heading"><b>{{ trans('city.cities') }}</b></div>

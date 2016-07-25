@@ -48,7 +48,9 @@ class FilmsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\FilmRequest  $request
+     * @param App\Film $film the selected film
      * @return \Illuminate\Http\Response
      */
     public function store($locale, FilmRequest $request)
@@ -63,13 +65,14 @@ class FilmsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Film $film the selected film
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Film $film)
     {
-        $actors = $film->actors()->paginate(8);
-        $categories = $film->categories()->paginate(8);
+        $actors = $film->actors()->paginate(5, ['*'], 'actors_page');
+        $categories = $film->categories()->paginate(5, ['*'], 'categories_page');
         $inventories = $film->inventories()->where('store_id', Auth::user()->store_id)->paginate(8);
         return view('films.show', compact('film', 'actors', 'categories', 'inventories'));
     }
@@ -77,7 +80,8 @@ class FilmsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Film $film the selected film
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Film $film)
@@ -88,8 +92,9 @@ class FilmsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\FilmRequest  $request
+     * @param App\Film $film the selected film
      * @return \Illuminate\Http\Response
      */
     public function update($locale, FilmRequest $request, Film $film)
@@ -104,7 +109,8 @@ class FilmsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Film $film the selected film
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Film $film)

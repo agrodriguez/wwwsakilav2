@@ -159,24 +159,32 @@ class Staff extends Model
     }
     
     /**
-     * undocumented function
+     * get the store manager and all the other staff that is not manager in other store
      *
-     * @return void
-     * @author
+     * @param Staff $query staff query scope
+     * @return Query
      **/
     public function scopeGetNotManager($query)
     {
         return $query->select(\DB::raw('staff_id, concat(first_name," ", last_name) as name, store.*'))
         ->leftJoin('store', 'store.manager_staff_id', '=', 'staff.staff_id')
-        ->whereNull('manager_staff_id');
+        ->whereNull('manager_staff_id')
+        ->orWhereColumn('manager_staff_id', 'staff_id');
+        /**
+         * is the same as
+         * select staff_id, concat(first_name," ", last_name) as name, store.* from staff
+         * left join store on store.manager_staff_id = staff.staff_id
+         * where manager_staff_id is null or manager_staff_id=staff_id and store.store_id=4
+         *
+         */
     }
 
 
     /**
-     * [scopeWhereSlug description]
-     * @param  [type] $query [description]
-     * @param  [type] $value [description]
-     * @return [type]        [description]
+     * return the staff record from the given slug
+     * @param  Staff $query scope for the staff
+     * @param  String $value the slug value as "first_name-last_name"
+     * @return Staff query the filtered query
      */
     public function scopeWhereSlug($query, $value)
     {

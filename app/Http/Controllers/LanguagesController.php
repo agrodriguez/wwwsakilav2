@@ -46,7 +46,9 @@ class LanguagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\LanguageRequest  $request
+     * @param App\Language $language the selected language
      * @return \Illuminate\Http\Response
      */
     public function store($locale, LanguageRequest $request)
@@ -59,7 +61,8 @@ class LanguagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Language $language the selected language
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Language $language)
@@ -72,7 +75,8 @@ class LanguagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Language $language the selected language
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Language $language)
@@ -83,8 +87,9 @@ class LanguagesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\LanguageRequest  $request
+     * @param App\Language $language the selected language
      * @return \Illuminate\Http\Response
      */
     public function update($locale, LanguageRequest $request, Language $language)
@@ -97,7 +102,8 @@ class LanguagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Language $language the selected language
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Language $language)

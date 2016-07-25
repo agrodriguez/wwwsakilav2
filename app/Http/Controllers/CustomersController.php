@@ -49,7 +49,9 @@ class CustomersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CustomerRequest  $request
+     * @param App\Customer $customer the selected customer
      * @return \Illuminate\Http\Response
      */
     public function store($locale, CustomerRequest $request)
@@ -62,7 +64,8 @@ class CustomersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Customer $customer the selected customer
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Customer $customer)
@@ -73,7 +76,8 @@ class CustomersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Customer $customer the selected customer
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Customer $customer)
@@ -85,8 +89,9 @@ class CustomersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\CustomerRequest  $request
+     * @param App\Customer $customer the selected customer
      * @return \Illuminate\Http\Response
      */
     public function update($locale, CustomerRequest $request, Customer $customer)
@@ -99,7 +104,8 @@ class CustomersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Customer $customer the selected customer
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Customer $customer)

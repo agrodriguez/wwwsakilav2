@@ -55,7 +55,9 @@ class RentalsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\RentalRequest  $request
+     * @param App\Rental $rental the selected rental
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Rental $rental)
@@ -66,7 +68,8 @@ class RentalsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Rental $rental the selected rental
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, $id)
@@ -77,8 +80,9 @@ class RentalsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\RentalRequest  $request
+     * @param App\Rental $rental the selected rental
      * @return \Illuminate\Http\Response
      */
     public function update($locale, Request $request, $id)
@@ -89,7 +93,8 @@ class RentalsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Rental $rental the selected rental
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, $id)

@@ -76,6 +76,17 @@ class Store extends Model
     }
 
     /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
+    }
+
+    /**
      * relation
      *
      * @return relation
@@ -83,6 +94,16 @@ class Store extends Model
     public function inventories()
     {
         return $this->hasMany(Inventory::class);
+    }
+
+    /**
+     * films relation Through inventories
+     *
+     * @return relation
+     */
+    public function films()
+    {
+        return $this->hasManyThrough(Film::class, Inventory::class, 'store_id', 'film_id');
     }
 
     /**

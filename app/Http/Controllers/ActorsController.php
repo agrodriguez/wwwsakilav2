@@ -29,7 +29,7 @@ class ActorsController extends Controller
      */
     public function index()
     {
-        $actors = Actor::orderBy('first_name')->paginate(10);
+        $actors = Actor::orderBy('first_name')->paginate(10, ['*'], 'actors_page');
         return view('actors.index', compact('actors'));
     }
 
@@ -46,7 +46,8 @@ class ActorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\ActorRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store($locale, ActorRequest $request)
@@ -59,7 +60,8 @@ class ActorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Actor $actor the selected actor
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Actor $actor)
@@ -71,7 +73,8 @@ class ActorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Actor $actor the selected actor
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Actor $actor)
@@ -82,8 +85,9 @@ class ActorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\ActorRequest  $request
+     * @param App\Actor $actor the selected actor
      * @return \Illuminate\Http\Response
      */
     public function update($locale, ActorRequest $request, Actor $actor)
@@ -96,7 +100,8 @@ class ActorsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Actor $actor the selected actor
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Actor $actor)

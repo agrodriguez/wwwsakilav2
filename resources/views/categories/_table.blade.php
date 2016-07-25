@@ -9,15 +9,23 @@
                     <thead>
                         <tr>
                             <th class="text-center">{{ trans('category.name') }}</th>
+                            <th class="text-center">{{ trans('film.films') }}</th>
                         </tr>
                     </thead>
                     @if($categories->links())
-                    <tfoot><tr><td>{!! $categories->links() !!}</td></tr></tfoot>
+                    <tfoot><tr><td colspan="2">
+                    @if(isset($actors))
+                    {!! $categories->appends(['actors_page'=>$actors->currentPage()]) !!}
+                    @else
+                    {!! $categories->links() !!}
+                    @endif
+                    </td></tr></tfoot>
                     @endif
                     <tbody> 
                         @foreach ($categories as $category)
                             <tr>
                                 <td><a href="{{ action('CategoriesController@show',[ $category->{'name'}, 'locale'=>App::getLocale()]) }}" title="" alt="">{{ $category->{'name'} }}</a></td>
+                                <td class="text-right">{{ $category->films->count() }}</td>
                             </tr>   
                         @endforeach 
                     </tbody>

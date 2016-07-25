@@ -28,15 +28,25 @@ class Language
     public function handle($request, Closure $next)
     {
         // Make sure current locale exists.
+
         $locale = $request->segment(1);
 
+        // If is an api call go to next request. no action needed
         if ($locale=='api') {
             return $next($request);
         }
 
+        // if selected language not in predefined languages select default
         if (!array_key_exists($locale, $this->app->config->get('app.locales'))) {
             $segments = $request->segments();
             $segments[0] = $this->app->config->get('app.fallback_locale');
+            return $this->redirector->to(implode('/', $segments));
+        }
+
+        // Change selected language
+        if ($request->has('lang')) {
+            $segments = $request->segments();
+            $segments[0] =$request->lang;
             return $this->redirector->to(implode('/', $segments));
         }
 

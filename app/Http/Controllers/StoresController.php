@@ -52,7 +52,9 @@ class StoresController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\StoreRequest  $request
+     * @param App\Store $store the selected store
      * @return \Illuminate\Http\Response
      */
     public function store($locale, StoreRequest $request)
@@ -65,32 +67,36 @@ class StoresController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Store $store the selected store
      * @return \Illuminate\Http\Response
      */
     public function show($locale, Store $store)
     {
-        return view('stores.show', compact('store'));
+        $films=$store->films()->paginate(6);
+        return view('stores.show', compact('store', 'films'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Store $store the selected store
      * @return \Illuminate\Http\Response
      */
     public function edit($locale, Store $store)
     {
         $city=[$store->address->city_id=>$store->address->city->city];
-        $staffs= Staff::getNotManager()->lists('name', 'staff_id');
+        $staffs= Staff::getNotManager()->where('store.store_id', $store->store_id)->lists('name', 'staff_id');
         return view('stores.edit', compact('store', 'city', 'staffs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Http\Requests\StoreRequest  $request
+     * @param App\Store $store the selected store
      * @return \Illuminate\Http\Response
      */
     public function update($locale, StoreRequest $request, Store $store)
@@ -103,15 +109,19 @@ class StoresController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param String $locale the selected locale
+     * @param App\Store $store the selected store
      * @return \Illuminate\Http\Response
      */
     public function destroy($locale, Store $store)
     {
         try {
+            // \Schema::disableForeignKeyConstraints();
+            // Nota no borrar usuario actual ni tienda actual
             $store->delete();
             flash(trans('messages.delete', ['name' => trans('store.store')]), 'success');
             return redirect(\App::getLocale().'/stores');
+            // \Schema::enableForeignKeyConstraints();
         } catch (\Illuminate\Database\QueryException $e) {
             return view('errors.503', ['myError'=>$e]);
         } catch (PDOException $e) {
@@ -152,7 +162,7 @@ class StoresController extends Controller
      */
     private function updateStore(Store $store, StoreRequest $request)
     {
-        //disable constraints to add new store without manager
+        //disable constraints to update store without manager
         \Schema::disableForeignKeyConstraints();
         $address_array = array_add(array_add($request->address, 'city_id', $request->city_id), 'location', $request->location);
         $store->address->update($address_array);

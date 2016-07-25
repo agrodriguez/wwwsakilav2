@@ -3,7 +3,7 @@
 @section('content')
     @include('errors.list')
     <div class="container">
-        @include('flash')
+        @include('flash')        
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                     <h2>{{ trans('store.store') }}
@@ -82,7 +82,10 @@
                                 <th class="text-center">{{ trans('store.manager_staff_id') }}</th>
                             </tr>
                         </thead>
-                        <tfoot><tr><td colspan="2"></td></tr></tfoot>
+                        
+                        
+                        {{-- <tfoot><tr><td colspan="2"></td></tr></tfoot> --}}
+                        
                         <tbody> 
                             @foreach ($store->staffs as $staff)
                                 <tr>                                    
@@ -93,7 +96,25 @@
                         </tbody>
                     </table>                
                 </div>
-            </div>            
+            </div> 
+            <div class="col-md-6 col-md-offset-0">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ trans('Store.store') }}</div>
+                    
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                {{ trans('customer.customers') }} <span class="badge">{{ $store->{'customers'}->count() }}</span>                       
+                            </li>
+                            <li class="list-group-item">
+                                {{ trans('film.films') }} <span class="badge">{{ $store->{'films'}->count() }}</span>
+                            </li>
+                            <li class="list-group-item">
+                                {{ trans('inventory.inventories') }} <span class="badge">{{ $store->{'inventories'}->count() }}</span>
+                            </li>
+                        </ul>
+                </div>
+                {{-- @include('films._shortTable', ['count'=> $store->{'films'}->count() ]) --}}
+            </div>
         </div>
     </div>
     

@@ -10,6 +10,8 @@ use App\Language;
 
 use App\Country;
 
+use App\Actor;
+
 use DB;
 
 class ViewControllerServiceProvider extends ServiceProvider
