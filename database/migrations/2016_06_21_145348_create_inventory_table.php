@@ -21,6 +21,7 @@ class CreateInventoryTable extends Migration
             $table->foreign('film_id', 'fk_inventory_film')->references('film_id')->on('film')->onDelete('restrict')->onUpdate('cascade');
         });
 
+        // modify table to add foreign key
         Schema::table('rental', function ($table) {
             $table->foreign('inventory_id', 'fk_rental_inventory')->references('inventory_id')->on('inventory')->onDelete('restrict')->onUpdate('cascade');
         });
@@ -35,5 +36,6 @@ class CreateInventoryTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('inventory');
+        Schema::enableForeignKeyConstraints();
     }
 }

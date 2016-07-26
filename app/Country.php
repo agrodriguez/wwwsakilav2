@@ -44,9 +44,9 @@ class Country extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\City
      */
     public function cities()
     {

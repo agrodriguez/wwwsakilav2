@@ -30,7 +30,7 @@ class ApiController extends Controller
     public function cities(Request $request)
     {
         if (isset($request['id'])) {
-            return \DB::table('city')->select('city_id as id', 'city as text')->where('country_id', $request['id'])->get();
+            return \DB::table('city')->select('city_id as id', 'city as text')->where('country_id', $request['id'])->orderBy('city')->get();
         }
     }
 

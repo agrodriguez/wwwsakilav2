@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Staff extends Model
+class Staff extends Authenticatable
 {
     /**
      * override default table name, index field
@@ -66,20 +66,72 @@ class Staff extends Model
     }
 
     /**
+    * Overrides the method to ignore the remember token.
+    */
+    public function getRememberToken()
+    {
+        return null; // not supported
+    }
+
+    /**
+    * Overrides the method to ignore the remember token.
+    */
+    public function setRememberToken($value)
+    {
+        // not supported
+    }
+
+    /**
+    * Overrides the method to ignore the remember token.
+    */
+    public function getRememberTokenName()
+    {
+        return null; // not supported
+    }
+
+    /**
+    * Overrides the method to ignore the remember token.
+    */
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if (!$isRememberTokenAttribute) {
+            parent::setAttribute($key, $value);
+        }
+    }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    /*protected $fillable = [
+        'name', 'email', 'password',
+    ];*/
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
      * set the active attribute
      *
      * @return void
      * @author
      **/
-    public function setActiveAttribute($value)
-    {
-        $this->attributes['active'] = $value? 1 : 0;
-    }
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Address
      */
     public function address()
     {
@@ -87,9 +139,9 @@ class Staff extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Store
      */
     public function store()
     {
@@ -97,9 +149,9 @@ class Staff extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Rental colection
      */
     public function rentals()
     {
@@ -107,9 +159,9 @@ class Staff extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Payment colection
      */
     public function payments()
     {
@@ -117,10 +169,9 @@ class Staff extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * change default id field names
-     * @return relation
+     * @return App\Staff
      */
     public function manages()
     {
@@ -128,10 +179,10 @@ class Staff extends Model
     }
 
     /**
-     * relation
+     * get the address name concatenated
+     * use addressName
      *
-     * change default id field names
-     * @return relation
+     * @return String
      */
     public function getAddressNameAttribute()
     {
@@ -140,8 +191,9 @@ class Staff extends Model
 
     /**
      * get the full name
+     * use fullName
      *
-     * @return string
+     * @return String
      **/
     public function getFullNameAttribute()
     {
@@ -149,9 +201,20 @@ class Staff extends Model
     }
 
     /**
-     * get the full name of the customer
+     * return the full store name
      *
      * @return string
+     **/
+    public function getStoreNameAttribute()
+    {
+        return $this->store->address->cityName.', '.$this->store->address->countryName;
+    }
+
+    /**
+     * get the slug for the URI
+     * use slug
+     *
+     * @return String
      **/
     public function getSlugAttribute()
     {
@@ -162,7 +225,7 @@ class Staff extends Model
      * get the store manager and all the other staff that is not manager in other store
      *
      * @param Staff $query staff query scope
-     * @return Query
+     * @return App\Staff
      **/
     public function scopeGetNotManager($query)
     {
@@ -182,6 +245,7 @@ class Staff extends Model
 
     /**
      * return the staff record from the given slug
+     *
      * @param  Staff $query scope for the staff
      * @param  String $value the slug value as "first_name-last_name"
      * @return Staff query the filtered query

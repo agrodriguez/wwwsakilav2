@@ -43,5 +43,6 @@ class CreateStaffTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('staff');
+        Schema::enableForeignKeyConstraints();
     }
 }

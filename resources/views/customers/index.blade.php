@@ -17,7 +17,7 @@
                             <th class="text-center">{{ trans('address.address') }}</th>
                             <th class="text-center">{{ trans('customer.email') }}</th>
                             <th class="text-center">{{ trans('customer.active') }}</th>
-                            <th class="text-center">{{ trans('customer.create_date') }}</th>
+                            <th class="text-center">{{ trans('customer.balance') }}</th>
                         </tr>
                     </thead>
                     <tfoot><tr><td colspan="5">{!! $customers->links() !!}</td></tr></tfoot>
@@ -28,7 +28,7 @@
                                 <td>{{ $customer->{'addressName'} }}</td>
                                 <td>{{ $customer->{'email'} }}</td>
                                 <td class="text-center"><span class="glyphicon glyphicon-{{ $customer->{'active'}? 'ok': 'remove' }}" aria-hidden="true"></span></td>
-                                <td>{{ $customer->{'create_date'}->format('d-M-Y') }}</td>
+                                <td class="text-right">$ {{ number_format($customer->{'balance'},2) }}</td>
                                 
                             </tr>   
                         @endforeach 

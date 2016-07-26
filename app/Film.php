@@ -54,9 +54,9 @@ class Film extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Inventory colection
      */
     public function inventories()
     {
@@ -64,10 +64,10 @@ class Film extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Category colection
      */
     public function categories()
     {
@@ -75,10 +75,10 @@ class Film extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Actor colection
      */
     public function actors()
     {
@@ -86,9 +86,9 @@ class Film extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Language
      */
     public function language()
     {
@@ -96,10 +96,9 @@ class Film extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * change default id field names
-     * @return relation
+     * @return App\Language
      */
     public function originalLanguage()
     {
@@ -109,6 +108,7 @@ class Film extends Model
     
     /**
      * get the relation in list form
+     * use categoryList
      *
      * @return array
      */
@@ -119,6 +119,7 @@ class Film extends Model
 
     /**
      * get the relation in list form
+     * use actorList
      *
      * @return array
      */
@@ -128,7 +129,7 @@ class Film extends Model
     }
 
     /**
-     * set the set field as implided array
+     * set the set field as imploded array
      *
      * @return void
      */

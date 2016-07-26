@@ -106,7 +106,16 @@
         <div class="col-md-8 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <b>{{ trans('rental.rentals') }}</b>
+                    {{ trans('rental.rentals') }}
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-3">
+                        <label class="control-label" for="total">{{ trans('customer.balance') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control text-right" id="total" placeholder="0.00" value="{{ number_format($customer->{'balance'},2) }}" readonly="readonly">    
+                        </div>
+                    </div>
                 </div>                
                     <table class="table table-hover table-bordered">
                         <thead>
@@ -130,22 +139,17 @@
                                         {{ $rental->{'return_date'}->{'format'}('d/m/Y') }}
                                     @else
                                     <td class="text-center">
-                                        <a href="{{ url('rentals/'.$rental->{'rental_id'}) }}" title="{{ trans('rental.return') }}" alt="{{ trans('rental.return') }}" class="btn btn-primary btn-xs">{{ trans('rental.return') }}</a>
+                                        <a href="{{ url(\App::getLocale().'/rentals/'.$rental->{'rental_id'}) }}" title="{{ trans('rental.return') }}" alt="{{ trans('rental.return') }}" class="btn btn-primary btn-xs">{{ trans('rental.return') }}</a>
                                     @endif
                                 </td>
+
                             </tr>
                         </tbody>
                 @endforeach
                     </table>                    
             </div>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-            
-        </div>
-    </div>
+    </div>    
 </div>
 @push('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw"></script>

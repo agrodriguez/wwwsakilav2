@@ -17,7 +17,8 @@ class CreateStoreTable extends Migration
             $table->tinyInteger('manager_staff_id', false, true)->unique('idx_unique_manager');
             $table->smallInteger('address_id', false, true)->index('idx_fk_address_id');
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            //$table->foreign('manager_staff_id', 'fk_store_staff')->references('staff_id')->on('staff')->onDelete('restrict')->onUpdate('cascade');
+            //
+            $table->foreign('manager_staff_id', 'fk_store_staff')->references('staff_id')->on('staff')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('address_id', 'fk_store_address')->references('address_id')->on('address')->onDelete('restrict')->onUpdate('cascade');
         });
     }
@@ -31,5 +32,6 @@ class CreateStoreTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('store');
+        Schema::enableForeignKeyConstraints();
     }
 }

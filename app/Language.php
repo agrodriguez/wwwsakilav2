@@ -44,9 +44,9 @@ class Language extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Film colection
      */
     public function films()
     {

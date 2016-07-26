@@ -25,5 +25,6 @@ return [
     'edit' => 'Edit Customer',
     'update' => 'Update Customer',
     'delete' => 'Delete Customer',
+    'balance' => 'Balance',
 
 ];

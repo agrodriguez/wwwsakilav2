@@ -27,9 +27,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
 
         parent::boot($router);
+
+        /** bind classes to the custom slug */
 
         $router->bind('actor', function ($value) {
             return \App\Actor::whereSlug($value)->firstOrFail();
@@ -72,7 +73,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router, Request $request)
     {
         //$this->mapWebRoutes($router);
-
+        
+        // add the locale prefix
         $this->mapPrefixRoutes($router, $request);
 
     }

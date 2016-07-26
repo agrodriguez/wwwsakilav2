@@ -30,5 +30,6 @@ class CreateCityTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('city');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -29,5 +29,6 @@ class CreateFilmTextTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('film_text');
+        Schema::enableForeignKeyConstraints();
     }
 }

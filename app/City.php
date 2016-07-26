@@ -44,9 +44,9 @@ class City extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Address colection
      */
     public function addresses()
     {
@@ -54,9 +54,9 @@ class City extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Country
      */
     public function country()
     {
@@ -64,10 +64,10 @@ class City extends Model
     }
 
     /**
-     * undocumented function
+     * get the country name
+     * use countryName
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getCountryNameAttribute()
     {
@@ -75,10 +75,11 @@ class City extends Model
     }
 
     /**
-     * undocumented function
+     * return cities ordered by country
+     * use orderByCountry
      *
-     * @return void
-     * @author
+     * @param Eloquent $query the eloquent query
+     * @return App\City collection
      **/
     public function scopeOrderByCountry($query)
     {

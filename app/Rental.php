@@ -62,11 +62,11 @@ class Rental extends Model
      */
     public function setRentalDateAttribute($date)
     {
-        $myDate = Carbon::createFromFormat('Y-m-d', $date);
+        $myDate = Carbon::createFromFormat('d/m/Y', $date);
         if ($myDate > Carbon::now()) {
             $this->attributes['rental_date'] =  Carbon::parse($date);
         } else {
-            $this->attributes['rental_date'] =  Carbon::createFromFormat('Y-m-d', $date);
+            $this->attributes['rental_date'] =  Carbon::createFromFormat('d/m/Y', $date);
         }
     }
 
@@ -79,19 +79,19 @@ class Rental extends Model
      */
     public function setReturnDateAttribute($date)
     {
-        $myDate = Carbon::createFromFormat('Y-m-d', $date);
+        $myDate = Carbon::createFromFormat('d/m/Y', $date);
         if ($myDate > Carbon::now()) {
             $this->attributes['return_date'] =  Carbon::parse($date);
         } else {
-            $this->attributes['return_date'] =  Carbon::createFromFormat('Y-m-d', $date);
+            $this->attributes['return_date'] =  Carbon::createFromFormat('d/m/Y', $date);
         }
     }
 
     /**
-     * undocumented function
+     * get the customer name concatenated
+     * use customerName
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getCustomerNameAttribute()
     {
@@ -99,10 +99,10 @@ class Rental extends Model
     }
 
     /**
-     * undocumented function
+     * get the staff name concatenated
+     * use staffName
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getStaffNameAttribute()
     {
@@ -110,10 +110,10 @@ class Rental extends Model
     }
 
     /**
-     * undocumented function
+     * get the film title through the inventory
+     * use filmTitle
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getFilmTitleAttribute()
     {
@@ -131,9 +131,9 @@ class Rental extends Model
 
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Customer
      */
     public function customer()
     {
@@ -142,9 +142,9 @@ class Rental extends Model
 
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Inventory
      */
     public function inventory()
     {
@@ -152,9 +152,9 @@ class Rental extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Staff
      */
     public function staff()
     {
@@ -162,9 +162,9 @@ class Rental extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Payment colection
      */
     public function payments()
     {

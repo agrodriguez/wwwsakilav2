@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://wwwsakilav2.dev'),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,6 +66,8 @@ return [
     */
 
     'locale' => 'es',
+
+    //accepted languages array
 
     'locales' => ['en' => 'English', 'es' => 'Español'],
 

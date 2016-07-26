@@ -57,3 +57,7 @@ Route::resource('{locale}/languages', 'LanguagesController', ['parameters'=>['la
 Route::resource('{locale}/rentals', 'RentalsController', ['parameters'=>['rentals'=>'rental']]);
 Route::resource('{locale}/staffs', 'StaffsController', ['parameters'=>['staffs'=>'staff']]);
 Route::resource('{locale}/stores', 'StoresController', ['parameters'=>['stores'=>'store']]);
+
+// custom routes for rental payment 
+Route::get('{locale}/rentals/{rental}/payment', ['as'=>'rentals.payment', 'uses'=>'RentalsController@payment']);
+Route::post('{locale}/rentals/{rental}/payment', ['as'=>'rentals.payUp', 'uses'=>'RentalsController@payUp']);

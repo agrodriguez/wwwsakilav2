@@ -70,21 +70,21 @@ class Customer extends Model
         }
     }
 
+
     /**
      * set the active attribute
      *
      * @return void
      */
-    public function setActiveAttribute($value)
-    {
-        $this->attributes['active'] = $value? 1 : 0;
-    }
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Address
      */
     public function address()
     {
@@ -92,9 +92,9 @@ class Customer extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Store
      */
     public function store()
     {
@@ -102,9 +102,9 @@ class Customer extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Payment colection
      */
     public function payments()
     {
@@ -112,9 +112,9 @@ class Customer extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Rental collection
      */
     public function rentals()
     {
@@ -124,6 +124,7 @@ class Customer extends Model
 
     /**
      * get the balance for the customer
+     * use getBalance
      *
      * @return decimal
      **/
@@ -135,7 +136,8 @@ class Customer extends Model
     }
 
     /**
-     * relation
+     * get the address name concatenated
+     * use addressName
      *
      * change default id field names
      * @return relation
@@ -146,7 +148,8 @@ class Customer extends Model
     }
 
     /**
-     * get the full name
+     * get the full name concatenated first and las name
+     * use fullName
      *
      * @return string
      **/
@@ -156,7 +159,8 @@ class Customer extends Model
     }
 
     /**
-     * get the full name of the customer
+     * get the slug for the URI
+     * use slug
      *
      * @return string
      **/
@@ -166,10 +170,12 @@ class Customer extends Model
     }
 
     /**
-     * [scopeWhereSlug description]
-     * @param  [type] $query [description]
-     * @param  [type] $value [description]
-     * @return [type]        [description]
+     * select customer by the slug
+     * use whereSlug()
+     *
+     * @param  Eloquent $query eloquent class
+     * @param  String $value customer criteria as "first_name-last_Name"
+     * @return App\Customer        return the customer for the value
      */
     public function scopeWhereSlug($query, $value)
     {

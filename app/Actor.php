@@ -48,10 +48,10 @@ class Actor extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Film
      */
     public function films()
     {
@@ -60,6 +60,7 @@ class Actor extends Model
 
     /**
      * get the full name of the customer
+     * use fullName
      *
      * @return string
      **/
@@ -70,6 +71,7 @@ class Actor extends Model
 
     /**
      * get the full name of the customer
+     * use slug
      *
      * @return string
      **/
@@ -79,10 +81,12 @@ class Actor extends Model
     }
 
     /**
-     * [scopeWhereSlug description]
-     * @param  [type] $query [description]
-     * @param  [type] $value [description]
-     * @return [type]        [description]
+     * select actor by the slug
+     * use whereSlug()
+     *
+     * @param  Eloquent $query eloquent class
+     * @param  String $value actor criteria as "first_name-last_Name"
+     * @return App\Actor        return the actor for the value
      */
     public function scopeWhereSlug($query, $value)
     {

@@ -49,9 +49,9 @@ class Inventory extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Film
      */
     public function film()
     {
@@ -59,9 +59,9 @@ class Inventory extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Store
      */
     public function store()
     {
@@ -69,13 +69,12 @@ class Inventory extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Rental colection
      */
     public function rentals()
     {
         return $this->hasMany('App\Rental');
     }
-
 }

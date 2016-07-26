@@ -16,5 +16,6 @@ return [
     'payments' => 'Payments',
     'amount' => 'Amount',
     'payment_date' => 'Payment date',
+    'pay' => 'Pay up',
 
 ];

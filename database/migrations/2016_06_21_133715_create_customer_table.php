@@ -36,5 +36,6 @@ class CreateCustomerTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('customer');
+        Schema::enableForeignKeyConstraints();
     }
 }

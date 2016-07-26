@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <div class="col-sm-6">
                         <label class="control-label" for="special_features">{{ trans('film.special_features') }}</label>
-                        <input type="text" class="form-control" id="special_features" placeholder="{{ trans('film.special_features') }}" value="@if(count($film->{'special_features'})) {{ implode(', ', $film->{'special_features'}) }} @endif" readonly="readonly">    
+                        <input type="text" class="form-control" id="special_features" placeholder="{{ trans('film.special_features') }}" value="@if(count($film->{'special_features'})) {{ implode(', ', $film->{'special_features'}) }} @endif" readonly="readonly">                           
                     </div>
                 </div> 
 

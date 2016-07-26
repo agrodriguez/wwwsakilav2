@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //delete related inventories https://laravel.com/docs/5.2/eloquent#events
+        //delete related inventories as per https://laravel.com/docs/5.2/eloquent#events
         Film::deleting(function ($film) {
             $film->inventories()->delete();
         });

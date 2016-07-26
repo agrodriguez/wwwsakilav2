@@ -27,7 +27,6 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        // Make sure current locale exists.
 
         $locale = $request->segment(1);
 
@@ -36,6 +35,7 @@ class Language
             return $next($request);
         }
 
+        // Make sure current locale exists.
         // if selected language not in predefined languages select default
         if (!array_key_exists($locale, $this->app->config->get('app.locales'))) {
             $segments = $request->segments();

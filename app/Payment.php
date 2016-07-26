@@ -69,10 +69,10 @@ class Payment extends Model
     }
 
     /**
-     * undocumented function
+     * get the customer name concatenated
+     * use customerName
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getCustomerNameAttribute()
     {
@@ -80,10 +80,10 @@ class Payment extends Model
     }
 
     /**
-     * undocumented function
+     * get the staff name concatenated
+     * use staffName
      *
-     * @return void
-     * @author
+     * @return String
      **/
     public function getStaffNameAttribute()
     {
@@ -91,9 +91,9 @@ class Payment extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Customer
      */
     public function customer()
     {
@@ -101,9 +101,9 @@ class Payment extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Rental
      */
     public function rental()
     {
@@ -111,9 +111,9 @@ class Payment extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Staff
      */
     public function staff()
     {

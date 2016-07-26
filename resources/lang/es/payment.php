@@ -16,5 +16,6 @@ return [
     'payments' => 'Pagos',
     'amount' => 'Cantidad',
     'payment_date' => 'Fecha de pago',
+    'pay' => 'Realizar pago',
 
 ];

@@ -13,12 +13,12 @@
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label class="control-label" for="rental_date">{{ trans('rental.rental_date') }}</label>
-                        <input type="text" class="form-control" id="rental_date" placeholder="{{ trans('rental.rental_date') }}" value="{{ $rental->{'rental_date'} }}" readonly="readonly">
+                        <input type="text" class="form-control" id="rental_date" placeholder="{{ trans('rental.rental_date') }}" value="{{ $rental->{'rental_date'}->format('d/m/Y') }}" readonly="readonly">
                     </div>
 
                     <div class="col-sm-2">
                         <label class="control-label" for="return_date">{{ trans('rental.return_date') }}</label>
-                        <input type="text" class="form-control" id="return_date" placeholder="{{ trans('rental.return_date') }}" value="{{ $rental->{'return_date'} }}" readonly="readonly">
+                        <input type="text" class="form-control" id="return_date" placeholder="{{ trans('rental.return_date') }}" value="@if($rental->{'return_date'}) {{ $rental->{'return_date'}->format('d/m/Y') }} @endif" readonly="readonly">
                     </div>
 
                     <div class="col-sm-4">
@@ -49,10 +49,16 @@
                             <div class="input-group-addon">$</div>
                             <input type="text" class="form-control text-right" id="total" placeholder="0.00" value="{{ number_format($rental->{'total'},2) }}" readonly="readonly">    
                         </div>
-                    </div>                    
+                    </div>      
+                    <div class="col-sm-2">
+                        <label class="control-label" for="total">{{ trans('customer.balance') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control text-right" id="total" placeholder="0.00" value="{{ number_format($rental->{'customer'}->{'balance'},2) }}" readonly="readonly">    
+                        </div>
+                    </div>      
                 </div>
-            </form>
-            
+            </form>            
         </div>
     </div>
     <hr>
@@ -71,13 +77,6 @@
                             <th class="text-center">{{ trans('staff.staff') }}</th>
                         </tr>
                     </thead>
-                    
-                    <tfoot>
-                        <tr>
-                            <td colspan="5"></td>
-                        </tr>
-                    </tfoot>
-                    
                     <tbody> 
                         @foreach ($rental->payments as $payment)
                             <tr>
@@ -85,10 +84,10 @@
                                     {{ $payment->{'payment_id'} }}
                                 </td>
                                 <td>
-                                    {{ $payment->{'amount'} }}
+                                    ${{ $payment->{'amount'} }}
                                 </td>
                                 <td>
-                                    {{ $payment->{'payment_date'}->format('d-m-Y')}}
+                                    {{ $payment->{'payment_date'}->format('d/m/Y')}}
                                 </td>
                                 <td>
                                     {{ $payment->{'customerName'} }}
@@ -102,12 +101,6 @@
                 </table> 
             </div>            
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-            
-        </div>
-    </div>
+    </div>    
 </div>
 @stop

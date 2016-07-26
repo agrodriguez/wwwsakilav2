@@ -31,5 +31,6 @@ class CreateFilmCategoryTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('film_category');
+        Schema::enableForeignKeyConstraints();
     }
 }

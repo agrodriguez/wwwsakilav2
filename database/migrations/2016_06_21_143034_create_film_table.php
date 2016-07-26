@@ -43,5 +43,6 @@ class CreateFilmTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('film');
+        Schema::enableForeignKeyConstraints();
     }
 }

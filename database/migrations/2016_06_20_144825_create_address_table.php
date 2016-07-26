@@ -36,5 +36,6 @@ class CreateAddressTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::drop('address');
+        Schema::enableForeignKeyConstraints();
     }
 }

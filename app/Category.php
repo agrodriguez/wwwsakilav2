@@ -45,10 +45,10 @@ class Category extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Film
      */
     public function films()
     {

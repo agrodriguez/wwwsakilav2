@@ -44,9 +44,9 @@ class Store extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Address
      */
     public function address()
     {
@@ -54,10 +54,10 @@ class Store extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Staff
      */
     public function manager()
     {
@@ -65,10 +65,9 @@ class Store extends Model
     }
 
     /**
-     * undocumented function
+     * Eloquent relation
      *
-     * @return void
-     * @author
+     * @return App\Staff colection
      **/
     public function staffs()
     {
@@ -76,10 +75,9 @@ class Store extends Model
     }
 
     /**
-     * undocumented function
+     * Eloquent relation
      *
-     * @return void
-     * @author
+     * @return App\Customer colection
      **/
     public function customers()
     {
@@ -87,9 +85,9 @@ class Store extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
-     * @return relation
+     * @return App\Inventory colection
      */
     public function inventories()
     {
@@ -97,9 +95,9 @@ class Store extends Model
     }
 
     /**
-     * films relation Through inventories
+     * Eloquent films relation Through inventories
      *
-     * @return relation
+     * @return App\Film colection
      */
     public function films()
     {
@@ -107,10 +105,9 @@ class Store extends Model
     }
 
     /**
-     * relation
+     * get the store name concatenated
      *
-     * change default id field names
-     * @return relation
+     * @return String
      */
     public function getStoreNameAttribute()
     {
@@ -118,10 +115,10 @@ class Store extends Model
     }
 
     /**
-     * undocumented function
+     * get the manager name concatenated
      *
-     * @return void
-     * @author     **/
+     * @return String
+     **/
     public function getManagerNameAttribute()
     {
         try {

@@ -797,6 +797,31 @@ $('#country_id').select2();
 $('#store_id').select2();
 $('#manager_staff_id').select2();
 
+function loadRentalSelect(){
+    $("#film_id").select2();
+    $("#customer_id").select2();
+    $("#inventory_id").select2({
+        minimumInputLength: 0,
+        ajax: {
+            url: "/api/inventories",
+            dataType: 'json',
+            data: function (term) {
+                return {
+                    id:$("#film_id").val(),
+                    store:$("#store_id").val(),
+                };
+            },
+            processResults: function (data) {
+                return { results: data };
+            }
+        }               
+    });
+}
+
+$("#film_id").on("change", function(e){ 
+    $("#inventory_id").val(null).trigger("change");
+});
+
 //$('#store_id,#country_id').select2();
 //$('#store_id,#country_id,#manager_staff_id').select2();
 

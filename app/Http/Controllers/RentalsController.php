@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\Rental;
 
+use App\Payment;
+
+use App\Http\Requests\RentalRequest;
+
 class RentalsController extends Controller
 {
     /**
@@ -38,7 +42,9 @@ class RentalsController extends Controller
      */
     public function create()
     {
-        //
+        $films = \DB::table('film')->select(\DB::raw('film_id, concat(title," - ", SUBSTRING(description,1,50),"...") as name, rental_rate'))->lists('name', 'film_id');
+        $customers= \DB::table('customer')->select(\DB::raw('customer_id, concat(first_name," ", last_name) as name'))->lists('name', 'customer_id');
+        return view('rentals.create', compact('films', 'customers'));
     }
 
     /**
@@ -47,9 +53,11 @@ class RentalsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($locale, Request $request)
+    public function store($locale, RentalRequest $request)
     {
-        //
+                
+        $rental = Rental::create($request->except(['film_id', 'staff', 'return_date']));
+        return redirect(\App::getLocale().'/rentals/'.$rental->rental_id.'/payment');
     }
 
     /**
@@ -100,5 +108,40 @@ class RentalsController extends Controller
     public function destroy($locale, $id)
     {
         //
+    }
+
+    /**
+     * payment methos for the rental or overdue charges
+     * @param  App\Rental $rental
+     * @return mixed
+     */
+    public function payment($locale, Rental $rental)
+    {
+        $queryString='select get_customer_balance('.$rental->customer_id.',NOW()) as amount;';
+        $amount=\DB::select($queryString);
+        /** if returned in  time no overdue charges */
+        if ($amount[0]->amount==0.00) {
+            return redirect(\App::getLocale().'/rentals');
+        } else {
+            return view('rentals.payment', compact('rental', 'amount'));
+        }
+    }
+
+    /**
+     * pay the amount due
+     *
+     * @param  Rental $rental
+     * @param  RentalRequest $request
+     * @return redirect
+     */
+    public function payUp($locale, Rental $rental, RentalRequest $request)
+    {
+        $payment= new Payment;
+        $payment->customer_id=$rental->customer_id;
+        $payment->staff_id=\Auth::user()->staff_id;
+        $payment->rental_id=$rental->rental_id;
+        $payment->amount=$request->amount;
+        $payment->save();
+        return redirect(\App::getLocale().'/rentals');
     }
 }

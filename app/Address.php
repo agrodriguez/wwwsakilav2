@@ -48,7 +48,7 @@ class Address extends Model
      * as per the example
      *
      * @param $date
-     *
+     * @return void
      */
     public function setLastUpdateAttribute($date)
     {
@@ -91,7 +91,6 @@ class Address extends Model
      * query database geofields
      *
      * @return void
-     * @author
      **/
     public function newQuery($excludeDeleted = true)
     {
@@ -104,10 +103,10 @@ class Address extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\City
      */
     public function city()
     {
@@ -115,10 +114,10 @@ class Address extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Customer
      */
     public function customer()
     {
@@ -126,10 +125,10 @@ class Address extends Model
     }
 
     /**
-     * relation
+     * Eloquent relation
      *
      * change default id field names
-     * @return relation
+     * @return App\Staff
      */
     public function staff()
     {
@@ -138,6 +137,7 @@ class Address extends Model
 
     /**
      * get the city name
+     * use cityName
      *
      * @return String
      **/
@@ -148,6 +148,7 @@ class Address extends Model
 
     /**
      * get the country name
+     * use countryName
      *
      * @return String
      **/
