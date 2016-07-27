@@ -1,0 +1,117 @@
+el saldo es por el tiempo y se le cobrara en la proxima renta
+
+actualizar los pagos con el precio de renta para tener saldos positivos
+update film f 
+	join inventory i on i.film_id = f.film_id
+    join rental r on i.inventory_id = r.inventory_id
+    join payment p on p.rental_id = r.rental_id
+set p.amount=f.rental_rate
+
+traduccion
+archivo de scripts integrado a la version con elixir
+eliminacion
+validaciones en request
+mensajes flasheados a la sesion
+verificacion phpcs en clases
+creacion de namespace para llamadas a API
+	php artisan make:controller Api/ApiController
+middleware para localizacion
+base de datos migrada y sembrada
+imagenes guardadas con nombre unico
+imagenes eliminadas del directorio despues de subir
+formulario de contacto
+Rutas
++--------+-----------+-------------------------------------+-----------------------------+-----------------------------------------------------------------+------------+
+| Domain | Method    | URI                                 | Name                        | Action                                                          | Middleware |
++--------+-----------+-------------------------------------+-----------------------------+-----------------------------------------------------------------+------------+
+|        | GET|HEAD  | /                                   |                             | App\Http\Controllers\PagesController@index                      | web        |
+|        | GET|HEAD  | api/cities                          |                             | App\Http\Controllers\Api\ApiController@cities                   | web,auth   |
+|        | POST      | api/inventories                     | inventory.store             | App\Http\Controllers\Api\ApiController@storeInventory           | web,auth   |
+|        | GET|HEAD  | api/inventories                     | inventory.show              | App\Http\Controllers\Api\ApiController@inventories              | web,auth   |
+|        | DELETE    | api/inventories/{inventory}         | inventory.destroy           | App\Http\Controllers\Api\ApiController@destroyInventory         | web,auth   |
+|        | GET|HEAD  | {locale}                            |                             | App\Http\Controllers\PagesController@index                      | web        |
+|        | GET|HEAD  | {locale}/about                      |                             | App\Http\Controllers\PagesController@about                      | web        |
+|        | POST      | {locale}/actors                     | {locale}.actors.store       | App\Http\Controllers\ActorsController@store                     | web,auth   |
+|        | GET|HEAD  | {locale}/actors                     | {locale}.actors.index       | App\Http\Controllers\ActorsController@index                     | web,auth   |
+|        | GET|HEAD  | {locale}/actors/create              | {locale}.actors.create      | App\Http\Controllers\ActorsController@create                    | web,auth   |
+|        | PUT|PATCH | {locale}/actors/{actor}             | {locale}.actors.update      | App\Http\Controllers\ActorsController@update                    | web,auth   |
+|        | GET|HEAD  | {locale}/actors/{actor}             | {locale}.actors.show        | App\Http\Controllers\ActorsController@show                      | web,auth   |
+|        | DELETE    | {locale}/actors/{actor}             | {locale}.actors.destroy     | App\Http\Controllers\ActorsController@destroy                   | web,auth   |
+|        | GET|HEAD  | {locale}/actors/{actor}/edit        | {locale}.actors.edit        | App\Http\Controllers\ActorsController@edit                      | web,auth   |
+|        | POST      | {locale}/categories                 | {locale}.categories.store   | App\Http\Controllers\CategoriesController@store                 | web,auth   |
+|        | GET|HEAD  | {locale}/categories                 | {locale}.categories.index   | App\Http\Controllers\CategoriesController@index                 | web,auth   |
+|        | GET|HEAD  | {locale}/categories/create          | {locale}.categories.create  | App\Http\Controllers\CategoriesController@create                | web,auth   |
+|        | DELETE    | {locale}/categories/{category}      | {locale}.categories.destroy | App\Http\Controllers\CategoriesController@destroy               | web,auth   |
+|        | GET|HEAD  | {locale}/categories/{category}      | {locale}.categories.show    | App\Http\Controllers\CategoriesController@show                  | web,auth   |
+|        | PUT|PATCH | {locale}/categories/{category}      | {locale}.categories.update  | App\Http\Controllers\CategoriesController@update                | web,auth   |
+|        | GET|HEAD  | {locale}/categories/{category}/edit | {locale}.categories.edit    | App\Http\Controllers\CategoriesController@edit                  | web,auth   |
+|        | GET|HEAD  | {locale}/cities                     | {locale}.cities.index       | App\Http\Controllers\CitiesController@index                     | web,auth   |
+|        | POST      | {locale}/cities                     | {locale}.cities.store       | App\Http\Controllers\CitiesController@store                     | web,auth   |
+|        | GET|HEAD  | {locale}/cities/create              | {locale}.cities.create      | App\Http\Controllers\CitiesController@create                    | web,auth   |
+|        | DELETE    | {locale}/cities/{city}              | {locale}.cities.destroy     | App\Http\Controllers\CitiesController@destroy                   | web,auth   |
+|        | PUT|PATCH | {locale}/cities/{city}              | {locale}.cities.update      | App\Http\Controllers\CitiesController@update                    | web,auth   |
+|        | GET|HEAD  | {locale}/cities/{city}              | {locale}.cities.show        | App\Http\Controllers\CitiesController@show                      | web,auth   |
+|        | GET|HEAD  | {locale}/cities/{city}/edit         | {locale}.cities.edit        | App\Http\Controllers\CitiesController@edit                      | web,auth   |
+|        | POST      | {locale}/contact                    |                             | App\Http\Controllers\PagesController@store                      | web        |
+|        | GET|HEAD  | {locale}/contact                    |                             | App\Http\Controllers\PagesController@contact                    | web        |
+|        | GET|HEAD  | {locale}/countries                  | {locale}.countries.index    | App\Http\Controllers\CountriesController@index                  | web,auth   |
+|        | POST      | {locale}/countries                  | {locale}.countries.store    | App\Http\Controllers\CountriesController@store                  | web,auth   |
+|        | GET|HEAD  | {locale}/countries/create           | {locale}.countries.create   | App\Http\Controllers\CountriesController@create                 | web,auth   |
+|        | DELETE    | {locale}/countries/{country}        | {locale}.countries.destroy  | App\Http\Controllers\CountriesController@destroy                | web,auth   |
+|        | GET|HEAD  | {locale}/countries/{country}        | {locale}.countries.show     | App\Http\Controllers\CountriesController@show                   | web,auth   |
+|        | PUT|PATCH | {locale}/countries/{country}        | {locale}.countries.update   | App\Http\Controllers\CountriesController@update                 | web,auth   |
+|        | GET|HEAD  | {locale}/countries/{country}/edit   | {locale}.countries.edit     | App\Http\Controllers\CountriesController@edit                   | web,auth   |
+|        | POST      | {locale}/customers                  | {locale}.customers.store    | App\Http\Controllers\CustomersController@store                  | web,auth   |
+|        | GET|HEAD  | {locale}/customers                  | {locale}.customers.index    | App\Http\Controllers\CustomersController@index                  | web,auth   |
+|        | GET|HEAD  | {locale}/customers/create           | {locale}.customers.create   | App\Http\Controllers\CustomersController@create                 | web,auth   |
+|        | DELETE    | {locale}/customers/{customer}       | {locale}.customers.destroy  | App\Http\Controllers\CustomersController@destroy                | web,auth   |
+|        | GET|HEAD  | {locale}/customers/{customer}       | {locale}.customers.show     | App\Http\Controllers\CustomersController@show                   | web,auth   |
+|        | PUT|PATCH | {locale}/customers/{customer}       | {locale}.customers.update   | App\Http\Controllers\CustomersController@update                 | web,auth   |
+|        | GET|HEAD  | {locale}/customers/{customer}/edit  | {locale}.customers.edit     | App\Http\Controllers\CustomersController@edit                   | web,auth   |
+|        | POST      | {locale}/films                      | {locale}.films.store        | App\Http\Controllers\FilmsController@store                      | web,auth   |
+|        | GET|HEAD  | {locale}/films                      | {locale}.films.index        | App\Http\Controllers\FilmsController@index                      | web,auth   |
+|        | GET|HEAD  | {locale}/films/create               | {locale}.films.create       | App\Http\Controllers\FilmsController@create                     | web,auth   |
+|        | PUT|PATCH | {locale}/films/{film}               | {locale}.films.update       | App\Http\Controllers\FilmsController@update                     | web,auth   |
+|        | GET|HEAD  | {locale}/films/{film}               | {locale}.films.show         | App\Http\Controllers\FilmsController@show                       | web,auth   |
+|        | DELETE    | {locale}/films/{film}               | {locale}.films.destroy      | App\Http\Controllers\FilmsController@destroy                    | web,auth   |
+|        | GET|HEAD  | {locale}/films/{film}/edit          | {locale}.films.edit         | App\Http\Controllers\FilmsController@edit                       | web,auth   |
+|        | GET|HEAD  | {locale}/home                       |                             | App\Http\Controllers\PagesController@index                      | web        |
+|        | GET|HEAD  | {locale}/languages                  | {locale}.languages.index    | App\Http\Controllers\LanguagesController@index                  | web,auth   |
+|        | POST      | {locale}/languages                  | {locale}.languages.store    | App\Http\Controllers\LanguagesController@store                  | web,auth   |
+|        | GET|HEAD  | {locale}/languages/create           | {locale}.languages.create   | App\Http\Controllers\LanguagesController@create                 | web,auth   |
+|        | PUT|PATCH | {locale}/languages/{language}       | {locale}.languages.update   | App\Http\Controllers\LanguagesController@update                 | web,auth   |
+|        | DELETE    | {locale}/languages/{language}       | {locale}.languages.destroy  | App\Http\Controllers\LanguagesController@destroy                | web,auth   |
+|        | GET|HEAD  | {locale}/languages/{language}       | {locale}.languages.show     | App\Http\Controllers\LanguagesController@show                   | web,auth   |
+|        | GET|HEAD  | {locale}/languages/{language}/edit  | {locale}.languages.edit     | App\Http\Controllers\LanguagesController@edit                   | web,auth   |
+|        | POST      | {locale}/login                      |                             | App\Http\Controllers\Auth\AuthController@login                  | web,guest  |
+|        | GET|HEAD  | {locale}/login                      |                             | App\Http\Controllers\Auth\AuthController@showLoginForm          | web,guest  |
+|        | GET|HEAD  | {locale}/logout                     |                             | App\Http\Controllers\Auth\AuthController@logout                 | web        |
+|        | POST      | {locale}/password/email             |                             | App\Http\Controllers\Auth\PasswordController@sendResetLinkEmail | web,guest  |
+|        | POST      | {locale}/password/reset             |                             | App\Http\Controllers\Auth\PasswordController@reset              | web,guest  |
+|        | GET|HEAD  | {locale}/password/reset/{token}     |                             | App\Http\Controllers\Auth\PasswordController@showResetForm      | web,guest  |
+|        | GET|HEAD  | {locale}/register                   |                             | App\Http\Controllers\Auth\AuthController@register               | web,guest  |
+|        | POST      | {locale}/register                   |                             | App\Http\Controllers\Auth\AuthController@showRegistrationForm   | web,guest  |
+|        | POST      | {locale}/rentals                    | {locale}.rentals.store      | App\Http\Controllers\RentalsController@store                    | web,auth   |
+|        | GET|HEAD  | {locale}/rentals                    | {locale}.rentals.index      | App\Http\Controllers\RentalsController@index                    | web,auth   |
+|        | GET|HEAD  | {locale}/rentals/create             | {locale}.rentals.create     | App\Http\Controllers\RentalsController@create                   | web,auth   |
+|        | PUT|PATCH | {locale}/rentals/{rental}           | {locale}.rentals.update     | App\Http\Controllers\RentalsController@update                   | web,auth   |
+|        | GET|HEAD  | {locale}/rentals/{rental}           | {locale}.rentals.show       | App\Http\Controllers\RentalsController@show                     | web,auth   |
+|        | DELETE    | {locale}/rentals/{rental}           | {locale}.rentals.destroy    | App\Http\Controllers\RentalsController@destroy                  | web,auth   |
+|        | GET|HEAD  | {locale}/rentals/{rental}/edit      | {locale}.rentals.edit       | App\Http\Controllers\RentalsController@edit                     | web,auth   |
+|        | POST      | {locale}/rentals/{rental}/payment   | rentals.payUp               | App\Http\Controllers\RentalsController@payUp                    | web,auth   |
+|        | GET|HEAD  | {locale}/rentals/{rental}/payment   | rentals.payment             | App\Http\Controllers\RentalsController@payment                  | web,auth   |
+|        | GET|HEAD  | {locale}/staffs                     | {locale}.staffs.index       | App\Http\Controllers\StaffsController@index                     | web,auth   |
+|        | POST      | {locale}/staffs                     | {locale}.staffs.store       | App\Http\Controllers\StaffsController@store                     | web,auth   |
+|        | GET|HEAD  | {locale}/staffs/create              | {locale}.staffs.create      | App\Http\Controllers\StaffsController@create                    | web,auth   |
+|        | DELETE    | {locale}/staffs/{staff}             | {locale}.staffs.destroy     | App\Http\Controllers\StaffsController@destroy                   | web,auth   |
+|        | GET|HEAD  | {locale}/staffs/{staff}             | {locale}.staffs.show        | App\Http\Controllers\StaffsController@show                      | web,auth   |
+|        | PUT|PATCH | {locale}/staffs/{staff}             | {locale}.staffs.update      | App\Http\Controllers\StaffsController@update                    | web,auth   |
+|        | GET|HEAD  | {locale}/staffs/{staff}/edit        | {locale}.staffs.edit        | App\Http\Controllers\StaffsController@edit                      | web,auth   |
+|        | GET|HEAD  | {locale}/stores                     | {locale}.stores.index       | App\Http\Controllers\StoresController@index                     | web,auth   |
+|        | POST      | {locale}/stores                     | {locale}.stores.store       | App\Http\Controllers\StoresController@store                     | web,auth   |
+|        | GET|HEAD  | {locale}/stores/create              | {locale}.stores.create      | App\Http\Controllers\StoresController@create                    | web,auth   |
+|        | DELETE    | {locale}/stores/{store}             | {locale}.stores.destroy     | App\Http\Controllers\StoresController@destroy                   | web,auth   |
+|        | PUT|PATCH | {locale}/stores/{store}             | {locale}.stores.update      | App\Http\Controllers\StoresController@update                    | web,auth   |
+|        | GET|HEAD  | {locale}/stores/{store}             | {locale}.stores.show        | App\Http\Controllers\StoresController@show                      | web,auth   |
+|        | GET|HEAD  | {locale}/stores/{store}/edit        | {locale}.stores.edit        | App\Http\Controllers\StoresController@edit                      | web,auth   |
++--------+-----------+-------------------------------------+-----------------------------+-----------------------------------------------------------------+------------+

@@ -66,6 +66,23 @@ class ViewControllerServiceProvider extends ServiceProvider
 
             $view->with(['countries'=>$countries,'stores'=>$stores]);
         });
+
+        /**
+         * compose view for index dashboard
+         */
+
+        view()->composer('pages.home', function ($view) {
+            
+            $films=\App\Film::all();
+
+            $inventories=\App\Inventory::all();
+
+            $customers=\App\Customer::all();
+
+            $rentals=\App\Rental::all();
+
+            $view->with(['films'=>$films, 'inventories'=>$inventories, 'customers'=>$customers, 'rentals'=>$rentals]);
+        });
     }
 
     /**

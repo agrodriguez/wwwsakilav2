@@ -126,6 +126,9 @@
 @push('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf55wT2Bn6Juy0yBok2tSuGU3nuNluTgw"></script>
 <script type="text/javascript">    
+    $(document).ready(function(){
+        loadAddressSelect();
+    });           
     google.maps.event.addDomListener(window, 'load', function(){initEditMap("map_div",{{ $loc }})});
 </script>
 @endpush

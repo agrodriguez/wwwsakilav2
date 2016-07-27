@@ -52,7 +52,9 @@ return [
     |
     */
 
-    'timezone' => 'America/Mexico_City',
+    // use same timezone as the server
+    //'timezone' => 'America/Mexico_City',
+    'timezone' => 'America/Denver',
 
     /*
     |--------------------------------------------------------------------------

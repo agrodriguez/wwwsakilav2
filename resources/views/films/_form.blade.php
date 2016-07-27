@@ -98,7 +98,9 @@
 		</div>		
 
 		@push('scripts')
-			<script type="text/javascript">              
-			  $('#category_list,#actor_list,#special_features').select2();
+			<script type="text/javascript">
+                $(document).ready(function(){                    
+                    loadFilmSelect();
+                });          			  
 			</script>
 		@endpush

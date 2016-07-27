@@ -31,7 +31,7 @@ elixir(function(mix) {
         'libs/ie10-viewport-bug-workaround.js',
         'libs/select2.min.js',
         'libs/bootstrap-datetimepicker.min.js',        
-        'libs/map.js'
+        'libs/scripts.js'
     ]);
     mix.version(['public/css/all.css','public/js/all.js']);
     //'libs/maps.api.js',

@@ -36,10 +36,10 @@ class RentalTableSeeder extends Seeder
 
             App\Rental::create([
                 'rental_id' => $i,
-                'rental_date' => $date->format('Y-m-d'),
+                'rental_date' => $date->format('d/m/Y'),
                 'inventory_id' => $faker->numberBetween(1, 2300),
                 'customer_id' => $customer_id,
-                'return_date' => date('Y-m-d', strtotime($date->format('Y-m-d'). ' +3days')),
+                'return_date' => date('d/m/Y', strtotime($date->format('d/m/Y').' + 3days')),
                 'staff_id' => $staff_id,
             ]);
 
@@ -48,7 +48,7 @@ class RentalTableSeeder extends Seeder
                 'staff_id' => $staff_id,
                 'rental_id' => $i,
                 'amount' => $faker->randomFloat(2, 4, 20),
-                'payment_date' => $date->format('Y-m-d'),
+                'payment_date' => $date->format('d/m/Y'),
             ]);
         };
 

@@ -69,12 +69,7 @@ function initShowMap(map_element, lat, lng) {
 
 }
 
-
-
-//init city combo boxes
-$('#country_id').select2();
-$('#store_id').select2();
-$('#manager_staff_id').select2();
+//load selects
 
 function loadRentalSelect(){
     $("#film_id").select2();
@@ -95,44 +90,46 @@ function loadRentalSelect(){
             }
         }               
     });
+    $("#film_id").on("change", function(e){ 
+        $("#inventory_id").val(null).trigger("change");
+    });
 }
 
-$("#film_id").on("change", function(e){ 
-    $("#inventory_id").val(null).trigger("change");
-});
+function loadAddressSelect(){
+    $('#country_id').select2();
+    $("#city_id").select2({
+        minimumInputLength: 0,
+        ajax: {
+            url: "/api/cities",
+            dataType: 'json',
+            data: function (term) {
+                return {
+                    id:$("#country_id").val()
+                };
+            },
+            processResults: function (data) {
+                return { results: data };
+            }
+        }               
+    });
+    $('#store_id').select2();
 
-//$('#store_id,#country_id').select2();
-//$('#store_id,#country_id,#manager_staff_id').select2();
+    $("#country_id").on("change", function(e){ 
+        $("#city_id").val(null).trigger("change");
+    });
+    
+    $('#manager_staff_id').select2();
+}
 
-//init city combo box
-$("#city_id").select2({
-    minimumInputLength: 0,
-    ajax: {
-        url: "/api/cities",
-        dataType: 'json',
-        data: function (term) {
-            return {
-                id:$("#country_id").val()
-            };
-        },
-        processResults: function (data) {
-            return { results: data };
-        }
-    }               
-});
-
-$("#country_id").on("change", function(e){ 
-    $("#city_id").val(null).trigger("change");
-});
+function loadFilmSelect(){
+    $('#category_list,#actor_list,#special_features').select2();
+}
 
 //init file upload button
 $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
     console.log(numFiles);
     console.log(label);
 });
-
-
-
 
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this),

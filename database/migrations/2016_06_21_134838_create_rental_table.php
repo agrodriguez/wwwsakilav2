@@ -22,8 +22,8 @@ class CreateRentalTable extends Migration
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->unique(['rental_date', 'inventory_id', 'customer_id']);
             $table->foreign('staff_id', 'fk_rental_staff')->references('staff_id')->on('staff')->onDelete('restrict')->onUpdate('cascade');
-            //
-            $table->foreign('inventory_id', 'fk_rental_inventory')->references('inventory_id')->on('inventory')->onDelete('restrict')->onUpdate('cascade');
+            //foreign key created later on inventory table
+            //$table->foreign('inventory_id', 'fk_rental_inventory')->references('inventory_id')->on('inventory')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('customer_id', 'fk_rental_customer')->references('customer_id')->on('customer')->onDelete('restrict')->onUpdate('cascade');
         });
     }

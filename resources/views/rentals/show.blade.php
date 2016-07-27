@@ -8,7 +8,7 @@
         <div class="col-md-12 col-md-offset-0">
             <h2>{{ trans('rental.rental') }}
                 <p class="lead">{{ trans('rental.edit') }}</p>
-            </h2>
+            </h2>            
             <form class="form-horizontal col-sm-offset-0">
                 <div class="form-group">
                     <div class="col-sm-2">
@@ -18,7 +18,7 @@
 
                     <div class="col-sm-2">
                         <label class="control-label" for="return_date">{{ trans('rental.return_date') }}</label>
-                        <input type="text" class="form-control" id="return_date" placeholder="{{ trans('rental.return_date') }}" value="@if($rental->{'return_date'}) {{ $rental->{'return_date'}->format('d/m/Y') }} @endif" readonly="readonly">
+                        <input type="text" class="form-control" id="return_date" placeholder="{{ trans('rental.return_date') }}" value="@if($rental->{'return_date'}) {{ $rental->{'return_date'}->format('d/m/Y') }} @else {{ \Carbon\Carbon::now()->format('d/m/Y') }} @endif" readonly="readonly">
                     </div>
 
                     <div class="col-sm-4">
@@ -58,7 +58,15 @@
                         </div>
                     </div>      
                 </div>
-            </form>            
+            </form> 
+            @if(!$rental->{'return_date'}) 
+               {!! Form::open(['action'=>['RentalsController@update',$rental->rental_id, 'locale'=>\App::getLocale() ],'method'=>'PATCH','class'=>'form-horizontal']) !!}
+                {!! Form::hidden('store_id',Auth::user()->store_id ,['id'=>'store_id']) !!}
+                {!! Form::hidden('staff_id',Auth::user()->staff_id ,['id'=>'staff_id']) !!}
+                {!! Form::hidden('inventory_id',$rental->{'inventory_id'} ,['id'=>'inventory_id']) !!}
+                {!! Form::submit(trans('rental.return'),['class'=>'btn btn-primary']) !!}
+               {!! Form::close() !!}           
+            @endif           
         </div>
     </div>
     <hr>

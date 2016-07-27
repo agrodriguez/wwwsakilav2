@@ -31,7 +31,7 @@ class FilmRequest extends Request
             'original_language_id'=>'required',
             'rental_duration'=>'required|integer',
             'rental_rate'=>'required|numeric',
-            'length'=>'required|integer|max:500',
+            'length'=>'required|integer|max:999',
             'replacement_cost'=>'required|numeric',
             'rating'=>'required',
             'special_features'=>'required',

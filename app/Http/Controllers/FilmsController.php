@@ -55,7 +55,7 @@ class FilmsController extends Controller
      */
     public function store($locale, FilmRequest $request)
     {
-        flash('Film Added', 'success');
+        
         $film = Film::create($request->all());
         $this->syncFields($film, $request);
         flash(trans('messages.store', ['name' => trans('film.film')]), 'success');
@@ -99,7 +99,7 @@ class FilmsController extends Controller
      */
     public function update($locale, FilmRequest $request, Film $film)
     {
-        flash('Film Updated', 'success');
+        
         $film->update($request->all());
         $this->syncFields($film, $request);
         flash(trans('messages.update', ['name' => trans('film.film')]), 'success');

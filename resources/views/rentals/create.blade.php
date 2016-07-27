@@ -47,13 +47,13 @@
                 </div>
                 <div class="form-group">                    
                 	<div class="col-sm-4">
-                		{!! Form::label('film_id','Film:',['class'=>'control-label']) !!}
+                		{!! Form::label('film_id',trans('film.film'),['class'=>'control-label']) !!}
 						{!! Form::select('film_id',$films,null, ['class'=>'form-control','id'=>'film_id']) !!}
 						<small class="text-danger">{{ $errors->first('film_id') }}</small>
                     </div>
 
 					<div class="col-sm-2">
-                    	{!! Form::label('inventory_id','Inventory:',['class'=>'control-label']) !!}
+                    	{!! Form::label('inventory_id',trans('inventory.inventory'),['class'=>'control-label']) !!}
 						{!! Form::select('inventory_id',[],null, ['class'=>'form-control', 'id'=>'inventory_id']) !!}
 						<small class="text-danger">{{ $errors->first('inventory_id') }}</small>
 					</div>

@@ -105,6 +105,16 @@ class Store extends Model
     }
 
     /**
+     * Eloquent rentals relation Through inventories
+     *
+     * @return App\Film colection
+     */
+    public function rentals()
+    {
+        return $this->hasManyThrough(Rental::class, Inventory::class, 'store_id', 'rental_id');
+    }
+
+    /**
      * get the store name concatenated
      *
      * @return String

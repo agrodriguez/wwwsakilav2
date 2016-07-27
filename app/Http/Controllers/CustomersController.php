@@ -70,7 +70,8 @@ class CustomersController extends Controller
      */
     public function show($locale, Customer $customer)
     {
-        return view('customers.show', compact('customer'));
+        $rentals=$customer->rentals()->latest('rental_date')->paginate(3);
+        return view('customers.show', compact('customer', 'rentals'));
     }
 
     /**

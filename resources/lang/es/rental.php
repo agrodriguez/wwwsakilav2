@@ -22,5 +22,6 @@ return [
     'edit' => 'Editar Renta',
     'update' => 'Actualizar Renta',
     'delete' => 'Eliminar Renta',
+    'nopayment' => 'Renta Entregada',
     
 ];

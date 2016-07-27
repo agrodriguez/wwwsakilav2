@@ -60,11 +60,11 @@ class Payment extends Model
      */
     public function setPaymentDateAttribute($date)
     {
-        $myDate = Carbon::createFromFormat('Y-m-d', $date);
+        $myDate = Carbon::createFromFormat('d/m/Y', $date);
         if ($myDate > Carbon::now()) {
             $this->attributes['payment_date'] =  Carbon::parse($date);
         } else {
-            $this->attributes['payment_date'] =  Carbon::createFromFormat('Y-m-d', $date);
+            $this->attributes['payment_date'] =  Carbon::createFromFormat('d/m/Y', $date);
         }
     }
 

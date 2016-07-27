@@ -122,11 +122,16 @@
                             <tr>
                                 <th class="text-center">{{ trans('film.film') }}</th>
                                 <th class="text-center">{{ trans('rental.rental_date') }}</th>
-                                <th class="text-center">{{ trans('rental.return_date') }}</th>
-                                
+                                <th class="text-center">{{ trans('rental.return_date') }}</th>                                
                             </tr>
                         </thead>
-                @foreach( $customer->{'rentals'} as $rental)
+                        @if($rentals->links())
+                        <tfoot><tr><td colspan="3">
+                        
+                        {!! $rentals->links() !!}
+                        </td></tr></tfoot>
+                        @endif
+                @foreach( $rentals as $rental)
                         <tbody>
                             <tr>
                                 <td>

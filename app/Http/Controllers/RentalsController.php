@@ -31,7 +31,7 @@ class RentalsController extends Controller
      */
     public function index()
     {
-        $rentals = Rental::paginate(10);
+        $rentals = Rental::latest('rental_date')->paginate(10);
         return view('rentals.index', compact('rentals'));
     }
 
@@ -55,7 +55,6 @@ class RentalsController extends Controller
      */
     public function store($locale, RentalRequest $request)
     {
-                
         $rental = Rental::create($request->except(['film_id', 'staff', 'return_date']));
         return redirect(\App::getLocale().'/rentals/'.$rental->rental_id.'/payment');
     }
@@ -93,9 +92,12 @@ class RentalsController extends Controller
      * @param App\Rental $rental the selected rental
      * @return \Illuminate\Http\Response
      */
-    public function update($locale, Request $request, $id)
+    public function update($locale, RentalRequest $request, Rental $rental)
     {
-        //
+        $myDate = date('d/m/Y');
+        $rental->return_date = $myDate;
+        $rental->save();
+        return redirect(\App::getLocale().'/rentals/'.$rental->rental_id.'/payment');
     }
 
     /**
@@ -121,6 +123,8 @@ class RentalsController extends Controller
         $amount=\DB::select($queryString);
         /** if returned in  time no overdue charges */
         if ($amount[0]->amount==0.00) {
+            //returned payed
+            flash(trans('messages.store', ['name' => trans('rental.nopayment')]), 'success');
             return redirect(\App::getLocale().'/rentals');
         } else {
             return view('rentals.payment', compact('rental', 'amount'));
@@ -142,6 +146,7 @@ class RentalsController extends Controller
         $payment->rental_id=$rental->rental_id;
         $payment->amount=$request->amount;
         $payment->save();
+        flash(trans('messages.store', ['name' => trans('payment.payment')]), 'success');
         return redirect(\App::getLocale().'/rentals');
     }
 }

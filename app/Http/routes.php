@@ -45,6 +45,7 @@ Route::get('/{locale}/', 'PagesController@index');
 Route::get('{locale}/home', 'PagesController@index');
 Route::get('{locale}/about', 'PagesController@about');
 Route::get('{locale}/contact', 'PagesController@contact');
+Route::post('{locale}/contact', 'PagesController@store');
 
 // App Controllers
 Route::resource('{locale}/actors', 'ActorsController', ['parameters'=>['actors'=>'actor']]);

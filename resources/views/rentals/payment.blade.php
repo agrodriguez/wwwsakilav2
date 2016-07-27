@@ -48,41 +48,38 @@
                 </div>
             </form> 
 
-	
-			{!! Form::open(['class'=>'form-horizontal']) !!}
-				{!! Form::hidden('store_id',Auth::user()->store_id ,['id'=>'store_id']) !!}
-				{!! Form::hidden('staff_id',Auth::user()->staff_id ,['id'=>'staff_id']) !!}
-				{!! Form::hidden('inventory_id',$rental->{'inventory_id'} ,['id'=>'inventory_id']) !!}
-				<div class="form-group">
+    
+            {!! Form::open(['class'=>'form-horizontal']) !!}
+                {!! Form::hidden('store_id',Auth::user()->store_id ,['id'=>'store_id']) !!}
+                {!! Form::hidden('staff_id',Auth::user()->staff_id ,['id'=>'staff_id']) !!}
+                {!! Form::hidden('inventory_id',$rental->{'inventory_id'} ,['id'=>'inventory_id']) !!}
+                <div class="form-group">
                     
 
                     <div class="col-sm-2">
-                    	{!! Form::label('aount',trans('payment.amount'),['class'=>'control-label']) !!}                        
+                        {!! Form::label('aount',trans('payment.amount'),['class'=>'control-label']) !!}                        
                         
                         
 
                         <div class="input-group">
-							<div class="input-group-addon">$</div>
-							
-							{!! Form::text('amount',$amount[0]->amount,['class'=>'form-control','id'=>'amount']) !!}
-						</div>
-						<small class="text-danger">{{ $errors->first('amount') }}</small>
+                            <div class="input-group-addon">$</div>
+                            
+                            {!! Form::text('amount',$amount[0]->amount,['class'=>'form-control','id'=>'amount']) !!}
+                        </div>
+                        <small class="text-danger">{{ $errors->first('amount') }}</small>
                         
                     </div>
 
                 </div>
                 <div class="form-group">
-                	<div class="col-sm-offset-0 col-sm-12">
-						{!! Form::submit( trans('payment.pay') ,['class'=>'btn btn-primary']) !!}			
-					</div>
+                    <div class="col-sm-offset-0 col-sm-12">
+                        {!! Form::submit( trans('payment.pay') ,['class'=>'btn btn-primary']) !!}           
+                    </div>
                 </div>
             {!! Form::close() !!}
-			
-		</div>
+            
+        </div>
     </div>
 </div>
 @stop
-
-
-
 

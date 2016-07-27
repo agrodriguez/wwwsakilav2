@@ -22,5 +22,6 @@ return [
     'edit' => 'Edit Rental',
     'update' => 'Update Rental',
     'delete' => 'Delete Rental',
+    'nopayment' => 'Rental Returned',
     
 ];

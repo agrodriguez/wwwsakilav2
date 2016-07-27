@@ -27,7 +27,7 @@ class CreateStaffTable extends Migration
             $table->foreign('address_id', 'fk_staff_address')->references('address_id')->on('address')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('store_id', 'fk_staff_store')->references('store_id')->on('store')->onDelete('restrict')->onUpdate('cascade');
         });
-
+        // create foreign key in store
         Schema::table('store', function ($table) {
             $table->foreign('manager_staff_id', 'fk_store_staff')->references('staff_id')->on('staff')->onDelete('restrict')->onUpdate('cascade');
         });

@@ -67,7 +67,7 @@ class CountriesController extends Controller
      */
     public function show($locale, Country $country)
     {
-        $cities = $country->cities()->paginate(6);
+        $cities = $country->cities()->orderBy('city')->paginate(6);
         return view('countries.show', compact('country', 'cities'));
     }
 
