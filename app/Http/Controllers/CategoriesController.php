@@ -29,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('films')->paginate(10, ['*'], 'categories_page');
+        $categories = Category::with('films')->orderBy('name')->paginate(10, ['*'], 'categories_page');
         return view('categories.index', compact('categories'));
     }
 

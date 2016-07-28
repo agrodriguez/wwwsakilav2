@@ -7,16 +7,9 @@
 
     <title>Sakila V2 - @yield('title')</title>
 
-    {{-- 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> 
-    --}}
-
     <!-- Styles -->
-   <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
+    <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Lato';
@@ -115,16 +108,11 @@
             </div>
         </div>
     </nav>
-    {{-- <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ol> --}}
+
     @yield('content')
 
     <!-- JavaScripts -->
      <script src="{{ elixir('js/all.js') }}" rel="stylesheet"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
      @stack('scripts')
      

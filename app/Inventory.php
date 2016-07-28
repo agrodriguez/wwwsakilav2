@@ -55,7 +55,7 @@ class Inventory extends Model
      */
     public function film()
     {
-        return $this->belongsTo('App\Film');
+        return $this->belongsTo(Film::class);
     }
 
     /**
@@ -65,7 +65,7 @@ class Inventory extends Model
      */
     public function store()
     {
-        return $this->belongsTo('App\Store');
+        return $this->belongsTo(Store::class);
     }
 
     /**
@@ -75,6 +75,6 @@ class Inventory extends Model
      */
     public function rentals()
     {
-        return $this->hasMany('App\Rental');
+        return $this->hasMany(Rental::class);
     }
 }

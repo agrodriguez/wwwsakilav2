@@ -26,7 +26,7 @@ class CustomerTableSeeder extends Seeder
          *
          **/
         $faker = Faker\Factory::create();
-        for ($i=5; $i < 606; $i++) {
+        for ($i=5; $i <= 604; $i++) {
             App\Customer::create([
                 'store_id' => $faker->numberBetween(1, 2),
                 'first_name' => $faker->firstName(),

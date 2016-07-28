@@ -29,9 +29,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CountryTableSeeder::class);
         $this->call(CityTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
-        $this->call(RentalTableSeeder::class);
         $this->call(StaffTableSeeder::class);
         $this->call(StoreTableSeeder::class);
+        //this last because it has to call on the staff, film and inventory tables
+        $this->call(RentalPaymentTableSeeder::class);
         //enable again the foreign key restrictions to enforce them
         Schema::enableForeignKeyConstraints();
 

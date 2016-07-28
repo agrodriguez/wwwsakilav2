@@ -61,7 +61,7 @@ class Store extends Model
      */
     public function manager()
     {
-        return $this->belongsTo('App\Staff', 'manager_staff_id', 'staff_id');
+        return $this->belongsTo(Staff::class, 'manager_staff_id', 'staff_id');
     }
 
     /**
@@ -105,13 +105,13 @@ class Store extends Model
     }
 
     /**
-     * Eloquent rentals relation Through inventories
+     * Eloquent rental relation Through inventories
      *
-     * @return App\Film colection
+     * @return App\Rental colection
      */
     public function rentals()
     {
-        return $this->hasManyThrough(Rental::class, Inventory::class, 'store_id', 'rental_id');
+        return $this->hasManyThrough(Rental::class, Inventory::class, 'store_id', 'inventory_id');
     }
 
     /**

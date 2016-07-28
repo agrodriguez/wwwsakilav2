@@ -18,7 +18,9 @@ class PagesController extends Controller
     public function index($locale)
     {
         \App::setLocale($locale);
-
+        if (!\Auth::guest()) {
+            \Auth::user()->store->load(['rentals', 'rentals.payments', 'customers', 'inventories', 'films']);
+        }
         return view('pages.home')->with('name', 'Sakila');
     }
 

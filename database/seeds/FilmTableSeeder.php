@@ -25,7 +25,7 @@ class FilmTableSeeder extends Seeder
         $categories = App\Category::lists('category_id')->all();
         $actors = App\Actor::lists('actor_id')->all();
 
-        for ($i=1; $i < 1000; $i++) {
+        for ($i=1; $i <= 1000; $i++) {
             $film=App\Film::create([
                 'title' => $faker->realText(20),
                 'description' => $faker->realText(150),

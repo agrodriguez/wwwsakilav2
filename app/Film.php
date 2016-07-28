@@ -60,7 +60,7 @@ class Film extends Model
      */
     public function inventories()
     {
-        return $this->hasMany('App\Inventory');
+        return $this->hasMany(Inventory::class);
     }
 
     /**
@@ -71,7 +71,7 @@ class Film extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Category', 'film_category', 'film_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'film_category', 'film_id', 'category_id');
     }
 
     /**
@@ -82,7 +82,7 @@ class Film extends Model
      */
     public function actors()
     {
-        return $this->belongsToMany('App\Actor', 'film_actor', 'film_id', 'actor_id');
+        return $this->belongsToMany(Actor::class, 'film_actor', 'film_id', 'actor_id');
     }
 
     /**
@@ -92,7 +92,7 @@ class Film extends Model
      */
     public function language()
     {
-        return $this->belongsTo('App\Language');
+        return $this->belongsTo(Language::class);
     }
 
     /**
@@ -102,7 +102,7 @@ class Film extends Model
      */
     public function originalLanguage()
     {
-        return $this->belongsTo('App\Language', 'original_language_id', 'language_id');
+        return $this->belongsTo(Language::class, 'original_language_id', 'language_id');
     }
 
     

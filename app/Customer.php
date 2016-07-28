@@ -98,7 +98,7 @@ class Customer extends Model
      */
     public function store()
     {
-        return $this->belongsTo('App\Store');
+        return $this->belongsTo(Store::class);
     }
 
     /**
@@ -108,7 +108,7 @@ class Customer extends Model
      */
     public function payments()
     {
-        return $this->hasMany('App\Payment');
+        return $this->hasMany(Payment::class);
     }
 
     /**
@@ -118,7 +118,7 @@ class Customer extends Model
      */
     public function rentals()
     {
-        return $this->hasMany('App\Rental');
+        return $this->hasMany(Rental::class);
     }
 
 

@@ -42,8 +42,15 @@ class RentalsController extends Controller
      */
     public function create()
     {
-        $films = \DB::table('film')->select(\DB::raw('film_id, concat(title," - ", SUBSTRING(description,1,50),"...") as name, rental_rate'))->lists('name', 'film_id');
-        $customers= \DB::table('customer')->select(\DB::raw('customer_id, concat(first_name," ", last_name) as name'))->lists('name', 'customer_id');
+        //use only inventory films on the store
+        $films = \DB::table('film')->select(\DB::raw('film.film_id, concat(title," - ", SUBSTRING(description,1,50),"...") as name, rental_rate'))
+            ->join('inventory', 'film.film_id', '=', 'inventory.film_id')
+            ->where('inventory.store_id', \Auth::user()->store->store_id)
+            ->orderBy('title')
+            ->lists('name', 'film_id');
+        $customers= \DB::table('customer')->select(\DB::raw('customer_id, concat(first_name," ", last_name) as name'))
+            ->orderBy('name')
+            ->lists('name', 'customer_id');
         return view('rentals.create', compact('films', 'customers'));
     }
 

@@ -1,25 +1,31 @@
-el saldo es por el tiempo y se le cobrara en la proxima renta
+Requerimientos
+•	Php 5.6.2
+•	MySQL 5.7.12
+•	Composer ultima versión
+•	Node.js 4.4.3
+•	Laravel 5.2
 
-actualizar los pagos con el precio de renta para tener saldos positivos
-update film f 
-	join inventory i on i.film_id = f.film_id
-    join rental r on i.inventory_id = r.inventory_id
-    join payment p on p.rental_id = r.rental_id
-set p.amount=f.rental_rate
+Default Login
+•	Email.: Mike.Hillyer@sakilastaff.com
+•	Password: 111111
 
-traduccion
-archivo de scripts integrado a la version con elixir
-eliminacion
-validaciones en request
-mensajes flasheados a la sesion
-verificacion phpcs en clases
-creacion de namespace para llamadas a API
-	php artisan make:controller Api/ApiController
-middleware para localizacion
-base de datos migrada y sembrada
-imagenes guardadas con nombre unico
-imagenes eliminadas del directorio despues de subir
-formulario de contacto
+
+Changelog de la version 2
+
+•	Base De Datos Migrada Y Sembrada
+•	A. B. M. E.  De Catalogos
+•	Archivos De Idioma Para Localizacion
+•	Archivo De Scripts Integrado A La Version Con Elixir
+•	Validaciones En Clases Request
+•	Formulario De Contacto
+•	Mensajes Flasheados A La Sesion Y Mostrados Al Usuario
+•	Creacion De Namespace Para Llamadas A Api
+•	Creacion De Middleware Para Localizacion Del Idioma•	
+•	Imagenes Guardadas Con Nombre Unico
+•	Imagenes Eliminadas Del Directorio Despues De Subir
+•	Verificacion Phpcs Codificacion Psr1 y 2
+
+
 Rutas
 +--------+-----------+-------------------------------------+-----------------------------+-----------------------------------------------------------------+------------+
 | Domain | Method    | URI                                 | Name                        | Action                                                          | Middleware |

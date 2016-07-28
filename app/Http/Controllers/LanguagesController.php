@@ -29,7 +29,7 @@ class LanguagesController extends Controller
      */
     public function index()
     {
-        $languages = Language::with('films')->paginate(10);
+        $languages = Language::with('films')->orderBy('name')->paginate(10);
         return view('languages.index', compact('languages'));
     }
 

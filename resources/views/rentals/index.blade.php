@@ -24,7 +24,9 @@
                             <th class="text-center">Total</th>
                         </tr>
                     </thead>
+                    @if($rentals->links())
                     <tfoot><tr><td colspan="7">{!! $rentals->links() !!}</td></tr></tfoot>
+                    @endif
                     <tbody> 
                         @foreach ($rentals as $rental)
                             <tr>

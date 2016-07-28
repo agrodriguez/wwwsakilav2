@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
             <h2>{{ trans('rental.rental') }}
-                <p class="lead">{{ trans('rental.edit') }}</p>
+                <p class="lead">{{ trans('rental.create') }}</p>
             </h2>
             {!! Form::open(['url'=>\App::getLocale().'/rentals','class'=>'form-horizontal']) !!}
                 <div class="form-group">
@@ -62,7 +62,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						{!! Form::submit('Add rental',['class'=>'btn btn-primary']) !!}			
+						{!! Form::submit(trans('rental.create'),['class'=>'btn btn-primary']) !!}			
 					</div>
                     {{-- 
                 

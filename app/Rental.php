@@ -137,7 +137,7 @@ class Rental extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
 
@@ -148,7 +148,7 @@ class Rental extends Model
      */
     public function inventory()
     {
-        return $this->belongsTo('App\Inventory');
+        return $this->belongsTo(Inventory::class);
     }
 
     /**
@@ -158,7 +158,7 @@ class Rental extends Model
      */
     public function staff()
     {
-        return $this->belongsTo('App\Staff');
+        return $this->belongsTo(Staff::class);
     }
 
     /**
@@ -168,6 +168,6 @@ class Rental extends Model
      */
     public function payments()
     {
-        return $this->hasMany('App\Payment');
+        return $this->hasMany(Payment::class);
     }
 }

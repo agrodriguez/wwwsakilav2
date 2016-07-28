@@ -50,7 +50,7 @@ class City extends Model
      */
     public function addresses()
     {
-        return $this->hasMany('App\Address');
+        return $this->hasMany(Address::class);
     }
 
     /**
@@ -60,7 +60,7 @@ class City extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo(Country::class);
     }
 
     /**

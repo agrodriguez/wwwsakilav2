@@ -29,7 +29,7 @@ class ActorsController extends Controller
      */
     public function index()
     {
-        $actors = Actor::orderBy('first_name')->paginate(10, ['*'], 'actors_page');
+        $actors = Actor::orderBy('first_name')->orderBy('last_name')->paginate(10, ['*'], 'actors_page');
         return view('actors.index', compact('actors'));
     }
 

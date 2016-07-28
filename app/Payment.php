@@ -97,7 +97,7 @@ class Payment extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
     /**
@@ -107,7 +107,7 @@ class Payment extends Model
      */
     public function rental()
     {
-        return $this->belongsTo('App\Rental');
+        return $this->belongsTo(Rental::class);
     }
 
     /**
@@ -117,6 +117,6 @@ class Payment extends Model
      */
     public function staff()
     {
-        return $this->belongsTo('App\Staff');
+        return $this->belongsTo(Staff::class);
     }
 }

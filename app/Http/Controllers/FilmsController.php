@@ -31,7 +31,7 @@ class FilmsController extends Controller
      */
     public function index()
     {
-        $films = Film::paginate(10);
+        $films = Film::orderBy('title')->paginate(10);
         return view('films.index', compact('films'));
     }
 

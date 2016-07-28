@@ -27,9 +27,11 @@ class ViewControllerServiceProvider extends ServiceProvider
          * compose view for films form passing lists
          */
         view()->composer('films._form', function ($view) {
-            $categories=Category::lists('name', 'category_id')->all();
+            $categories=Category::orderBy('name')->lists('name', 'category_id')->all();
 
-            $actors = DB::table('actor')->select(DB::raw('actor_id, concat(first_name," ", last_name) as name'))->lists('name', 'actor_id');
+            $actors = DB::table('actor')->select(DB::raw('actor_id, concat(first_name," ", last_name) as name'))
+                ->orderBy('first_name')->orderBy('last_name')
+                ->lists('name', 'actor_id');
 
             $languages = Language::lists('name', 'language_id')->all();
 
@@ -56,7 +58,7 @@ class ViewControllerServiceProvider extends ServiceProvider
          */
         view()->composer(['staffs._form', 'customers._form', 'cities._form', 'stores._form'], function ($view) {
             
-            $countries=Country::lists('country', 'country_id')->all();
+            $countries=Country::orderBy('country')->lists('country', 'country_id')->all();
             //$stores=Store::with('address.city.country')->get();
             $stores= DB::table('store')->join('address', 'store.address_id', '=', 'address.address_id')
             ->join('city', 'address.city_id', '=', 'city.city_id')
@@ -79,7 +81,7 @@ class ViewControllerServiceProvider extends ServiceProvider
 
             $customers=\App\Customer::all();
 
-            $rentals=\App\Rental::all();
+            $rentals=\App\Rental::with('payments')->get();
 
             $view->with(['films'=>$films, 'inventories'=>$inventories, 'customers'=>$customers, 'rentals'=>$rentals]);
         });

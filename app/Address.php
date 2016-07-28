@@ -110,7 +110,7 @@ class Address extends Model
      */
     public function city()
     {
-        return $this->belongsTo('App\City');
+        return $this->belongsTo(City::class);
     }
 
     /**
@@ -121,7 +121,7 @@ class Address extends Model
      */
     public function customer()
     {
-        return $this->hasOne('App\Customer');
+        return $this->hasOne(Customer::class);
     }
 
     /**
@@ -132,7 +132,7 @@ class Address extends Model
      */
     public function staff()
     {
-        return $this->hasOne('App\Staff');
+        return $this->hasOne(Staff::class);
     }
 
     /**
