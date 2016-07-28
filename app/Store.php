@@ -115,6 +115,24 @@ class Store extends Model
     }
 
     /**
+     * get the correct money format
+     * @return string number 2 decimals with sign
+     */
+    public function getTotalBalanceAttribute()
+    {
+        return $this->customers->sum('balance');
+    }
+
+    /**
+     * get the correct money format
+     * @return string number 2 decimals with sign
+     */
+    public function getTotalAttribute()
+    {
+        return $this->rentals->sum('total');
+    }
+
+    /**
      * get the store name concatenated
      *
      * @return String

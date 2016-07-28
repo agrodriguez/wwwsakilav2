@@ -179,6 +179,15 @@ class Staff extends Authenticatable
     }
 
     /**
+     * get the correct money format
+     * @return string number 2 decimals with sign
+     */
+    public function getTotalAttribute()
+    {
+        return $this->rentals->sum('total');
+    }
+
+    /**
      * get the address name concatenated
      * use addressName
      *

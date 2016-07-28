@@ -11,6 +11,7 @@
         </div>
         <div class="col-md-12 col-md-offset-0">&nbsp;</div>
 @if(!Auth::guest())
+
         <div class="col-md-12 col-md-offset-0">
             <div class="row">
                 <div class="col-md-4">
@@ -19,7 +20,7 @@
                         <ul class="list-group">
                             
                             <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">{{  Auth::user()->rentals->count() }}</span></li>
-                            <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">$ {{  number_format(Auth::user()->rentals->sum('total'),2) }}</span></li>
+                            <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">$ {{  number_format(Auth::user()->total,2) }}</span></li>
                             
                         </ul>
                     </div>
@@ -32,7 +33,8 @@
                             <li class="list-group-item">{{ trans('inventory.inventories') }}<span class="badge">{{  Auth::user()->store->inventories->count() }}</span></li>
                             <li class="list-group-item">{{ trans('customer.customers') }}<span class="badge">{{ Auth::user()->store->customers->count() }}</span></li>
                             <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">{{  Auth::user()->store->rentals->count() }}</span></li>
-                            <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">$ {{  number_format(Auth::user()->store->rentals->sum('total'),2) }}</span></li>
+                            <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">$ {{  number_format(Auth::user()->store->total,2) }}</span></li>
+                            <li class="list-group-item">{{ trans('customer.balance') }}<span class="badge">$ {{  number_format(Auth::user()->store->totalBalance,2) }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -45,6 +47,7 @@
                             <li class="list-group-item">{{ trans('customer.customers') }}<span class="badge">{{ $customers->count() }}</span></li>
                             <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">{{ $rentals->count() }}</span></li>
                             <li class="list-group-item">{{ trans('rental.rentals') }}<span class="badge">$ {{  number_format($rentals->sum('total'),2) }}</span></li>
+                            <li class="list-group-item">{{ trans('customer.balance') }}<span class="badge">$ {{  number_format($customers->sum('balance'),2) }}</span></li>
                         </ul>
                     </div>
                 </div>
