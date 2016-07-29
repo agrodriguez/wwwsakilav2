@@ -9,6 +9,14 @@ Default Login
 •	Email.: Mike.Hillyer@sakilastaff.com
 •	Password: 111111
 
+recordar ejecutar
+composer dump-autoload
+php artisan clear-compiled
+php artisan cache:clear
+php artisan view:clear
+php artisan route:cache
+php artisan config:cache
+
 
 Changelog de la version 2
 

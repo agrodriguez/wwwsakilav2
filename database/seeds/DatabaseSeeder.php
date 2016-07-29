@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $truncate = ['Actor', 'Address', 'Category', 'City', 'Country', 'Customer', 'Film_text', 'Film_actor', 'Film_category', 'Film', 'Inventory', 'Language', 'Payment', 'Rental', 'Staff', 'Store'];
+    protected $truncate = ['actor', 'address', 'category', 'city', 'country', 'customer', 'film_text', 'film_actor', 'film_category', 'film', 'inventory', 'language', 'payment', 'rental', 'staff', 'store'];
     /**
      * Run the database seeds.
      *
